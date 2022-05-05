@@ -15,11 +15,11 @@ function NavBar() {
       </ul>
       <footer className='mt-auto flex flex-col items-center'>
         <div className='flex w-full justify-around mb-2'>
-        <i class="fa-brands fa-twitter"></i>
-        <i class="fa-brands fa-facebook-f"></i>
-        <i class="fa-brands fa-google-plus-g"></i>
-        <i class="fa-brands fa-vimeo-v"></i>
-        <i class="fa-brands fa-pinterest-p"></i>
+        <i className="fa-brands fa-twitter"></i>
+        <i className="fa-brands fa-facebook-f"></i>
+        <i className="fa-brands fa-google-plus-g"></i>
+        <i className="fa-brands fa-vimeo-v"></i>
+        <i className="fa-brands fa-pinterest-p"></i>
         </div>
         <p>©2022 Hotelzilla</p>
       </footer>
