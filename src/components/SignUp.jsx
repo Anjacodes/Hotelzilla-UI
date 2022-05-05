@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import signup from '../logic/signup';
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -14,6 +15,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    signup(form);
   };
 
   return (
