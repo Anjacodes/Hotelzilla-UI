@@ -1,7 +1,6 @@
 const loginURL = 'http://127.0.0.1:3000/auth/login';
 
 const getTokenAsync = async (loginData) => {
-  console.log(loginData);
   const response = await fetch(loginURL, {
     method: 'POST',
     body: JSON.stringify(loginData),
