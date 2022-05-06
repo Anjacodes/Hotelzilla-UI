@@ -20,11 +20,18 @@ const SignUp = () => {
 
   return (
     <div className="flex flex-col h-screen w-screen justify-center items-center">
-      <div className="-mt-10">
-        <img src="Hotelzilla-logo.png" alt="" width="200" />
-        <form className="flex flex-col gap-2" onSubmit={handleSubmit}>
+      <section className="-mt-10">
+        <header>
+          <img src="Hotelzilla-logo.png" alt="" width="200" />
+          <h2 className="text-center font-semibold text-xl uppercase">
+            New User form
+          </h2>
+        </header>
+        <form className="flex flex-col gap-2 mt-2" onSubmit={handleSubmit}>
           <div className="flex flex-col">
-            <label htmlFor="name">Name:</label>
+            <label className="text-sm mt-1" htmlFor="name">
+              Name:
+            </label>
             <input
               className="border rounded px-2 py-1"
               name="name"
@@ -37,7 +44,9 @@ const SignUp = () => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="email">Email:</label>
+            <label className="text-sm mt-1" htmlFor="email">
+              Email:
+            </label>
             <input
               className="border rounded px-2 py-1"
               name="email"
@@ -50,7 +59,9 @@ const SignUp = () => {
           </div>
 
           <div className="flex flex-col">
-            <label htmlFor="password">Password:</label>
+            <label className="text-sm mt-1" htmlFor="password">
+              Password:
+            </label>
             <input
               className="border rounded px-2 py-1"
               name="password"
@@ -76,7 +87,7 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
-      </div>
+      </section>
     </div>
   );
 };
