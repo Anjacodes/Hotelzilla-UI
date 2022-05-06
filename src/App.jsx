@@ -1,6 +1,5 @@
 import React from 'react';
-import { Route, Routes, useParams } from 'react-router-dom';
-import NavBar from './components/NavBar';
+import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import ProtectedRoute from './components/Details/ProtectedRoute';
 import Index from './components/Index';
