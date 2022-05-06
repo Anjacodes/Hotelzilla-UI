@@ -10,7 +10,7 @@ const signup = async (formData) => {
   // todo: handle the answer from the server
   if (!response) console.log('Connection error');
   if (response.ok) return response.json();
-  else console.log('Invalid fetch');
+  return 'Invalid fetch';
 };
 
 export default signup;
