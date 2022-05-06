@@ -1,8 +1,10 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import SignUp from './components/SignUp';
 import Home from './components/Home';
 import ProtectedRoute from './components/Details/ProtectedRoute';
 import Index from './components/Index';
+
 
 const App = () => {
 
@@ -13,6 +15,7 @@ const App = () => {
   return (
     <>
       <Routes>
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<Home />}>
           <Route index element={< Index />}/>
           <Route path=":roomId" element={<ProtectedRoute loggedIn={state.loggedIn} />}/>
