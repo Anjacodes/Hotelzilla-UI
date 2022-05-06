@@ -1,8 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
+import detailsReducer from './details/detailsSlice';
 
 // add here the reducers!!
-const reducer = {};
+const reducer = {
+  details: detailsReducer
+};
 
 const store = configureStore({
   reducer,
