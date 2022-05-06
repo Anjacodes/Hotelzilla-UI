@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function NavBar() {
+function NavBar({loggedIn} = loggedIn) {
   return (
     <nav className='w-[20vw] h-[100vh] flex flex-col items-center justify-evenly py-4 border-r'>
       <a href='/'><img src="Hotelzilla-logo.png" alt="Hotelzilla Logo" className='h-[20vh]'/></a>

@@ -2,19 +2,21 @@ import React from 'react';
 import { Route, Routes, useParams } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
-import Details from './components/Details/Details';
+import ProtectedRoute from './components/Details/ProtectedRoute';
+import Index from './components/Index';
 
 const App = () => {
+
+  const state = {
+    loggedIn: true
+  }
 
   return (
     <>
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route path="/" element={< NavBar/>}/>
-          <Route path=":roomId" element={<Details/>}/>
-        </Route>
-        <Route path="/details" element={<Details />}>
-          <Route path="/details" element={<NavBar />}/>
+          <Route index element={< Index />}/>
+          <Route path=":roomId" element={<ProtectedRoute loggedIn={state.loggedIn} />}/>
         </Route>
       </Routes>
     </>
