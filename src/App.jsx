@@ -42,7 +42,8 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
           <Route
@@ -50,7 +51,6 @@ const App = () => {
             element={<ProtectedRoute loggedIn={state.loggedIn} />}
           />
         </Route>
-        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );
