@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getToken, login } from '../redux/login/login';
-
-const tokenKey = 'token';
+import { getToken } from '../redux/login/login';
 
 const Login = () => {
   const dispatch = useDispatch();
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
-
-  useEffect(() => {
-    if (localStorage.getItem(tokenKey)) {
-      dispatch(login(JSON.parse(localStorage.getItem(tokenKey))));
-    }
-  }, []);
 
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);

@@ -4,7 +4,7 @@ import loginReducer from './login/login';
 
 // add here the reducers!!
 const reducer = {
-  token: loginReducer,
+  login: loginReducer,
 };
 
 const store = configureStore({
