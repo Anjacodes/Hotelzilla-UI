@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import NavBar from './components/NavBar';
 import Home from './components/Home';
+import Index from './components/Index';
 
 const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />}>
-          <Route path="/" element={< NavBar/>}/>
+       <Route path="/" element={<Home />}>
+          <Route index element={< Index />}/>
         </Route>
       </Routes>
     </>

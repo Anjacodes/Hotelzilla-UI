@@ -1,12 +1,14 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import NavBar from './NavBar';
 
-const Test = () => {
+const Home = () => {
   return (
-    <div>
+    <div className='flex'>
+      <NavBar />
       <Outlet />
     </div>
   )
 };
 
-export default Test;
+export default Home;
