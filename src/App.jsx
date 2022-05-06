@@ -35,6 +35,10 @@ const App = () => {
     console.log(getUserId(token));
   }, [token]);
 
+  const state = {
+    loggedIn: true,
+  };
+
   return (
     <>
       <Routes>
@@ -46,7 +50,6 @@ const App = () => {
             element={<ProtectedRoute loggedIn={state.loggedIn} />}
           />
         </Route>
-
         <Route path="/login" element={<Login />} />
       </Routes>
     </>
