@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 function NavBar() {
   return (
-    <nav className='w-[20vw] h-[100vh] flex flex-col items-center justify-evenly py-4'>
+    <nav className='w-[20vw] h-[100vh] flex flex-col items-center justify-evenly py-4 border-r'>
       <a href='/'><img src="Hotelzilla-logo.png" alt="Hotelzilla Logo"/></a>
       <ul className='flex flex-col mt-12'>
          <NavLink to="/hotels/add" className="py-2 font-bold hover:bg-lime-400">ADD HOTEL</NavLink>
