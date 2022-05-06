@@ -17,7 +17,7 @@ useEffect(() => {
 
   return (
     <section className='flex mx-[5vw] my-[25vh] justify-between w-[80vw]'>
-        <img className="w-[40vw] mr-4" src="https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg" alt="placeholder"/>
+        <img className="w-[40vw] mr-4" src={room.image} alt="placeholder"/>
         <div className='flex flex-col items-end'>
           <h2 className="mb-3 font-bold text-2xl">{room.name}</h2>
           <p className='text-right mb-10'>{room.description.slice(0,50)}</p>

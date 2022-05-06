@@ -20,6 +20,7 @@ export const detailsSlice = createSlice({
       state.description = payload.description
       state.price = payload.price
       state.hotel = payload.brand
+      state.image = payload.thumbnail
     },
     // decrement: (state) => {
     //   state.value -= 1
