@@ -1,5 +1,5 @@
 const signup = async (formData) => {
-  const url = '';
+  const url = 'https://hotelzilla-api.herokuapp.com/users';
   const signUpHeader = new Headers([['Content-Type', 'application/json']]);
 
   const response = await fetch(url, {
@@ -7,12 +7,10 @@ const signup = async (formData) => {
     signUpHeader,
     body: JSON.stringify(formData),
   });
+  // todo: handle the answer from the server
   if (!response) console.log('Connection error');
   if (response.ok) return response.json();
   else console.log('Invalid fetch');
-  // fetch data
-  // check for response
-  // render an appropiate answer
 };
 
 export default signup;

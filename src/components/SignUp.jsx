@@ -4,6 +4,7 @@ import signup from '../logic/signup';
 const SignUp = () => {
   const [form, setForm] = useState({
     name: '',
+    username: '',
     email: '',
     password: '',
   });
@@ -15,7 +16,9 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    signup(form);
+    const success = signup(form);
+    // todo: handle the answer after success connection to API
+    console.log('success', success);
   };
 
   return (
@@ -23,9 +26,9 @@ const SignUp = () => {
       <section className="-mt-10">
         <header>
           <img src="Hotelzilla-logo.png" alt="" width="200" />
-          <h2 className="text-center font-semibold text-xl uppercase">
-            New User form
-          </h2>
+          <h3 className="text-center font-semibold text-2xl font-Taxicab uppercase">
+            Register
+          </h3>
         </header>
         <form className="flex flex-col gap-2 mt-2" onSubmit={handleSubmit}>
           <div className="flex flex-col">
@@ -33,7 +36,7 @@ const SignUp = () => {
               Name:
             </label>
             <input
-              className="border rounded px-2 py-1"
+              className="border rounded px-2 py-1 hover:ring-1"
               name="name"
               id="name"
               type="text"
@@ -44,11 +47,26 @@ const SignUp = () => {
           </div>
 
           <div className="flex flex-col">
+            <label className="text-sm mt-1" htmlFor="username">
+              Username:
+            </label>
+            <input
+              className="border rounded px-2 py-1 hover:ring-1"
+              name="username"
+              id="username"
+              type="text"
+              value={form.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="flex flex-col">
             <label className="text-sm mt-1" htmlFor="email">
               Email:
             </label>
             <input
-              className="border rounded px-2 py-1"
+              className="border rounded px-2 py-1 hover:ring-1"
               name="email"
               id="email"
               type="email"
@@ -63,7 +81,7 @@ const SignUp = () => {
               Password:
             </label>
             <input
-              className="border rounded px-2 py-1"
+              className="border rounded px-2 py-1 hover:ring-1"
               name="password"
               id="password"
               type={showPassword ? 'text' : 'password'}
@@ -74,16 +92,21 @@ const SignUp = () => {
           </div>
 
           <div className="flex justify-between items-center">
-            <label htmlFor="show-password">Show password?</label>
+            <label className="text-sm" htmlFor="show-password">
+              Show password?
+            </label>
             <input
+              className="hover:ring-1"
               type="checkbox"
               name="show-password"
               id="show-password"
               checked={showPassword}
-              onClick={() => setShowPassword(!showPassword)}
+              onChange={() => setShowPassword(!showPassword)}
             />
           </div>
-          <button className="bg-green-500 w-full rounded-md py-1" type="submit">
+          <button
+            className="bg-green-500 w-full rounded-md py-1 font-bold text-white hover:bg-green-300 hover:text-green-800"
+            type="submit">
             Sign Up
           </button>
         </form>
