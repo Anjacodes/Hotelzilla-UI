@@ -1,20 +1,9 @@
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 import { getDetailsSuccess } from "./detailsSlice"
 
-// const getParams = () => {
-//     let params = useParams();
-//     const roomId = parseInt(params.roomId);
-//     console.log(roomId)
-//     return roomId;
-// }
+export const fetchDetails = (roomId) => async (dispatch) => {
 
-const URL = "https://dummyjson.com/products/1"
-
-export const fetchDetails = () => async (dispatch) => {
-    // let params = useParams();
-    // let roomId = params.roomId
-
-    // const URL = `https://dummyjson.com/products/${roomId}`
+    const URL = `https://dummyjson.com/products/${roomId}`
 
     await fetch(URL)
       .then((response) => response.json())

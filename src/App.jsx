@@ -1,10 +1,11 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Home from './components/Home';
 import Details from './components/Details/Details';
 
 const App = () => {
+
   return (
     <>
       <Routes>
