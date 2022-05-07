@@ -1,17 +1,29 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import { isLoggedIn } from '../modules/auth-module'
 
-function NavBar({loggedIn} = loggedIn) {
+function NavBar() {
+
+const token = useSelector(state => state.login.token)
+
+const loggedIn = isLoggedIn(token)
+
+const renderSignUpButton = () => {
+  if (!loggedIn) {
+    return <NavLink to="/register" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">SIGN UP</NavLink>
+  }
+}
   return (
     <nav className='w-[20vw] h-[100vh] flex flex-col items-center justify-evenly py-4 border-r'>
       <a href='/'><img src="Hotelzilla-logo.png" alt="Hotelzilla Logo" className='h-[25vh]'/></a>
       <ul className='flex flex-col mt-12'>
-         <NavLink to="/hotels/add" className="py-2 font-bold hover:bg-lime-400">ADD HOTEL</NavLink>
-         <NavLink to="/hotels/delete" className="py-2 font-bold hover:bg-lime-400">DELETE HOTEL</NavLink>
-         <NavLink to="/hotels/reserve" className="py-2 font-bold hover:bg-lime-400">RESERVE</NavLink>
-         <NavLink to="/reservations" className="py-2 font-bold hover:bg-lime-400">MY RESERVATIONS</NavLink>
-         <NavLink to="/register" className="py-2 font-bold hover:bg-lime-400">SIGN UP</NavLink>
-         <NavLink to="/login" className="py-2 font-bold hover:bg-lime-400">LOG IN</NavLink>
+         <NavLink to="/hotels/add" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Add Hotel</NavLink>
+         <NavLink to="/hotels/delete" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Delete Hotel</NavLink>
+         <NavLink to="/hotels/reserve" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Reserve</NavLink>
+         <NavLink to="/reservations" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">My reservations</NavLink>
+         <NavLink to="/login" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">{loggedIn ? "LOG OUT" : "LOG IN"}</NavLink>
+         { renderSignUpButton() }
       </ul>
       <footer className='mt-auto flex flex-col items-center'>
         <div className='flex w-full justify-around mb-2'>
