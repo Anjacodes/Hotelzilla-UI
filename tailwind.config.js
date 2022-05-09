@@ -5,7 +5,7 @@ module.exports = {
       fontFamily: {
         'Mal-de-ojo': ['mal-de-ojo', 'ui-sans-serif'],
         Taxicab: ['taxicab', 'ui-sans-serif'],
-        Metrophobic: ['Metrophobic', 'ui-sans-serif']
+        Metrophobic: ['Metrophobic', 'ui-sans-serif'],
       },
     },
   },
