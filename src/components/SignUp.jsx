@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import signup from '../logic/signup';
+import { useDispatch } from 'react-redux';
+import { registerThunk } from '../redux/register/registerSlice';
 
 const SignUp = () => {
+  const dispatch = useDispatch();
   const [form, setForm] = useState({
     name: '',
     username: '',
@@ -16,9 +18,7 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const success = signup(form);
-    // todo: handle the answer after success connection to API
-    console.log('success', success);
+    dispatch(registerThunk(form));
   };
 
   return (

@@ -4,7 +4,7 @@ const initialState = {
   userCreation: '',
 };
 
-export const registerThunk = createAsyncThunk('register', async (userForm) => {
+export const registerThunk = createAsyncThunk('register', async (formData) => {
   const url = 'https://hotelzilla-api.herokuapp.com/users';
   const response = await fetch(url, {
     method: 'POST',
