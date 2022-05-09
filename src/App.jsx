@@ -5,7 +5,7 @@ import SignUp from './components/SignUp';
 import Home from './components/Home';
 import ProtectedRoute from './components/Details/ProtectedRoute';
 import Index from './components/Index';
-import Reservations from './components/Reservations.jsx/Reservations';
+import Reservations from './components/Reservations/Reservations';
 import Login from './components/Login';
 import { login } from './redux/login/login';
 import {
