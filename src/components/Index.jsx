@@ -1,6 +1,5 @@
 import React from 'react';
 import RoomItem from './RoomItem';
-import { getRole } from '../modules/auth-module';
 import { useSelector } from 'react-redux';
 
 function Index() {
@@ -31,13 +30,13 @@ function Index() {
     },
   ];
 
-  const token = useSelector((state) => state.login.token);
+  const role = useSelector((state) => state.login.role);
 
   return (
     <>
       <div className="flex flex-col">
         <div className="flex justify-end p-5">
-          {getRole(token) === 'Admin' && (
+          {role === 'Admin' && (
             <button className="bg-lime-400 px-3 py-2 text-white">
               Add Room
             </button>
