@@ -24,7 +24,9 @@ const App = () => {
     dispatch(getAllRoomsAsync());
   }, []);
 
-  const loggedIn = useSelector(state => state.login.isLoggedIn)
+  // const loggedIn = useSelector(state => state.login.isLoggedIn)
+
+  const loggedIn = true
 
   return (
     <>

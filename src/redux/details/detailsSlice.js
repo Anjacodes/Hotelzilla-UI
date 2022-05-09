@@ -4,7 +4,6 @@ const URL = 'https://dummyjson.com/products/';
 
 export const fetchDetails = createAsyncThunk('rooms/fetchDetails',
   async (roomId) => {
-    console.log(roomId);
     const response = await fetch(`${URL}${roomId}`);
     const data = await response.json();
     return data;
