@@ -6,8 +6,8 @@ const URL = 'https://dummyjson.com/products/?limit=5';
 export const fetchUserReservations = createAsyncThunk(
   'reservations/fetchUserReservations',
   async () => {
-    const response = await fetch(URL)
-    const data = await response.json()
+    const response = await fetch(URL);
+    const data = await response.json();
     return data;
   },
 );
