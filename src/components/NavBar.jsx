@@ -23,7 +23,7 @@ const role = getRole(token)
          { renderAddDeleteHotel(role) }
          { renderReserve(loggedIn) }
          <NavLink to="/login"  className={({ isActive }) =>
-            isActive ? 'bg-lime-400' : '' + 'py-2 font-bold hover:bg-lime-400'
+            isActive ? 'bg-lime-400' : '' + 'py-2 font-Taxicab text-xl font-bold hover:bg-lime-400'
           }>{loggedIn ? "LOG OUT" : "LOG IN"}</NavLink>
          { renderSignUpButton(loggedIn) }
       </div>

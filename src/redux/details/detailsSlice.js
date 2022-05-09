@@ -1,31 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-export const initialState = {
-  name: '',
-  description: '',
-  capacity: '',
-  rating: '',
-  price: '',
-  image: '',
-  hotel: '',
-  reserved: false,
+const URL = 'https://dummyjson.com/products/';
+
+export const fetchDetails = createAsyncThunk('rooms/fetchDetails',
+  async (roomId) => {
+    console.log(roomId);
+    const response = await fetch(`${URL}${roomId}`);
+    const data = await response.json();
+    return data;
+  });
+
+const initialState = {
+  roomDetails: [],
+  loading: false,
 };
 
-export const detailsSlice = createSlice({
-  name: 'details',
+const detailsSlice = createSlice({
+  name: 'rooms',
   initialState,
-  reducers: {
-    getDetailsSuccess: (state, { payload }) => {
-      state.name = payload.title;
-      state.description = payload.description;
-      state.price = payload.price;
-      state.hotel = payload.brand;
-      state.image = payload.thumbnail;
+  reducers: {},
+  extraReducers: {
+    [fetchDetails.pending]: (state) => {
+      state.loading = true;
+    },
+    [fetchDetails.fulfilled]: (state, { payload }) => {
+      state.loading = false;
+      state.roomDetails = payload;
+    },
+    [fetchDetails.rejected]: (state) => {
+      state.loading = false;
     },
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { getDetailsSuccess } = detailsSlice.actions;
-
-export default detailsSlice.reducer;
+export const detailsReducer = detailsSlice.reducer;

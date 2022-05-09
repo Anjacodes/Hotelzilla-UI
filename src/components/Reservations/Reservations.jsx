@@ -14,7 +14,7 @@ function Reservations() {
 
   const reservationsArr = reservations.products
 
-  if (loading) return <p>Loading...</p>
+  if (loading) return <p className='font-Taxicab text-2xl mt-[15%] ml-[35%] text-gray-600'>LOADING...</p>
 
   return (
     <section className='bg-slate-200 w-full flex flex-col items-center overflow-x-auto'>
