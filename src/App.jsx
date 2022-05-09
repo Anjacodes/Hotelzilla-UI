@@ -7,6 +7,7 @@ import ProtectedRoute from './components/Details/ProtectedRoute';
 import Index from './components/Index';
 import Login from './components/Login';
 import { login } from './redux/login/login';
+import { getAllRoomsAsync } from './redux/room/room';
 import {
   isLoggedIn,
   isLoggedOut,
@@ -23,6 +24,8 @@ const App = () => {
     if (localStorage.getItem(tokenKey)) {
       dispatch(login(JSON.parse(localStorage.getItem(tokenKey))));
     }
+
+    dispatch(getAllRoomsAsync());
   }, []);
 
   const token = useSelector((state) => state.login.token);
