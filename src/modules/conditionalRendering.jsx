@@ -1,3 +1,4 @@
+import React from "react"
 import { NavLink } from "react-router-dom"
 
 export const renderSignUpButton = (loggedIn) => {
@@ -8,26 +9,26 @@ export const renderSignUpButton = (loggedIn) => {
 
 export const renderReserve = (loggedIn) => {
     if (loggedIn) {
-      return <NavLink to="/hotels/reserve" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Reserve</NavLink>
-    }
-  }
+      return (
+        <React.Fragment>
 
-export const renderMyReservations = (loggedIn) => {
-    if (loggedIn) {
-      return <NavLink to="/reservations" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">My reservations</NavLink>
-    }
-  }
+          <NavLink to="/hotels/reserve" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Reserve</NavLink>
+          <NavLink to="/reservations" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">My reservations</NavLink>
 
-export const renderAddHotel = (role) => {
-    if (role !== "No Role") {
-      <NavLink to="/hotels/add" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Add Hotel</NavLink>
+        </React.Fragment>
+      )
     }
-    return
-  }
+}
 
-export const renderDeleteHotel = (role) => {
-    if (role !== "No Role") {
-      <NavLink to="/hotels/delete" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Delete Hotel</NavLink>
+export const renderAddDeleteHotel = (role) => {
+    if (role === "admin") {
+      return (
+        <React.Fragment>
+
+          <NavLink to="/hotels/add" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Add Hotel</NavLink>
+          <NavLink to="/hotels/delete" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">Delete Hotel</NavLink>
+
+        </React.Fragment>
+      )
     }
-    return
-  }
+}
