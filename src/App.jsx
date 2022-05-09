@@ -8,12 +8,6 @@ import Index from './components/Index';
 import Login from './components/Login';
 import { login } from './redux/login/login';
 import { getAllRoomsAsync } from './redux/room/room';
-import {
-  isLoggedIn,
-  isLoggedOut,
-  getRole,
-  getUserId,
-} from './modules/auth-module';
 
 const tokenKey = 'token';
 
@@ -27,16 +21,6 @@ const App = () => {
 
     dispatch(getAllRoomsAsync());
   }, []);
-
-  const token = useSelector((state) => state.login.token);
-
-  useEffect(() => {
-    console.log(token);
-    console.log(isLoggedIn(token));
-    console.log(isLoggedOut(token));
-    console.log(getRole(token));
-    console.log(getUserId(token));
-  }, [token]);
 
   const state = {
     loggedIn: true,
