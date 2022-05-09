@@ -3,12 +3,14 @@ import logger from 'redux-logger';
 import detailsReducer from './details/detailsSlice';
 import loginReducer from './login/login';
 import { reservationsReducer } from './reservations/reservationsSlice';
+import roomReducer from './room/room';
 
 // add here the reducers!!
 const reducer = {
   login: loginReducer,
   details: detailsReducer,
   reservations: reservationsReducer
+  room: roomReducer,
 };
 
 const store = configureStore({

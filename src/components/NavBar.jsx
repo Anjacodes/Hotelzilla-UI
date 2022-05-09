@@ -12,11 +12,19 @@ const role = getRole(token)
 
   return (
     <nav className='w-[20vw] h-[100vh] flex flex-col items-center justify-evenly py-4 border-r'>
-      <a href='/'><img src="Hotelzilla-logo.png" alt="Hotelzilla Logo" className='h-[25vh]'/></a>
+      <a href="/">
+        <img
+          src="Hotelzilla-logo.png"
+          alt="Hotelzilla Logo"
+          className="h-[25vh]"
+        />
+      </a>
       <div className='flex flex-col mt-12 text-gray-600'>
          { renderAddDeleteHotel(role) }
          { renderReserve(loggedIn) }
-         <NavLink to="/login" className="py-2 font-bold hover:bg-lime-400 text-xl font-[Taxicab]">{loggedIn ? "LOG OUT" : "LOG IN"}</NavLink>
+         <NavLink to="/login"  className={({ isActive }) =>
+            isActive ? 'bg-lime-400' : '' + 'py-2 font-bold hover:bg-lime-400'
+          }>{loggedIn ? "LOG OUT" : "LOG IN"}</NavLink>
          { renderSignUpButton(loggedIn) }
       </div>
       <footer className='mt-auto flex flex-col items-center'>
@@ -30,7 +38,7 @@ const role = getRole(token)
         <p>©2022 Hotelzilla</p>
       </footer>
     </nav>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;

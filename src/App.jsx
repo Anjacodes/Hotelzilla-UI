@@ -6,14 +6,10 @@ import Home from './components/Home';
 import ProtectedRoute from './components/Details/ProtectedRoute';
 import Index from './components/Index';
 import Reservations from './components/Reservations/Reservations';
+import Reserve from './components/Reserve';
 import Login from './components/Login';
 import { login } from './redux/login/login';
-import {
-  isLoggedIn,
-  isLoggedOut,
-  getRole,
-  getUserId,
-} from './modules/auth-module';
+import { getAllRoomsAsync } from './redux/room/room';
 
 const tokenKey = 'token';
 
@@ -24,30 +20,23 @@ const App = () => {
     if (localStorage.getItem(tokenKey)) {
       dispatch(login(JSON.parse(localStorage.getItem(tokenKey))));
     }
+
+    dispatch(getAllRoomsAsync());
   }, []);
-
-  const token = useSelector((state) => state.login.token);
-
-  useEffect(() => {
-    console.log(token);
-    console.log(isLoggedIn(token));
-    console.log(isLoggedOut(token));
-    console.log(getRole(token));
-    console.log(getUserId(token));
-  }, [token]);
 
   const loggedIn = isLoggedIn(token)
 
   return (
     <>
       <Routes>
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />}>
           <Route index element={< Index />}/>
           <Route path=":roomId" element={<ProtectedRoute loggedIn={loggedIn} />}/>
           <Route path='reservations' element={<Reservations />} />
+          <Route path="reserve" element={<Reserve />} />
         </Route>
-        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );
