@@ -24,7 +24,7 @@ const App = () => {
     dispatch(getAllRoomsAsync());
   }, []);
 
-  const loggedIn = isLoggedIn(token)
+  const loggedIn = useSelector(state => state.login.isLoggedIn)
 
   return (
     <>

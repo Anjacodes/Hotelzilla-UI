@@ -9,7 +9,7 @@ import roomReducer from './room/room';
 const reducer = {
   login: loginReducer,
   details: detailsReducer,
-  reservations: reservationsReducer
+  reservations: reservationsReducer,
   room: roomReducer,
 };
 
