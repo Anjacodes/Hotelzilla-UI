@@ -1,4 +1,4 @@
-const loginURL = 'http://127.0.0.1:3000/auth/login';
+const loginURL = 'https://hotelzilla-api.herokuapp.com/auth/login';
 
 const getTokenAsync = async (loginData) => {
   const response = await fetch(loginURL, {
