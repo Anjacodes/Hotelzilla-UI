@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { fetchDetails } from '../../redux/details/apiCall';
+import fetchDetails from '../../redux/details/apiCall';
 import ReservationModal from './ReservationModal';
 
 function DetailsView() {

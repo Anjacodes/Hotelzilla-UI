@@ -5,6 +5,7 @@ import SignUp from './components/SignUp';
 import Home from './components/Home';
 import ProtectedRoute from './components/Details/ProtectedRoute';
 import Index from './components/Index';
+import Reservations from './components/Reservations/Reservations';
 import Reserve from './components/Reserve';
 import Login from './components/Login';
 import { login } from './redux/login/login';
@@ -23,9 +24,7 @@ const App = () => {
     dispatch(getAllRoomsAsync());
   }, []);
 
-  const state = {
-    loggedIn: true,
-  };
+  const loggedIn = isLoggedIn(token)
 
   return (
     <>
@@ -33,12 +32,10 @@ const App = () => {
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />}>
-          <Route index element={<Index />} />
+          <Route index element={< Index />}/>
+          <Route path=":roomId" element={<ProtectedRoute loggedIn={loggedIn} />}/>
+          <Route path='reservations' element={<Reservations />} />
           <Route path="reserve" element={<Reserve />} />
-          <Route
-            path=":roomId"
-            element={<ProtectedRoute loggedIn={state.loggedIn} />}
-          />
         </Route>
       </Routes>
     </>
