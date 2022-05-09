@@ -18,7 +18,7 @@ function Reservations() {
 
   return (
     <section className='bg-slate-200 w-[80vw] flex flex-col items-center overflow-x-auto'>
-      <h2 className='mt-[25vh] font-[Taxicab] text-2xl mb-10'>MY RESERVATIONS</h2>
+      <h2 className='mt-[25vh] font-Taxicab text-2xl mb-10'>MY RESERVATIONS</h2>
       <table className='w-[90%] table-fixed text-left text-gray-500 md:table-auto'>
         <thead className="text-s text-gray-700 uppercase bg-lime-300 dark:bg-gray-700 dark:text-gray-400">
           <tr>
