@@ -5,6 +5,7 @@ import SignUp from './components/SignUp';
 import Home from './components/Home';
 import ProtectedRoute from './components/Details/ProtectedRoute';
 import Index from './components/Index';
+import Reserve from './components/Reserve';
 import Login from './components/Login';
 import { login } from './redux/login/login';
 import {
@@ -46,6 +47,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
+          <Route path="reserve" element={<Reserve />} />
           <Route
             path=":roomId"
             element={<ProtectedRoute loggedIn={state.loggedIn} />}
