@@ -11,3 +11,14 @@
 body {
   font-family: 'Metrophobic', sans-serif;
 }
+
+h1,
+h2,
+h3 {
+  color: rgb(75 85 99);
+  font-family: "Taxicab", sans-serif;
+}
+
+p {
+  color: rgb(156 163 175);
+}

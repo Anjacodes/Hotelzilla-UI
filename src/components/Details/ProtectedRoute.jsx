@@ -4,7 +4,7 @@ import DetailsView from './DetailsView'
 
 const ProtectedRoute = ({loggedIn} = loggedIn) => {
   return (
-    loggedIn === true ? <DetailsView/> : <Navigate to="/login" />
+    loggedIn === true ? <DetailsView /> : <Navigate to="/login" />
   )
 }
 
