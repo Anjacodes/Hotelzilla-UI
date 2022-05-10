@@ -4,8 +4,8 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Mal-de-ojo';
-  src: url('../public/fonts/MAL_DE_OJO.ttf');
+  font-family: 'Obscura-Regular';
+  src: url('../public/fonts/Obscura-Regular.ttf');
 }
 
 body {

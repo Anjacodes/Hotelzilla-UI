@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'Mal-de-ojo': ['Mal-de-ojo', 'ui-sans-serif'],
+        'Obscura-regular': ['Obscura-Regular', 'ui-sans-serif'],
         Taxicab: ['taxicab', 'ui-sans-serif'],
         Metrophobic: ['Metrophobic', 'ui-sans-serif'],
       },
