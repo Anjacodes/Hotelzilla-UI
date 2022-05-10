@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
@@ -16,6 +16,9 @@ const tokenKey = 'token';
 
 const App = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const loggedIn = useSelector((state) => state.login.isLoggedIn);
 
   useEffect(() => {
     if (localStorage.getItem(tokenKey)) {
@@ -25,7 +28,11 @@ const App = () => {
     dispatch(getAllRoomsAsync());
   }, []);
 
-  const loggedIn = useSelector((state) => state.login.isLoggedIn);
+  useEffect(() => {
+    if (loggedIn) {
+      navigate('/', { replace: true });
+    }
+  }, [loggedIn]);
 
   return (
     <>
