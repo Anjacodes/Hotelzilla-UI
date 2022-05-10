@@ -103,13 +103,13 @@ const Reserve = () => {
           <button type="button">Confirm reservation</button>
         </article>
         <article>
-          <h4>Room name:</h4>
+          <h4 className="font-Taxicab text-2xl">Room name</h4>
           <p>
             description: Lorem ipsum dolor sit amet consectetur adipisicing
             elit. Quis saepe numquam, incidunt alias vitae quod dolore deserunt
             animi libero tempora.
           </p>
-          <table>
+          <table cellPadding={4}>
             <tbody>
               <tr>
                 <td>
