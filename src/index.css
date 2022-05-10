@@ -3,7 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body.not(i) {
+body {
   font-family: 'Metrophobic', sans-serif;
 }
 
@@ -11,7 +11,7 @@ h1,
 h2,
 h3 {
   color: rgb(75 85 99);
-  font-family: "Taxicab";
+  font-family: "Taxicab", sans-serif;
 }
 
 p {

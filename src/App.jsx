@@ -26,8 +26,6 @@ const App = () => {
 
   const loggedIn = useSelector(state => state.login.isLoggedIn)
 
-  // const loggedIn = true
-
   return (
     <>
       <Routes>
