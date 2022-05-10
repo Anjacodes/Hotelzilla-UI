@@ -12,84 +12,123 @@ const Reserve = () => {
   // !This is a mockup connection to simulate an array of objects for roomTypes
   const fetchedRooms = roomTypes;
   return (
-    <section>
-      <form action="submit">
-        <div>
-          <label htmlFor="city">City:</label>
-          <select name="city" id="city" defaultValue={'defaultSelect'}>
-            <option value="defaultSelect" disabled>
-              Select a city:
-            </option>
-            {fetchedCities.map((city) => (
-              <option key={city.key} value={city.key}>
-                {city.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="hotel">Hotel:</label>
-          <select name="hotel" id="hotel" defaultValue={'defaultSelect'}>
-            <option value="defaultSelect" disabled>
-              Select a hotel:
-            </option>
-            {fetchedHotels.map((hotel) => (
-              <option key={hotel.key} value={hotel.key}>
-                {hotel.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="room">Room:</label>
-          <select name="roomType" id="roomType" defaultValue={'defaultSelect'}>
-            <option value="defaultSelect" disabled>
-              Select a room:
-            </option>
-            {fetchedRooms.map((room) => (
-              <option key={room.key} value={room.key}>
-                {room.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="date">Reservation date:</label>
-          <input
-            name="date"
-            id="date"
-            type="date"
-            value={reservationDate}
-            onChange={(e) => setReservationDate(e.target.value)}
-          />
-        </div>
-        <button>Confirm reservation</button>
-      </form>
-      <article>
-        <h4>Room name:</h4>
-        <p>
-          description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Quis saepe numquam, incidunt alias vitae quod dolore deserunt animi
-          libero tempora.
-        </p>
-        <table>
-          <tbody>
-            <tr>
-              <td>
-                <strong>Capacity:</strong>
-              </td>
-              <td>5</td>
-            </tr>
-            <tr>
-              <td>
-                <strong>Price:</strong>
-              </td>
-              <td>$5 USD</td>
-            </tr>
-          </tbody>
-        </table>
-        <button type="button">See room</button>
-      </article>
+    <section className="flex flex-col w-full h-screen px-6 py-4">
+      <header className="ml-6 mt-6">
+        <h2 className="font-Obscura-regular text-3xl">Add Reservation</h2>
+      </header>
+      <div className="flex flex-col md:grid md:grid-cols-2 place-items-center gap-6 items-center justify-center h-full">
+        <article>
+          <table cellPadding={4}>
+            <tbody>
+              <tr>
+                <td>
+                  <label htmlFor="city">City:</label>
+                </td>
+                <td>
+                  <select
+                    className="w-48"
+                    name="city"
+                    id="city"
+                    defaultValue={'defaultSelect'}>
+                    <option value="defaultSelect" disabled>
+                      Select a city:
+                    </option>
+                    {fetchedCities.map((city) => (
+                      <option key={city.key} value={city.key}>
+                        {city.name}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="hotel">Hotel:</label>
+                </td>
+                <td>
+                  <select
+                    className="w-48"
+                    name="hotel"
+                    id="hotel"
+                    defaultValue={'defaultSelect'}>
+                    <option value="defaultSelect" disabled>
+                      Select a hotel:
+                    </option>
+                    {fetchedHotels.map((hotel) => (
+                      <option key={hotel.key} value={hotel.key}>
+                        {hotel.name}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="room">Room:</label>
+                </td>
+                <td>
+                  <select
+                    className="w-48"
+                    name="roomType"
+                    id="roomType"
+                    defaultValue={'defaultSelect'}>
+                    <option value="defaultSelect" disabled>
+                      Select a room:
+                    </option>
+                    {fetchedRooms.map((room) => (
+                      <option key={room.key} value={room.key}>
+                        {room.name}
+                      </option>
+                    ))}
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label htmlFor="date">Reservation date:</label>
+                </td>
+                <td>
+                  <input
+                    className="w-48"
+                    name="date"
+                    id="date"
+                    type="date"
+                    value={reservationDate}
+                    onChange={(e) => setReservationDate(e.target.value)}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="button">Confirm reservation</button>
+        </article>
+        <article>
+          <h4>Room name:</h4>
+          <p>
+            description: Lorem ipsum dolor sit amet consectetur adipisicing
+            elit. Quis saepe numquam, incidunt alias vitae quod dolore deserunt
+            animi libero tempora.
+          </p>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <strong>Capacity:</strong>
+                </td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>
+                  <strong>Price:</strong>
+                </td>
+                <td>$5 USD</td>
+              </tr>
+            </tbody>
+          </table>
+          {/* Convert to a link with the endpoint */}
+          <button type="button">See room</button>
+        </article>
+      </div>
     </section>
   );
 };
