@@ -5,7 +5,7 @@ import { isLoggedIn, getRole, getUserId } from '../../modules/auth-module';
 
 const initialState = {
   token: '',
-  isLoggedIn: false,
+  isLoggedIn: true,
   role: 'No Role',
   userId: null,
 };
