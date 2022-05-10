@@ -37,7 +37,7 @@ const SignUp = () => {
 
       setTimeout(() => {
         dispatch(resetCreation());
-        navigate('/', { replace: true });
+        navigate('/login', { replace: true });
       }, 3000);
     }
   }, [registerStatus]);
@@ -46,8 +46,8 @@ const SignUp = () => {
     return (
       <div className="flex flex-col h-screen w-screen justify-center items-center">
         <section className="border rounded-md py-2 px-4">
-          <h4 className="font-Taxicab text-2xl">Registration successfull!</h4>
-          <p className="mt-4">You are going to be redirected to Home page</p>
+          <h4 className="font-Taxicab text-3xl">Registration successfull!</h4>
+          <p className="mt-4">You are going to be redirected to Login Screen</p>
         </section>
       </div>
     );
