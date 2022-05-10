@@ -1,6 +1,7 @@
 import React from 'react';
 import RoomItem from './RoomItem';
 import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 
 function Index() {
   const rooms = [
@@ -37,9 +38,12 @@ function Index() {
       <div className="flex flex-col">
         <div className="flex justify-end p-5">
           {role === 'Admin' && (
-            <button className="bg-lime-400 px-3 py-2 text-white">
+            <NavLink
+              to="/add-room"
+              className="bg-lime-400 px-3 py-2 text-white"
+            >
               Add Room
-            </button>
+            </NavLink>
           )}
         </div>
         <div className="grid grid-cols-3 grid-rows-3 gap-6 p-5">
