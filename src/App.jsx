@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
@@ -34,7 +34,7 @@ const App = () => {
         <Route path="/" element={<Home />}>
           <Route index element={< Index />}/>
           <Route path=":roomId" element={<ProtectedRoute loggedIn={loggedIn} />}/>
-          <Route path='reservations' element={<Reservations />} />
+          <Route path='reservations' element={loggedIn? <Reservations /> : <Navigate to="/login" />} />
           <Route path="reserve" element={<Reserve />} />
         </Route>
       </Routes>

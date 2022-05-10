@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import fetchDetails from '../../redux/details/apiCall';
+import { fetchDetails } from '../../redux/details/detailsSlice';
 import ReservationModal from './ReservationModal';
 
 function DetailsView() {
@@ -10,11 +10,13 @@ function DetailsView() {
   const roomId = params.roomId;
 
   const dispatch = useDispatch();
-  const room = useSelector((state) => state.details);
+  const {roomDetails, loading} = useSelector((state) => state.details);
 
   useEffect(() => {
     dispatch(fetchDetails(roomId));
   }, [dispatch]);
+
+  console.log(roomDetails)
 
   // Modal controllers
   const openModal = () => {
@@ -27,16 +29,19 @@ function DetailsView() {
     setModalVisible(false);
   };
 
+  if (loading) return <p className='font-Taxicab text-2xl mt-[15%] ml-[35%] text-gray-600'>LOADING...</p>
+
+  if (roomDetails.length !== 0) {
   return (
     <section className="flex mx-[5vw] my-[25vh] justify-between w-[80vw]">
       <img
         className="w-[40vw] mr-4"
-        src="https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg"
+        src={roomDetails.images[0]}
         alt="placeholder"
       />
       <div className="flex flex-col items-end">
-        <h2 className="mb-3 font-bold text-2xl">{room.name}</h2>
-        <p className="text-right mb-10">{room.description.slice(0, 50)}</p>
+        <h2 className="mb-3 font-bold text-2xl">{roomDetails.title}</h2>
+        <p className="text-right mb-10">{roomDetails.description}</p>
         <table>
           <tbody className="text-right">
             <tr>
@@ -45,11 +50,11 @@ function DetailsView() {
             </tr>
             <tr>
               <td className="text-left">Price:</td>
-              <td>${room.price}</td>
+              <td>${roomDetails.price}</td>
             </tr>
             <tr>
               <td className="text-left">Hotel:</td>
-              <td>{room.hotel} Hotel</td>
+              <td>{roomDetails.brand} Hotel</td>
             </tr>
           </tbody>
         </table>
@@ -66,6 +71,7 @@ function DetailsView() {
       </div>
     </section>
   );
+}
 }
 
 export default DetailsView;
