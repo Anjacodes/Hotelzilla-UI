@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { getAllRoomsAsync } from '../redux/room/room';
 
 const AddRoom = () => {
   const [enteredName, setEnteredName] = useState('');
@@ -7,6 +10,8 @@ const AddRoom = () => {
   const [enteredImage, setEnteredImage] = useState(null);
   const [enteredCapacity, setEnteredCapacity] = useState(0);
   const [enteredPrice, setEnteredPrice] = useState(0);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const nameChangeHandler = (event) => {
     setEnteredName(event.target.value);
@@ -39,13 +44,19 @@ const AddRoom = () => {
     formData.append('price', enteredPrice);
     formData.append('capacity', enteredCapacity);
     formData.append('image', enteredImage);
-    fetch('ttps://hotelzilla-api.herokuapp.com/api/rooms', {
+
+    fetch('https://hotelzilla-api.herokuapp.com/api/rooms', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${token}`,
       },
       body: formData,
-    }).catch((error) => console.log(error));
+    })
+      .then(() => {
+        dispatch(getAllRoomsAsync());
+        navigate('/', { replace: true });
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
