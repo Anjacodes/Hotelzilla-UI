@@ -1,4 +1,4 @@
-const hotelURL = 'https://hotelzilla-api.herokuapp.com/rooms';
+const hotelURL = 'https://hotelzilla-api.herokuapp.com/api/rooms';
 
 const getAllRooms = async () => {
   const response = await fetch(hotelURL);
