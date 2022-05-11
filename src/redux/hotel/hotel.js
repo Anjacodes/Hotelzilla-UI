@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import getAllRooms from './room-helper';
+import getAllHotels from './hotel-helper';
 
 const initialState = {
   all: [],
@@ -18,8 +18,8 @@ const hotelSlice = createSlice({
 
 export const { getAll } = hotelSlice.actions;
 
-export const getAllRoomsAsync = () => async (dispatch) => {
-  const data = await getAllRooms();
+export const getAllHotelsAsync = () => async (dispatch) => {
+  const data = await getAllHotels();
   dispatch(getAll(data));
 };
 
