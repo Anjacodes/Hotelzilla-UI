@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-import detailsReducer from './details/detailsSlice';
+import { detailsReducer } from './details/detailsSlice';
 import loginReducer from './login/login';
 import registerReducer from './register/registerSlice';
 import { reservationsReducer } from './reservations/reservationsSlice';

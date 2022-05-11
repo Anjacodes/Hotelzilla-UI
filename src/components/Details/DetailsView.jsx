@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import fetchDetails from '../../redux/details/apiCall';
+import { useParams, useNavigate } from 'react-router-dom';
+import { fetchDetails } from '../../redux/details/detailsSlice';
 import ReservationModal from './ReservationModal';
 
 function DetailsView() {
+  let navigateTo = useNavigate();
   const [modalVisible, setModalVisible] = useState(false);
   let params = useParams();
   const roomId = params.roomId;
 
   const dispatch = useDispatch();
-  const room = useSelector((state) => state.details);
+  const {roomDetails, loading} = useSelector((state) => state.details);
 
   useEffect(() => {
     dispatch(fetchDetails(roomId));
   }, [dispatch]);
+
+  console.log(roomDetails)
 
   // Modal controllers
   const openModal = () => {
@@ -27,36 +30,38 @@ function DetailsView() {
     setModalVisible(false);
   };
 
+  if (loading) return <p className='font-Taxicab text-2xl mt-[15%] ml-[35%] text-gray-600'>LOADING...</p>
+
+  if (roomDetails.length !== 0) {
   return (
-    <section className="flex mx-[5vw] my-[25vh] justify-between w-[80vw]">
+    <section className="flex mx-[5vw] pt-[25vh] pb-[10vh] justify-between w-[80vw] overflow-y-hidden">
       <img
         className="w-[40vw] mr-4"
-        src="https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg"
+        src={roomDetails.images[0]}
         alt="placeholder"
       />
       <div className="flex flex-col items-end">
-        <h2 className="mb-3 font-bold text-2xl">{room.name}</h2>
-        <p className="text-right mb-10">{room.description.slice(0, 50)}</p>
+        <h2 className="mb-3 font-bold text-3xl">{roomDetails.title.toUpperCase()}</h2>
+        <p className="text-right mb-10">{roomDetails.description}</p>
         <table>
           <tbody className="text-right">
-            <tr>
-              <td className="text-left">Capacity:</td>
-              <td>2</td>
+            <tr className="bg-gray-200">
+              <td className="text-left py-1 px-4">Capacity:</td>
+              <td className='py-1 px-4'>2</td>
             </tr>
             <tr>
-              <td className="text-left">Price:</td>
-              <td>${room.price}</td>
+              <td className="text-left py-1 px-4">Price:</td>
+              <td className="py-1 px-4">${roomDetails.price}</td>
             </tr>
-            <tr>
-              <td className="text-left">Hotel:</td>
-              <td>{room.hotel} Hotel</td>
+            <tr className="bg-gray-200">
+              <td className="text-left py-1 px-4">Hotel:</td>
+              <td className="text-left py-1 px-4">{roomDetails.brand} Hotel</td>
             </tr>
           </tbody>
         </table>
         <button
-          className="mt-auto py-3 px-8 bg-lime-400 rounded-lg"
-          onClick={openModal}>
-          Reserve
+          className="mt-12 py-3 px-4 bg-lime-400 rounded-full text-slate-50 hover:bg-lime-500"
+          onClick={openModal}><i class="fa-solid fa-calendar-check mr-2"></i>Reserve<i class="fa-solid fa-circle-chevron-right ml-4"></i>
         </button>
         <ReservationModal
           visible={modalVisible}
@@ -64,8 +69,10 @@ function DetailsView() {
           onCancel={handleCancel}
         />
       </div>
+      <i className="fixed left-[18vw] top-[85vh] py-4 px-6 bg-lime-400 hover:bg-lime-500 rounded-r-full fa-solid fa-caret-left text-slate-50" onClick={()=> navigateTo("/")}/>
     </section>
   );
+}
 }
 
 export default DetailsView;
