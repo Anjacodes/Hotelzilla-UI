@@ -11,6 +11,7 @@ import { login } from './redux/login/login';
 import { getAllRoomsAsync } from './redux/room/room';
 import LogedUsers from './components/accessibility/LogedUsers';
 import DetailsView from './components/Details/DetailsView';
+import RemoveHotel from './components/removeHotel/RemoveHotel';
 
 const tokenKey = 'token';
 
@@ -35,6 +36,7 @@ const App = () => {
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
           <Route path=":roomId" element={<DetailsView />} />
+          <Route path="remove-hotel" element={<RemoveHotel />} />
           <Route element={<LogedUsers logged={loggedIn} />}>
             <Route path="reserve" element={<Reserve />} />
             <Route path="reservations" element={<Reservations />} />
