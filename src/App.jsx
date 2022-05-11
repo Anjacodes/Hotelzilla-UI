@@ -35,10 +35,10 @@ const App = () => {
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
           <Route path=":roomId" element={<DetailsView />} />
-          {/* logged param should connect to redux store */}
-          <Route element={<LogedUsers logged={false} />}>
+          <Route element={<LogedUsers logged={loggedIn} />}>
             <Route path="reserve" element={<Reserve />} />
             <Route path="reservations" element={<Reservations />} />
+            {/* Add additional protected routes here! */}
           </Route>
         </Route>
       </Routes>
