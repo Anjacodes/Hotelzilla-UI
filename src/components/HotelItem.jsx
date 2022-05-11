@@ -1,20 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function RoomItem({ room }) {
+const hostURL = 'http://localhost:3000';
+
+function HotelItem({ hotel }) {
   return (
     <div className="flex flex-col items-center gap-1 border-2 rounded-lg">
-      <img className="w-8/12 self-center" src={room.image} alt={room.name} />
+      <img
+        className="w-8/12 self-center"
+        src={`${hostURL}${hotel.image.url}`}
+        alt={hotel.name}
+      />
       <div className="flex flex-col gap-3 items-center">
-        <div>{room.name}</div>
-        <div className="text-center">{room.description}</div>
+        <div>{hotel.name}</div>
+        <div className="text-center">{hotel.description}</div>
       </div>
     </div>
   );
 }
 
-RoomItem.propTypes = {
-  room: PropTypes.shape({
+HotelItem.propTypes = {
+  hotel: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
@@ -22,4 +28,4 @@ RoomItem.propTypes = {
   }).isRequired,
 };
 
-export default RoomItem;
+export default HotelItem;
