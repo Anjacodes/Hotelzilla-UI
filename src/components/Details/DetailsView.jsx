@@ -39,7 +39,7 @@ function DetailsView() {
     <section className="flex ml-[6vw] mr-[5vw] pt-[25vh] pb-[10vh] justify-evenly w-[80vw] overflow-y-hidden">
       <img
         src={handleImage(roomDetails.image)}
-        className="mr-4 aspect-{1/1.8} w-[40vw]"
+        className="ml-6 aspect-{1/1.8} w-[40vw]"
         alt="placeholder"
       />
       <div className="flex flex-col items-end ml-auto">
