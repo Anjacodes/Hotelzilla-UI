@@ -39,8 +39,9 @@ const App = () => {
           <Route path=":roomId" element={<DetailsView />} />
           <Route element={<IsAdmin role={role} loggedIn={isLoggedIn} />}>
             <Route path="add-hotel" />
-            <Route path="delete-hotel" element={<RemoveHotel />} />
           </Route>
+          {/* This must be rolled back after finishing working */}
+          <Route path="delete-hotel" element={<RemoveHotel />} />
           <Route element={<LogedUsers logged={isLoggedIn} />}>
             <Route path="reserve" element={<Reserve />} />
             <Route path="reservations" element={<Reservations />} />
