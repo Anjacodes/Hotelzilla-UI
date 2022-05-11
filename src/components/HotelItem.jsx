@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const hostURL = 'http://localhost:3000';
+const hostURL = 'https://hotelzilla-api.herokuapp.com';
 
 function HotelItem({ hotel }) {
   return (

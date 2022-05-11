@@ -47,7 +47,7 @@ const AddHotel = () => {
     formData.append('image', enteredImage);
     formData.append('city_id', enteredOption);
 
-    fetch('http://127.0.0.1:3000/api/hotels', {
+    fetch('https://hotelzilla-api.herokuapp.com/api/hotels', {
       method: 'POST',
       headers: {
         Authorization: token,

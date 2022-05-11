@@ -1,4 +1,4 @@
-const hotelURL = 'http://127.0.0.1:3000/api/hotels';
+const hotelURL = 'https://hotelzilla-api.herokuapp.com/api/hotels';
 
 const getAllHotels = async () => {
   const response = await fetch(hotelURL);

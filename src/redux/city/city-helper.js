@@ -1,4 +1,4 @@
-const citiesURL = 'http://127.0.0.1:3000/api/cities';
+const citiesURL = 'https://hotelzilla-api.herokuapp.com/api/cities';
 
 const getAllCities = async () => {
   const response = await fetch(citiesURL);
