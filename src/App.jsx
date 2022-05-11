@@ -11,6 +11,7 @@ import { login } from './redux/login/login';
 import { getAllRoomsAsync } from './redux/room/room';
 import LogedUsers from './components/accessibility/LogedUsers';
 import DetailsView from './components/Details/DetailsView';
+import IsAdmin from './components/accessibility/isAdmin';
 
 const tokenKey = 'token';
 
@@ -26,6 +27,7 @@ const App = () => {
   }, []);
 
   const loggedIn = useSelector((state) => state.login.isLoggedIn);
+  const role = useSelector((state) => state.login.role)
 
   return (
     <>
@@ -35,6 +37,10 @@ const App = () => {
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
           <Route path=":roomId" element={<DetailsView />} />
+          <Route element={<IsAdmin role={role} logged={loggedIn}/>}>
+            <Route path="add-hotel" />
+            <Route path="delete-hotel" />
+          </Route>
           <Route element={<LogedUsers logged={loggedIn} />}>
             <Route path="reserve" element={<Reserve />} />
             <Route path="reservations" element={<Reservations />} />
