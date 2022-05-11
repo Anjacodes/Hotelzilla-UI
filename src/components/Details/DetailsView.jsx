@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
+import handleImage from '../../modules/handleImage';
+import printStars from '../../modules/printStars';
 import { fetchDetails } from '../../redux/details/detailsSlice';
 import ReservationModal from './ReservationModal';
 
@@ -12,6 +14,8 @@ function DetailsView() {
 
   const dispatch = useDispatch();
   const {roomDetails, loading} = useSelector((state) => state.details);
+
+  console.log(roomDetails.name)
 
   useEffect(() => {
     dispatch(fetchDetails(roomId));
@@ -32,28 +36,24 @@ function DetailsView() {
 
   if (roomDetails.length !== 0) {
   return (
-    <section className="flex mx-[5vw] pt-[25vh] pb-[10vh] justify-between w-[80vw] overflow-y-hidden">
+    <section className="flex ml-[6vw] mr-[5vw] pt-[25vh] pb-[10vh] justify-evenly w-[80vw] overflow-y-hidden">
       <img
-        className="w-[40vw] mr-4"
-        src={roomDetails.images[0]}
+        src={handleImage(roomDetails.image)}
+        className="mr-4 aspect-{1/1.8} w-[40vw]"
         alt="placeholder"
       />
-      <div className="flex flex-col items-end">
-        <h2 className="mb-3 font-bold text-3xl">{roomDetails.title.toUpperCase()}</h2>
+      <div className="flex flex-col items-end ml-auto">
+        <h2 className="mb-3 font-bold text-3xl">{roomDetails.name.toUpperCase()}</h2>
         <p className="text-right mb-10">{roomDetails.description}</p>
         <table>
           <tbody className="text-right">
-            <tr className="bg-gray-200">
-              <td className="text-left py-1 px-4">Capacity:</td>
-              <td className='py-1 px-4'>2</td>
-            </tr>
             <tr>
-              <td className="text-left py-1 px-4">Price:</td>
-              <td className="py-1 px-4">${roomDetails.price}</td>
+              <td className="text-left py-1 px-4">Rating:</td>
+              <td className="py-1 px-4">{printStars(roomDetails.rating)}</td>
             </tr>
             <tr className="bg-gray-200">
-              <td className="text-left py-1 px-4">Hotel:</td>
-              <td className="text-left py-1 px-4">{roomDetails.brand} Hotel</td>
+              <td className="text-left py-1 px-4">City:</td>
+              <td className="py-1 px-4">City</td>
             </tr>
           </tbody>
         </table>
