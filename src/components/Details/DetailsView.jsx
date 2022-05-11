@@ -17,8 +17,6 @@ function DetailsView() {
     dispatch(fetchDetails(roomId));
   }, [dispatch]);
 
-  console.log(roomDetails)
-
   // Modal controllers
   const openModal = () => {
     setModalVisible(true);
@@ -61,7 +59,7 @@ function DetailsView() {
         </table>
         <button
           className="mt-12 py-3 px-4 bg-lime-400 rounded-full text-slate-50 hover:bg-lime-500"
-          onClick={openModal}><i class="fa-solid fa-calendar-check mr-2"></i>Reserve<i class="fa-solid fa-circle-chevron-right ml-4"></i>
+          onClick={openModal}><i className="fa-solid fa-calendar-check mr-2"></i>Reserve<i className="fa-solid fa-circle-chevron-right ml-4"></i>
         </button>
         <ReservationModal
           visible={modalVisible}
