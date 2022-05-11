@@ -1,10 +1,16 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
-import getAllCities from './city-helper';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import getAllCitiesAsyc from './city-helper';
 
 const initialState = {
   all: [],
+  loading: false,
+  error: '',
 };
+
+export const getAllCities = createAsyncThunk('cities', async () => {
+  return await getAllCitiesAsyc();
+});
 
 const citySlice = createSlice({
   name: 'city',
@@ -14,13 +20,21 @@ const citySlice = createSlice({
       state.all = action.payload;
     },
   },
+  extraReducers: {
+    [getAllCities.pending]: (state) => {
+      state.loading = true;
+      state.error = '';
+    },
+    [getAllCities.fulfilled]: (state, { payload }) => {
+      state.all = payload;
+    },
+    [getAllCities.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+    },
+  },
 });
 
-export const { getAll } = citySlice.actions;
-
-export const getAllCitiesAsync = () => async (dispatch) => {
-  const data = await getAllCities();
-  dispatch(getAll(data));
-};
+export const cityActions = citySlice.actions;
 
 export default citySlice.reducer;
