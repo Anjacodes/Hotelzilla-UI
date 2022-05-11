@@ -8,7 +8,11 @@ function HotelItem({ hotel }) {
     <div className="flex flex-col items-center gap-1 border-2 rounded-lg">
       <img
         className="w-8/12 self-center"
-        src={`${hostURL}${hotel.image.url}`}
+        src={
+          hotel.image
+            ? `${hostURL}${hotel.image.url}`
+            : `http://via.placeholder.com/640x360`
+        }
         alt={hotel.name}
       />
       <div className="flex flex-col gap-3 items-center">
@@ -23,7 +27,6 @@ HotelItem.propTypes = {
   hotel: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
 };

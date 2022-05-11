@@ -9,7 +9,7 @@ function Index() {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         <div className="flex justify-end p-5">
           {role === 'Admin' && (
             <NavLink
