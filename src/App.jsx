@@ -8,9 +8,10 @@ import Index from './components/Index';
 import Reservations from './components/Reservations/Reservations';
 import Reserve from './components/Reserve';
 import Login from './components/Login';
-import AddRoom from './components/AddRoom';
+import AddHotel from './components/AddHotel';
 import { login } from './redux/login/login';
-import { getAllRoomsAsync } from './redux/room/room';
+import { getAllHotelsAsync } from './redux/hotel/hotel';
+import { getAllCitiesAsync } from './redux/city/city';
 
 const tokenKey = 'token';
 
@@ -25,7 +26,8 @@ const App = () => {
       dispatch(login(JSON.parse(localStorage.getItem(tokenKey))));
     }
 
-    dispatch(getAllRoomsAsync());
+    dispatch(getAllHotelsAsync());
+    dispatch(getAllCitiesAsync());
   }, []);
 
   useEffect(() => {
@@ -39,7 +41,7 @@ const App = () => {
       <Routes>
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/add-room" element={<AddRoom />} />
+        <Route path="/add-hotel" element={<AddHotel />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
           <Route
