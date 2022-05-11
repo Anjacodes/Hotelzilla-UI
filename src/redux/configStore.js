@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import { detailsReducer } from './details/detailsSlice';
+import hotelsReducer from './hotels/hotelsSlice';
 import loginReducer from './login/login';
 import registerReducer from './register/registerSlice';
 import { reservationsReducer } from './reservations/reservationsSlice';
@@ -13,6 +14,7 @@ const reducer = {
   reservations: reservationsReducer,
   room: roomReducer,
   register: registerReducer,
+  hotels: hotelsReducer,
 };
 
 const store = configureStore({
