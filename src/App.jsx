@@ -26,8 +26,7 @@ const App = () => {
     dispatch(getAllRoomsAsync());
   }, []);
 
-  const loggedIn = useSelector((state) => state.login.isLoggedIn);
-  const role = useSelector((state) => state.login.role)
+  const { isLoggedIn, role } = useSelector((state) => state.login);
 
   return (
     <>
@@ -37,11 +36,11 @@ const App = () => {
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
           <Route path=":roomId" element={<DetailsView />} />
-          <Route element={<IsAdmin role={role} logged={loggedIn}/>}>
+          <Route element={<IsAdmin role={role} loggedIn={isLoggedIn}/>}>
             <Route path="add-hotel" />
             <Route path="delete-hotel" />
           </Route>
-          <Route element={<LogedUsers logged={loggedIn} />}>
+          <Route element={<LogedUsers logged={isLoggedIn} />}>
             <Route path="reserve" element={<Reserve />} />
             <Route path="reservations" element={<Reservations />} />
             {/* Add additional protected routes here! */}
