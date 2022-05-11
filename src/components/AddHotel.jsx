@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getAllRoomsAsync } from '../redux/room/room';
+import { getAllHotelsAsync } from '../redux/hotel/hotel';
 
-const AddRoom = () => {
+const AddHotel = () => {
   const [enteredName, setEnteredName] = useState('');
   const [enteredDescription, setEnteredDescription] = useState('');
   const [enteredImage, setEnteredImage] = useState(null);
-  const [enteredCapacity, setEnteredCapacity] = useState(0);
-  const [enteredPrice, setEnteredPrice] = useState(0);
+  const [enteredRating, setEnteredRating] = useState(0);
+  const [enteredOption, setEnteredOption] = useState('');
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,19 +22,20 @@ const AddRoom = () => {
     setEnteredDescription(event.target.value);
   };
 
-  const capacityChangeHandler = (event) => {
-    setEnteredCapacity(event.target.value);
-  };
-
-  const priceChangeHandler = (event) => {
-    setEnteredPrice(event.target.value);
+  const ratingChangeHandler = (event) => {
+    setEnteredRating(event.target.value);
   };
 
   const imageChangeHandler = (event) => {
     setEnteredImage(event.target.files[0]);
   };
 
+  const cityChangeHandler = (event) => {
+    setEnteredOption(event.target.value);
+  };
+
   const token = useSelector((state) => state.login.token);
+  const cities = useSelector((state) => state.city.all);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -41,19 +43,19 @@ const AddRoom = () => {
     const formData = new FormData();
     formData.append('name', enteredName);
     formData.append('description', enteredDescription);
-    formData.append('price', enteredPrice);
-    formData.append('capacity', enteredCapacity);
+    formData.append('rating', enteredRating);
     formData.append('image', enteredImage);
+    formData.append('city_id', enteredOption);
 
-    fetch('https://hotelzilla-api.herokuapp.com/api/rooms', {
+    fetch('http://127.0.0.1:3000/api/hotels', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: token,
       },
       body: formData,
     })
       .then(() => {
-        dispatch(getAllRoomsAsync());
+        dispatch(getAllHotelsAsync());
         navigate('/', { replace: true });
       })
       .catch((error) => console.log(error));
@@ -93,18 +95,25 @@ const AddRoom = () => {
         />
         <input
           type="number"
-          value={enteredCapacity}
-          onChange={capacityChangeHandler}
+          value={enteredRating}
+          onChange={ratingChangeHandler}
           autoComplete="off"
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
-        <input
+        <select
           type="number"
-          value={enteredPrice}
-          onChange={priceChangeHandler}
+          onChange={cityChangeHandler}
           autoComplete="off"
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-        />
+        >
+          {cities.map((city) => {
+            return (
+              <option key={city.id} value={city.id}>
+                {city.name}
+              </option>
+            );
+          })}
+        </select>
         <button
           type="submit"
           className="bg-lime-400 text-white py-2 appearance-none border rounded px-3 leading-tight focus:outline-none focus:shadow-outline"
@@ -116,4 +125,4 @@ const AddRoom = () => {
   );
 };
 
-export default AddRoom;
+export default AddHotel;
