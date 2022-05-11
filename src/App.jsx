@@ -9,7 +9,6 @@ import Reserve from './components/Reserve';
 import Login from './components/Login';
 import AddHotel from './components/AddHotel';
 import { loginActions } from './redux/login/login';
-import { getAllHotels } from './redux/hotel/hotel';
 import { getAllCitiesAsync } from './redux/city/city';
 import LogedUsers from './components/accessibility/LogedUsers';
 import DetailsView from './components/Details/DetailsView';
@@ -27,7 +26,6 @@ const App = () => {
       dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
     }
 
-    dispatch(getAllHotels());
     dispatch(getAllCitiesAsync());
   }, []);
 

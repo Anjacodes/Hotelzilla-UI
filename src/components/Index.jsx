@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HotelItem from './HotelItem';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { getAllHotels } from '../redux/hotel/hotel';
 
 function Index() {
   const role = useSelector((state) => state.login.role);
   const hotels = useSelector((state) => state.hotel.all);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllHotels());
+  }, []);
 
   return (
     <>
