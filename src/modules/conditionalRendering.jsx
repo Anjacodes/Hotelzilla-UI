@@ -26,8 +26,8 @@ export const renderAddDeleteHotel = (role) => {
       return (
         <React.Fragment>
 
-          <NavLink to="/hotels/add" className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50  text-xl font-[Taxicab]">ADD HOTEL</NavLink>
-          <NavLink to="/hotels/delete" className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50  text-xl font-[Taxicab]">DELETE HOTEL</NavLink>
+          <NavLink to="/add-hotel" className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50  text-xl font-[Taxicab]">ADD HOTEL</NavLink>
+          <NavLink to="/delete-hotel" className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50  text-xl font-[Taxicab]">DELETE HOTEL</NavLink>
 
         </React.Fragment>
       )

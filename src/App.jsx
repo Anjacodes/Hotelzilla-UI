@@ -11,6 +11,7 @@ import { login } from './redux/login/login';
 import { getAllRoomsAsync } from './redux/room/room';
 import LogedUsers from './components/accessibility/LogedUsers';
 import DetailsView from './components/Details/DetailsView';
+import IsAdmin from './components/accessibility/isAdmin';
 
 const tokenKey = 'token';
 
@@ -25,7 +26,7 @@ const App = () => {
     dispatch(getAllRoomsAsync());
   }, []);
 
-  const loggedIn = useSelector((state) => state.login.isLoggedIn);
+  const { isLoggedIn, role } = useSelector((state) => state.login);
 
   return (
     <>
@@ -35,7 +36,11 @@ const App = () => {
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
           <Route path=":roomId" element={<DetailsView />} />
-          <Route element={<LogedUsers logged={loggedIn} />}>
+          <Route element={<IsAdmin role={role} loggedIn={isLoggedIn}/>}>
+            <Route path="add-hotel" />
+            <Route path="delete-hotel" />
+          </Route>
+          <Route element={<LogedUsers logged={isLoggedIn} />}>
             <Route path="reserve" element={<Reserve />} />
             <Route path="reservations" element={<Reservations />} />
             {/* Add additional protected routes here! */}

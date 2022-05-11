@@ -22,7 +22,7 @@ const role = useSelector(state => state.login.getRole)
          { renderReserve(loggedIn) }
          <NavLink to="/login"  className={({ isActive }) =>
             isActive ? 'bg-lime-400' : '' + 'py-2 mt-8 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-white'
-          }>{loggedIn ? "LOG IN" : "LOG OUT"}</NavLink>
+          }>{loggedIn ? "LOG OUT" : "LOG IN"}</NavLink>
          { renderSignUpButton(loggedIn) }
       </div>
       <footer className='mt-auto flex flex-col items-center'>
