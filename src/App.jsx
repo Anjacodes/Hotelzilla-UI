@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
-import ProtectedRoute from './components/Details/ProtectedRoute';
 import Index from './components/Index';
 import Reservations from './components/Reservations/Reservations';
 import Reserve from './components/Reserve';
@@ -12,6 +11,8 @@ import AddHotel from './components/AddHotel';
 import { login } from './redux/login/login';
 import { getAllHotelsAsync } from './redux/hotel/hotel';
 import { getAllCitiesAsync } from './redux/city/city';
+import LogedUsers from './components/accessibility/LogedUsers';
+import DetailsView from './components/Details/DetailsView';
 
 const tokenKey = 'token';
 
@@ -43,10 +44,13 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/add-hotel" element={<AddHotel />} />
         <Route path="/" element={<Home />}>
-          <Route index element={< Index />}/>
-          <Route path=":roomId" element={<ProtectedRoute loggedIn={loggedIn} />}/>
-          <Route path='reservations' element={loggedIn? <Reservations /> : <Navigate to="/login" />} />
-          <Route path="reserve" element={<Reserve />} />
+          <Route index element={<Index />} />
+          <Route path=":roomId" element={<DetailsView />} />
+          <Route element={<LogedUsers logged={loggedIn} />}>
+            <Route path="reserve" element={<Reserve />} />
+            <Route path="reservations" element={<Reservations />} />
+            {/* Add additional protected routes here! */}
+          </Route>
         </Route>
       </Routes>
     </>
