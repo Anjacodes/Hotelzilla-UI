@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getToken } from '../redux/login/login';
+import { login } from '../redux/login/login';
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Login = () => {
       password: enteredPassword,
     };
 
-    dispatch(getToken(loginData));
+    dispatch(login(loginData));
   };
 
   return (

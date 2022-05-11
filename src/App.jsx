@@ -8,7 +8,7 @@ import Reservations from './components/Reservations/Reservations';
 import Reserve from './components/Reserve';
 import Login from './components/Login';
 import AddHotel from './components/AddHotel';
-import { login } from './redux/login/login';
+import { loginActions } from './redux/login/login';
 import { getAllHotelsAsync } from './redux/hotel/hotel';
 import { getAllCitiesAsync } from './redux/city/city';
 import LogedUsers from './components/accessibility/LogedUsers';
@@ -24,7 +24,7 @@ const App = () => {
 
   useEffect(() => {
     if (localStorage.getItem(tokenKey)) {
-      dispatch(login(JSON.parse(localStorage.getItem(tokenKey))));
+      dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
     }
 
     dispatch(getAllHotelsAsync());
