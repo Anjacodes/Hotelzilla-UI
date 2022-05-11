@@ -15,8 +15,6 @@ function DetailsView() {
   const dispatch = useDispatch();
   const {roomDetails, loading} = useSelector((state) => state.details);
 
-  console.log(roomDetails.name)
-
   useEffect(() => {
     dispatch(fetchDetails(roomId));
   }, [dispatch]);
