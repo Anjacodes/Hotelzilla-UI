@@ -5,34 +5,24 @@ import { useDispatch } from 'react-redux';
 import { getAllHotels } from '../redux/hotel/hotel';
 
 const AddHotel = () => {
-  const [enteredName, setEnteredName] = useState('');
-  const [enteredDescription, setEnteredDescription] = useState('');
-  const [enteredImage, setEnteredImage] = useState(null);
-  const [enteredRating, setEnteredRating] = useState(0);
-  const [enteredOption, setEnteredOption] = useState('');
+  const [newHotel, setNewHotel] = useState({
+    name: '',
+    description: '',
+    image: null,
+    rating: 0,
+    city: '',
+  });
+
+  const onChangeHandler = (event) => {
+    if (event.target.name === 'image') {
+      setNewHotel({ ...newHotel, [event.target.name]: event.target.files[0] });
+    } else {
+      setNewHotel({ ...newHotel, [event.target.name]: event.target.value });
+    }
+  };
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  const nameChangeHandler = (event) => {
-    setEnteredName(event.target.value);
-  };
-
-  const descriptionChangeHandler = (event) => {
-    setEnteredDescription(event.target.value);
-  };
-
-  const ratingChangeHandler = (event) => {
-    setEnteredRating(event.target.value);
-  };
-
-  const imageChangeHandler = (event) => {
-    setEnteredImage(event.target.files[0]);
-  };
-
-  const cityChangeHandler = (event) => {
-    setEnteredOption(event.target.value);
-  };
 
   const token = useSelector((state) => state.login.token);
   const cities = useSelector((state) => state.city.all);
@@ -41,11 +31,11 @@ const AddHotel = () => {
     event.preventDefault();
 
     const formData = new FormData();
-    formData.append('name', enteredName);
-    formData.append('description', enteredDescription);
-    formData.append('rating', enteredRating);
-    formData.append('image', enteredImage);
-    formData.append('city_id', enteredOption);
+    formData.append('name', newHotel.name);
+    formData.append('description', newHotel.description);
+    formData.append('rating', newHotel.rating);
+    formData.append('image', newHotel.image);
+    formData.append('city_id', newHotel.city);
 
     fetch('https://hotelzilla-api.herokuapp.com/api/hotels', {
       method: 'POST',
@@ -74,35 +64,40 @@ const AddHotel = () => {
         />
         <input
           type="text"
-          value={enteredName}
-          onChange={nameChangeHandler}
+          name="name"
+          value={newHotel.name}
+          onChange={onChangeHandler}
           autoComplete="off"
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         <input
           type="text"
-          value={enteredDescription}
-          onChange={descriptionChangeHandler}
+          name="description"
+          value={newHotel.description}
+          onChange={onChangeHandler}
           autoComplete="off"
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         <input
           type="file"
+          name="image"
           accept="image/*"
           multiple={false}
-          onChange={imageChangeHandler}
+          onChange={onChangeHandler}
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         <input
           type="number"
-          value={enteredRating}
-          onChange={ratingChangeHandler}
+          name="rating"
+          value={newHotel.rating}
+          onChange={onChangeHandler}
           autoComplete="off"
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         />
         <select
           type="number"
-          onChange={cityChangeHandler}
+          name="city"
+          onChange={onChangeHandler}
           autoComplete="off"
           className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
         >
