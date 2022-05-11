@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { getAllHotelsAsync } from '../redux/hotel/hotel';
+import { getAllHotels } from '../redux/hotel/hotel';
 
 const AddHotel = () => {
   const [enteredName, setEnteredName] = useState('');
@@ -55,7 +55,7 @@ const AddHotel = () => {
       body: formData,
     })
       .then(() => {
-        dispatch(getAllHotelsAsync());
+        dispatch(getAllHotels());
         navigate('/', { replace: true });
       })
       .catch((error) => console.log(error));

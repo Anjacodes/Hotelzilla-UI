@@ -1,10 +1,16 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
-import getAllHotels from './hotel-helper';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import getAllHotelsAsync from './hotel-helper';
 
 const initialState = {
   all: [],
+  loading: false,
+  error: '',
 };
+
+export const getAllHotels = createAsyncThunk('hotels', async () => {
+  return await getAllHotelsAsync();
+});
 
 const hotelSlice = createSlice({
   name: 'hotel',
@@ -14,13 +20,21 @@ const hotelSlice = createSlice({
       state.all = action.payload;
     },
   },
+  extraReducers: {
+    [getAllHotels.pending]: (state) => {
+      state.loading = true;
+      state.error = '';
+    },
+    [getAllHotels.fulfilled]: (state, { payload }) => {
+      state.all = payload;
+    },
+    [getAllHotels.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+    },
+  },
 });
 
-export const { getAll } = hotelSlice.actions;
-
-export const getAllHotelsAsync = () => async (dispatch) => {
-  const data = await getAllHotels();
-  dispatch(getAll(data));
-};
+export const hotelActions = hotelSlice.actions;
 
 export default hotelSlice.reducer;
