@@ -12,9 +12,7 @@ const initialState = {
   error: '',
 };
 
-export const login = createAsyncThunk('login', async (loginData) => {
-  return await getTokenAsync(loginData);
-});
+export const login = createAsyncThunk('login', async (loginData) => getTokenAsync(loginData));
 
 const loginSlice = createSlice({
   name: 'login',

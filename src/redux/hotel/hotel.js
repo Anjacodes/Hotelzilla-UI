@@ -8,9 +8,7 @@ const initialState = {
   error: '',
 };
 
-export const getAllHotels = createAsyncThunk('hotels', async () => {
-  return await getAllHotelsAsync();
-});
+export const getAllHotels = createAsyncThunk('hotels', async () => getAllHotelsAsync());
 
 const hotelSlice = createSlice({
   name: 'hotel',

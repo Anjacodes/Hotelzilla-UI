@@ -8,9 +8,7 @@ const initialState = {
   error: '',
 };
 
-export const getAllCities = createAsyncThunk('cities', async () => {
-  return await getAllCitiesAsyc();
-});
+export const getAllCities = createAsyncThunk('cities', async () => getAllCitiesAsyc());
 
 const citySlice = createSlice({
   name: 'city',
