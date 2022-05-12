@@ -9,7 +9,6 @@ import Reserve from './components/Reserve';
 import Login from './components/Login';
 import AddHotel from './components/AddHotel';
 import { loginActions } from './redux/login/login';
-import { getAllCities } from './redux/city/city';
 import LogedUsers from './components/accessibility/LogedUsers';
 import DetailsView from './components/Details/DetailsView';
 import IsAdmin from './components/accessibility/isAdmin';
@@ -26,8 +25,6 @@ const App = () => {
     if (localStorage.getItem(tokenKey)) {
       dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
     }
-
-    dispatch(getAllCities());
   }, []);
 
   useEffect(() => {

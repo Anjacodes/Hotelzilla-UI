@@ -1,9 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postHotelAsync } from '../redux/hotel/hotel-helper';
+import { getAllCities } from '../redux/city/city';
 
 const AddHotel = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllCities());
+  }, []);
+
   const [newHotel, setNewHotel] = useState({
     name: '',
     description: '',
@@ -21,7 +28,6 @@ const AddHotel = () => {
   };
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const token = useSelector((state) => state.login.token);
   const cities = useSelector((state) => state.city.all);
 
