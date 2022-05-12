@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { getAllHotels } from '../redux/hotel/hotel';
+import { postHotelAsync } from '../redux/hotel/hotel-helper';
 
 const AddHotel = () => {
   const [newHotel, setNewHotel] = useState({
@@ -23,11 +22,10 @@ const AddHotel = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
   const token = useSelector((state) => state.login.token);
   const cities = useSelector((state) => state.city.all);
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const formData = new FormData();
@@ -37,18 +35,9 @@ const AddHotel = () => {
     formData.append('image', newHotel.image);
     formData.append('city_id', newHotel.city);
 
-    fetch('https://hotelzilla-api.herokuapp.com/api/hotels', {
-      method: 'POST',
-      headers: {
-        Authorization: token,
-      },
-      body: formData,
-    })
-      .then(() => {
-        dispatch(getAllHotels());
-        navigate('/', { replace: true });
-      })
-      .catch((error) => console.log(error));
+    await postHotelAsync(token, formData);
+
+    navigate('/', { replace: true });
   };
 
   return (

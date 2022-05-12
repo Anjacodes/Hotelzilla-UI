@@ -6,4 +6,18 @@ const getAllHotelsAsync = async () => {
   return data;
 };
 
+const postHotelAsync = async (token, formData) => {
+  const response = await fetch(hotelURL, {
+    method: 'POST',
+    headers: {
+      Authorization: token,
+    },
+    body: formData,
+  });
+  const data = await response.json();
+  return data;
+};
+
+export { postHotelAsync };
+
 export default getAllHotelsAsync;
