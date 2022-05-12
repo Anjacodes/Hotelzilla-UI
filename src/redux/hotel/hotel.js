@@ -1,14 +1,17 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import getAllHotelsAsync from './hotel-helper';
+import getAllHotelsAsync, { deleteHotel } from './hotel-helper';
 
 const initialState = {
   all: [],
   loading: false,
+  deleteStatus: '',
   error: '',
 };
 
-export const getAllHotels = createAsyncThunk('hotels', async () => getAllHotelsAsync());
+export const getAllHotels = createAsyncThunk('hotels', async () =>
+  getAllHotelsAsync(),
+);
 
 const hotelSlice = createSlice({
   name: 'hotel',
@@ -29,6 +32,19 @@ const hotelSlice = createSlice({
     [getAllHotels.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.error;
+    },
+    [deleteHotel.rejected]: (state) => {
+      state.deleteStatus = 'rejected';
+    },
+    [deleteHotel.pending]: (state) => {
+      state.deleteStatus = 'pending';
+    },
+    [deleteHotel.fulfilled]: (state, action) => {
+      return {
+        ...state,
+        deleteStatus: 'fulfilled',
+        all: state.all.filter((hotel) => hotel.id !== action.meta.arg),
+      };
     },
   },
 });
