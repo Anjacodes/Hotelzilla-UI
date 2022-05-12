@@ -1,17 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllHotels } from '../../redux/hotel/hotel';
 import { deleteHotel } from '../../redux/hotel/hotel-helper';
+import ConfirmDelete from './ConfirmDelete';
 
 const RemoveHotel = () => {
   const dispatch = useDispatch();
+  const [modalVisible, setmodalVisible] = useState(false);
+  const [modalInfo, setModalInfo] = useState({});
 
   useEffect(() => {
     dispatch(getAllHotels());
   }, []);
-
-  // todo: Connect to API and fetch hotels
   const { all: hotels, deleteStatus } = useSelector((state) => state.hotel);
+
+  // Modal controlers
+  const handleClick = (hotelName) => {
+    setmodalVisible(true);
+    setModalInfo(hotelName);
+  };
+  const handleOk = () => {
+    dispatch(deleteHotel(modalInfo.id));
+    setmodalVisible(false);
+    setModalInfo({});
+  };
+  const handleCancel = () => {
+    setmodalVisible(false);
+    setModalInfo({});
+  };
   return (
     <section>
       <header>
@@ -24,7 +40,7 @@ const RemoveHotel = () => {
               <td>{index + 1}</td>
               <td>{hotel.name}</td>
               <td>
-                <button onClick={() => dispatch(deleteHotel(hotel.id))}>
+                <button onClick={() => handleClick(hotel)}>
                   Delete button
                 </button>
               </td>
@@ -32,6 +48,12 @@ const RemoveHotel = () => {
           ))}
         </tbody>
       </table>
+      <ConfirmDelete
+        visible={modalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        hotel={modalInfo}
+      />
     </section>
   );
 };
