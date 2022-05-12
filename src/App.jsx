@@ -25,13 +25,6 @@ const App = () => {
 
   const { isLoggedIn, role } = useSelector((state) => state.login);
 
-  // const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (isLoggedIn) {
-  //     navigate('/', { replace: true });
-  //   }
-  // }, [isLoggedIn]);
-
   return (
     <>
       <Routes>
@@ -44,9 +37,10 @@ const App = () => {
             <Route path="add-hotel" element={<AddHotel />} />
             <Route path="delete-hotel" />
           </Route>
+          <Route path="reserve" element={<Reserve />} />
+          <Route path="reservations" element={<Reservations />} />
+          {/* Conditional mounting should be fixed!! */}
           <Route element={<LogedUsers logged={isLoggedIn} />}>
-            <Route path="reserve" element={<Reserve />} />
-            <Route path="reservations" element={<Reservations />} />
             {/* Add additional protected routes here! */}
           </Route>
         </Route>
