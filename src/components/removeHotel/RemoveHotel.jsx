@@ -29,16 +29,34 @@ const RemoveHotel = () => {
     setModalInfo({});
   };
 
-  if (deleteStatus === 'fulfilled') {
+  if (deleteStatus === 'fulfilled' || deleteStatus === 'rejected') {
     setTimeout(() => {
       dispatch(resetDeleteStatus());
     }, 3000);
   }
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetDeleteStatus());
+    };
+  }, []);
+
   return (
-    <section>
-      {deleteStatus === 'fulfilled' && <div>Hotel successfully deleted</div>}
+    <section className="flex w-full flex-col items-center">
+      {deleteStatus === 'fulfilled' && (
+        <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
+          Hotel successfully deleted!
+        </div>
+      )}
+      {deleteStatus === 'rejected' && (
+        <div className="absolute bottom-4 right-4 z-10 rounded bg-red-200 px-4 py-2 text-red-700">
+          Ups! Something went wrong
+        </div>
+      )}
       <header>
-        <h2>Delete Hotel</h2>
+        <h2 className="mt-[25vh] mb-10 font-Taxicab text-3xl text-gray-800">
+          Delete Hotel
+        </h2>
       </header>
       <table>
         <tbody>
