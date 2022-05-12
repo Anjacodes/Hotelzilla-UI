@@ -1,5 +1,5 @@
 /* eslint-disable no-param-reassign */
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import getTokenAsync from './login-helper';
 import { isLoggedIn, getRole, getUserId } from '../../modules/auth-module';
 
@@ -8,7 +8,11 @@ const initialState = {
   isLoggedIn: false,
   role: 'No Role',
   userId: null,
+  loading: false,
+  error: '',
 };
+
+export const login = createAsyncThunk('login', async (loginData) => getTokenAsync(loginData));
 
 const loginSlice = createSlice({
   name: 'login',
@@ -21,19 +25,26 @@ const loginSlice = createSlice({
       state.userId = getUserId(action.payload);
     },
   },
+  extraReducers: {
+    [login.pending]: (state) => {
+      state.loading = true;
+      state.error = '';
+    },
+    [login.fulfilled]: (state, { payload }) => {
+      state.token = payload.token;
+      state.role = getRole(payload.token);
+      state.isLoggedIn = isLoggedIn(payload.token);
+      state.userId = getUserId(payload.token);
+      state.loading = false;
+      localStorage.setItem('token', JSON.stringify(payload.token));
+    },
+    [login.rejected]: (state, action) => {
+      state.loading = false;
+      state.error = action.error;
+    },
+  },
 });
 
-export const { login } = loginSlice.actions;
-
-export const getToken = (loginData) => async (dispatch) => {
-  const data = await getTokenAsync(loginData);
-  if (data.auth) {
-    localStorage.setItem('token', JSON.stringify(data.token));
-    dispatch(login(data.token));
-  } else {
-    localStorage.setItem('token', '');
-    dispatch(login(''));
-  }
-};
+export const loginActions = loginSlice.actions;
 
 export default loginSlice.reducer;
