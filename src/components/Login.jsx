@@ -49,6 +49,7 @@ const Login = () => {
           src="Hotelzilla-logo.png"
           alt=""
         />
+        <h2 className="w-full text-center text-3xl">Login</h2>
         <div className="w-full">
           <label htmlFor="email">Email</label>
           <input
