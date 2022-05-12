@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const URL = 'https://dummyjson.com/products/';
+const URL = 'https://hotelzilla-api.herokuapp.com/api/hotels/';
 
 export const fetchDetails = createAsyncThunk('rooms/fetchDetails',
   async (roomId) => {
