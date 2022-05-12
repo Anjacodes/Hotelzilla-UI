@@ -17,21 +17,20 @@ const tokenKey = 'token';
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const { isLoggedIn, role } = useSelector((state) => state.login);
-
   useEffect(() => {
     if (localStorage.getItem(tokenKey)) {
       dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
     }
   }, []);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/', { replace: true });
-    }
-  }, [isLoggedIn]);
+  const { isLoggedIn, role } = useSelector((state) => state.login);
+
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (isLoggedIn) {
+  //     navigate('/', { replace: true });
+  //   }
+  // }, [isLoggedIn]);
 
   return (
     <>
