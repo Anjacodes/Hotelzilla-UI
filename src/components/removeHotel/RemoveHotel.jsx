@@ -59,6 +59,13 @@ const RemoveHotel = () => {
         </h2>
       </header>
       <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Hotel name</th>
+            <th>Action</th>
+          </tr>
+        </thead>
         <tbody>
           {hotels.map((hotel, index) => (
             <tr key={index}>
