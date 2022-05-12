@@ -1,20 +1,20 @@
 import { configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import { detailsReducer } from './details/detailsSlice';
-import hotelsReducer from './hotels/hotelsSlice';
 import loginReducer from './login/login';
 import registerReducer from './register/registerSlice';
 import { reservationsReducer } from './reservations/reservationsSlice';
-import roomReducer from './room/room';
+import hotelReducer from './hotel/hotel';
+import cityReducer from './city/city';
 
 // add here the reducers!!
 const reducer = {
   login: loginReducer,
   details: detailsReducer,
   reservations: reservationsReducer,
-  room: roomReducer,
+  hotel: hotelReducer,
   register: registerReducer,
-  hotels: hotelsReducer,
+  city: cityReducer,
 };
 
 const store = configureStore({
