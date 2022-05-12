@@ -22,7 +22,7 @@ export const renderReserve = (loggedIn) => {
     return (
       <React.Fragment>
         <NavLink
-          to="/hotels/reserve"
+          to="/reserve"
           className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50 text-xl font-[Taxicab]">
           RESERVE
         </NavLink>
