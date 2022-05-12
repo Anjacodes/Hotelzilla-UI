@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../redux/login/login';
 
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [enteredEmail, setEnteredEmail] = useState('');
   const [enteredPassword, setEnteredPassword] = useState('');
@@ -26,12 +28,17 @@ const Login = () => {
     dispatch(login(loginData));
   };
 
+  const { isLoggedIn } = useSelector((state) => state.login);
+
+  if (isLoggedIn) {
+    navigate('/', { replace: true });
+  }
+
   return (
     <div className="flex w-screen h-screen bg-gray-200 justify-center items-center">
       <form
         onSubmit={submitHandler}
-        className="flex flex-col gap-2 items-end p-9 w-sm-3/4"
-      >
+        className="flex flex-col gap-2 items-end p-9 w-sm-3/4">
         <img
           className="self-center w-4/12 w-sm-6/12"
           src="Hotelzilla-logo.png"
@@ -53,8 +60,7 @@ const Login = () => {
         />
         <button
           type="submit"
-          className="bg-blue-500 text-white py-2 appearance-none border rounded px-3 leading-tight focus:outline-none focus:shadow-outline"
-        >
+          className="bg-blue-500 text-white py-2 appearance-none border rounded px-3 leading-tight focus:outline-none focus:shadow-outline">
           Login
         </button>
       </form>

@@ -18,21 +18,13 @@ const tokenKey = 'token';
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const { isLoggedIn, role } = useSelector((state) => state.login);
-
   useEffect(() => {
     if (localStorage.getItem(tokenKey)) {
       dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
     }
   }, []);
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/', { replace: true });
-    }
-  }, [isLoggedIn]);
+  const { isLoggedIn, role } = useSelector((state) => state.login);
 
   return (
     <>
@@ -44,12 +36,13 @@ const App = () => {
           <Route path=":roomId" element={<DetailsView />} />
           <Route element={<IsAdmin role={role} loggedIn={isLoggedIn} />}>
             <Route path="add-hotel" element={<AddHotel />} />
+            <Route path="delete-hotel" element={<RemoveHotel />} />
           </Route>
-          {/* This must be rolled back after finishing working */}
-          <Route path="delete-hotel" element={<RemoveHotel />} />
+          <Route path="reserve" element={<Reserve />} />
+          <Route path="reservations" element={<Reservations />} />
+          {/* Conditional mounting should be fixed!! */}
           <Route element={<LogedUsers logged={isLoggedIn} />}>
-            <Route path="reserve" element={<Reserve />} />
-            <Route path="reservations" element={<Reservations />} />
+            {/* Add additional protected routes here! */}
           </Route>
         </Route>
       </Routes>
