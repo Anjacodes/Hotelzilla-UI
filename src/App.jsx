@@ -36,20 +36,16 @@ const App = () => {
     }
   }, [isLoggedIn]);
 
-  const { isLoggedIn, role } = useSelector((state) => state.login);
-
-
   return (
     <>
       <Routes>
         <Route path="/register" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/add-hotel" element={<AddHotel />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
           <Route path=":roomId" element={<DetailsView />} />
-          <Route element={<IsAdmin role={role} loggedIn={isLoggedIn}/>}>
-            <Route path="add-hotel" />
+          <Route element={<IsAdmin role={role} loggedIn={isLoggedIn} />}>
+            <Route path="add-hotel" element={<AddHotel />} />
             <Route path="delete-hotel" />
           </Route>
           <Route element={<LogedUsers logged={isLoggedIn} />}>
