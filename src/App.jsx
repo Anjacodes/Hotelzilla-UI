@@ -37,10 +37,10 @@ const App = () => {
             <Route path="add-hotel" element={<AddHotel />} />
             <Route path="delete-hotel" />
           </Route>
-          <Route path="reserve" element={<Reserve />} />
-          <Route path="reservations" element={<Reservations />} />
-          {/* Conditional mounting should be fixed!! */}
           <Route element={<LogedUsers logged={isLoggedIn} />}>
+            <Route path="reserve" element={<Reserve />} />
+            <Route path="reservations" element={<Reservations />} />
+          {/* Conditional mounting should be fixed!! */}
             {/* Add additional protected routes here! */}
           </Route>
         </Route>

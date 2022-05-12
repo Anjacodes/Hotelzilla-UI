@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import printStars from '../../modules/printStars';
 import { fetchUserReservations } from '../../redux/reservations/reservationsSlice';
 
 
 function Reservations() {
   let navigateTo = useNavigate();
 
-  const {reservations, loading} = useSelector(state => state.reservations)
+  const {reservations, loading, rejected} = useSelector(state => state.reservations)
 
   const dispatch = useDispatch();
 
@@ -15,9 +16,11 @@ function Reservations() {
     dispatch(fetchUserReservations())
   }, [])
 
-  const reservationsArr = reservations.products
+  const reservationsArr = reservations
 
   if (loading) return <p className='font-Taxicab text-2xl mt-[15%] ml-[35%] text-gray-600'>LOADING...</p>
+
+  if (rejected) return <p>Oops...Something went wrong here!</p>
 
   return (
     <section className='bg-slate-100 w-[80vw] flex flex-col items-center overflow-x-auto'>
@@ -27,7 +30,6 @@ function Reservations() {
           <tr>
             <th scope="col" className='py-3'>ROOM</th>
             <th scope="col" className='px-6 py-3'>HOTEL</th>
-            <th scope="col" className='px-6 py-3'>CITY</th>
             <th scope="col" className='px-6 py-3'>RATING</th>
             <th scope="col" className='px-6 py-3'>DATE</th>
             <th scope="col" className='px-6 py-3'>PRICE</th>
@@ -37,12 +39,11 @@ function Reservations() {
           { reservationsArr && reservationsArr.map(reservation => {
               return (
                 <tr key={reservation.id} className="even:bg-white">
-                  <td className='font-bold text-gray-400'>{reservation.title}</td>
-                  <td className='px-6 py-4'>{reservation.brand}</td>
-                  <td className='px-6 py-4'>{reservation.category}</td>
-                  <td className='px-6 py-4'>{reservation.rating}</td>
-                  <td className='px-6 py-4'>01.01.2023</td>
-                  <td className='px-6 py-4'>{reservation.price}</td>
+                  <td className='font-bold text-gray-400'>{reservation.room_type.name}</td>
+                  <td className='px-6 py-4'>{reservation.hotel.name}</td>
+                  <td className='px-6 py-4'>{printStars(reservation.hotel.rating)}</td>
+                  <td className='px-6 py-4'>{reservation.date}</td>
+                  <td className='px-6 py-4'>{reservation.room_type.price}</td>
                 </tr>
               )
             })
