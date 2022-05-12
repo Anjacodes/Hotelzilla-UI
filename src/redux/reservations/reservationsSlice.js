@@ -2,12 +2,10 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const URL = 'https://hotelzilla-api.herokuapp.com/api/reservations';
 
-const token = JSON.parse(localStorage.getItem('token'));
-
 // create the thunk
 export const fetchUserReservations = createAsyncThunk(
   'reservations/fetchUserReservations',
-  async () => {
+  async (token) => {
     const response = await fetch(URL, {
       headers: {
         Authorization: token,

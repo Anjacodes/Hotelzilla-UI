@@ -9,11 +9,12 @@ function Reservations() {
   let navigateTo = useNavigate();
 
   const {reservations, loading, rejected} = useSelector(state => state.reservations)
+  const token = useSelector(state => state.login.token)
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUserReservations())
+    dispatch(fetchUserReservations(token))
   }, [])
 
   const reservationsArr = reservations
