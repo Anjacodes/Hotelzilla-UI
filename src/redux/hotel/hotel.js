@@ -20,6 +20,9 @@ const hotelSlice = createSlice({
     getAll: (state, action) => {
       state.all = action.payload;
     },
+    resetDeleteStatus: (state) => {
+      state.deleteStatus = '';
+    },
   },
   extraReducers: {
     [getAllHotels.pending]: (state) => {
@@ -50,5 +53,7 @@ const hotelSlice = createSlice({
 });
 
 export const hotelActions = hotelSlice.actions;
+
+export const { resetDeleteStatus } = hotelSlice.actions;
 
 export default hotelSlice.reducer;

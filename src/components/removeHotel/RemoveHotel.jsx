@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllHotels } from '../../redux/hotel/hotel';
+import { getAllHotels, resetDeleteStatus } from '../../redux/hotel/hotel';
 import { deleteHotel } from '../../redux/hotel/hotel-helper';
 import ConfirmDelete from './ConfirmDelete';
 
@@ -14,7 +14,7 @@ const RemoveHotel = () => {
   }, []);
   const { all: hotels, deleteStatus } = useSelector((state) => state.hotel);
 
-  // Modal controlers
+  // *Modal controlers
   const handleClick = (hotelName) => {
     setmodalVisible(true);
     setModalInfo(hotelName);
@@ -28,8 +28,15 @@ const RemoveHotel = () => {
     setmodalVisible(false);
     setModalInfo({});
   };
+
+  if (deleteStatus === 'fulfilled') {
+    setTimeout(() => {
+      dispatch(resetDeleteStatus());
+    }, 3000);
+  }
   return (
     <section>
+      {deleteStatus === 'fulfilled' && <div>Hotel successfully deleted</div>}
       <header>
         <h2>Delete Hotel</h2>
       </header>
