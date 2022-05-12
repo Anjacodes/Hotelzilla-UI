@@ -1,9 +1,17 @@
-import React from 'react';
-import { hotels } from '../../modules/mockupData';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAllHotels } from '../../redux/hotel/hotel';
+import { deleteHotel } from '../../redux/hotel/hotel-helper';
 
 const RemoveHotel = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllHotels());
+  }, []);
+
   // todo: Connect to API and fetch hotels
-  const fetchedHotels = hotels;
+  const { all: hotels, deleteStatus } = useSelector((state) => state.hotel);
   return (
     <section>
       <header>
@@ -11,11 +19,15 @@ const RemoveHotel = () => {
       </header>
       <table>
         <tbody>
-          {fetchedHotels.map((hotel, index) => (
-            <tr key={index + 1}>
-              <td>{hotel.id}</td>
+          {hotels.map((hotel, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
               <td>{hotel.name}</td>
-              <td>Delete button</td>
+              <td>
+                <button onClick={() => dispatch(deleteHotel(hotel.id))}>
+                  Delete button
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
