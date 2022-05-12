@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const URL = 'https://dummyjson.com/products/?limit=5';
+const URL = 'https://hotelzilla-api.herokuapp.com/api/reservations';
 
 // create the thunk
 export const fetchUserReservations = createAsyncThunk(
   'reservations/fetchUserReservations',
-  async () => {
-    const response = await fetch(URL);
+  async (token) => {
+    const response = await fetch(URL, {
+      headers: {
+        Authorization: token,
+      },
+    });
     const data = await response.json();
     return data;
   },
@@ -15,6 +19,7 @@ export const fetchUserReservations = createAsyncThunk(
 const initialState = {
   reservations: [],
   loading: false,
+  rejected: false,
 };
 
 const reservationsSlice = createSlice({
@@ -31,6 +36,7 @@ const reservationsSlice = createSlice({
     },
     [fetchUserReservations.rejected]: (state) => {
       state.loading = false;
+      state.rejected = true;
     },
   },
 });
