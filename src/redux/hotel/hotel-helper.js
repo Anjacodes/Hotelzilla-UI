@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import store from '../configStore';
 
 const hotelURL = 'https://hotelzilla-api.herokuapp.com/api/hotels';
 
@@ -21,15 +20,17 @@ const postHotelAsync = async (token, formData) => {
   return data;
 };
 
-export const deleteHotel = createAsyncThunk('deleteHotel', async (id) => {
-  const url = hotelURL + `/${id}`;
-  const token = store.getState().login.token;
-  const response = await fetch(url, {
-    method: 'DELETE',
-    headers: { Authorization: token },
-  });
-  return response.json();
-});
+export const deleteHotel = createAsyncThunk(
+  'deleteHotel',
+  async ({ id, token }) => {
+    const url = `${hotelURL}/${id}`;
+    const response = await fetch(url, {
+      method: 'DELETE',
+      headers: { Authorization: token },
+    });
+    return response.json();
+  },
+);
 
 export { postHotelAsync };
 

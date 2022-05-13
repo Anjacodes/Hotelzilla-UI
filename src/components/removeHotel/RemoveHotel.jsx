@@ -13,6 +13,7 @@ const RemoveHotel = () => {
     dispatch(getAllHotels());
   }, []);
   const { all: hotels, deleteStatus } = useSelector((state) => state.hotel);
+  const { token } = useSelector((state) => state.login);
 
   // *Modal controlers
   const handleClick = (hotelName) => {
@@ -20,7 +21,7 @@ const RemoveHotel = () => {
     setModalInfo(hotelName);
   };
   const handleOk = () => {
-    dispatch(deleteHotel(modalInfo.id));
+    dispatch(deleteHotel({ id: modalInfo.id, token }));
     setmodalVisible(false);
     setModalInfo({});
   };

@@ -9,9 +9,7 @@ const initialState = {
   error: '',
 };
 
-export const getAllHotels = createAsyncThunk('hotels', async () =>
-  getAllHotelsAsync(),
-);
+export const getAllHotels = createAsyncThunk('hotels', async () => getAllHotelsAsync());
 
 const hotelSlice = createSlice({
   name: 'hotel',
@@ -42,13 +40,11 @@ const hotelSlice = createSlice({
     [deleteHotel.pending]: (state) => {
       state.deleteStatus = 'pending';
     },
-    [deleteHotel.fulfilled]: (state, action) => {
-      return {
-        ...state,
-        deleteStatus: 'fulfilled',
-        all: state.all.filter((hotel) => hotel.id !== action.meta.arg),
-      };
-    },
+    [deleteHotel.fulfilled]: (state, action) => ({
+      ...state,
+      deleteStatus: 'fulfilled',
+      all: state.all.filter((hotel) => hotel.id !== action.meta.arg.id),
+    }),
   },
 });
 
