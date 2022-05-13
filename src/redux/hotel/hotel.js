@@ -13,9 +13,7 @@ const initialState = {
   hotelsByCity: [],
 };
 
-export const getAllHotels = createAsyncThunk('hotels', async () =>
-  getAllHotelsAsync(),
-);
+export const getAllHotels = createAsyncThunk('hotels', async () => getAllHotelsAsync());
 
 const hotelSlice = createSlice({
   name: 'hotel',
