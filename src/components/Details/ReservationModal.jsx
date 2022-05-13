@@ -105,6 +105,23 @@ const ReservationModal = ({
           </tbody>
         </table>
 
+        <div className="mt-6 flex flex-col items-center px-6 text-center">
+          {room && (
+            <>
+              <h4 className="font-Taxicab text-2xl">
+                {roomTypes[room - 1].name}
+              </h4>
+              <p>{roomTypes[room - 1].description}</p>
+              <div className="flex gap-4 ">
+                <p>
+                  <strong>Price:</strong>
+                </p>
+                <p>${roomTypes[room - 1].price} USD</p>
+              </div>
+            </>
+          )}
+        </div>
+
         {/* Show details for selected room type */}
 
         <div className="mt-6 flex justify-end gap-4 border-t-2 py-4 px-4">
