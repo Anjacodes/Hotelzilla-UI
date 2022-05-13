@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import getToday from '../modules/getToday';
 import { getAllCities } from '../redux/city/city';
 import { getHotelsByCity } from '../redux/hotel/hotel-helper';
-import { createReservation } from '../redux/reservations/reservationsSlice';
+import {
+  createReservation,
+  resetCreateReservationStatus,
+} from '../redux/reservations/reservationsSlice';
 import { getRoomTypes } from '../redux/roomTypes/roomTypesSlice';
 
 const Reserve = ({ token }) => {
@@ -54,8 +57,32 @@ const Reserve = ({ token }) => {
     }
   };
 
+  const { createReservationStatus } = useSelector(
+    (state) => state.reservations,
+  );
+  useEffect(() => {
+    if (
+      createReservationStatus === 'fulfilled' ||
+      createReservationStatus === 'rejected'
+    ) {
+      setTimeout(() => {
+        dispatch(resetCreateReservationStatus());
+      }, 3000);
+    }
+  }, [createReservationStatus]);
+
   return (
     <section className="flex h-screen w-full flex-col px-6 py-4">
+      {createReservationStatus === 'fulfilled' && (
+        <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
+          Reservation succesfully created!
+        </div>
+      )}
+      {createReservationStatus === 'rejected' && (
+        <div className="absolute bottom-4 right-4 z-10 rounded bg-red-200 px-4 py-2 text-red-700">
+          Ups! Something went wrong
+        </div>
+      )}
       <header className="ml-6 mt-6">
         <h2 className="font-Obscura-regular text-3xl">Add Reservation</h2>
       </header>
