@@ -23,12 +23,18 @@ export const renderReserve = (loggedIn) => {
       <React.Fragment>
         <NavLink
           to="/reserve"
-          className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50 text-xl font-[Taxicab]">
+          className={({ isActive }) =>
+            (isActive ? 'bg-lime-400 text-slate-50' : '') +
+            ' py-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
+          }>
           RESERVE
         </NavLink>
         <NavLink
           to="/reservations"
-          className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50  text-xl font-[Taxicab]">
+          className={({ isActive }) =>
+            (isActive ? 'bg-lime-400 text-slate-50' : '') +
+            ' py-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
+          }>
           MY RESERVATIONS
         </NavLink>
         {/* Add the LOGOUT button here!!! */}
@@ -43,12 +49,18 @@ export const renderAddDeleteHotel = (role, loggedIn) => {
       <React.Fragment>
         <NavLink
           to="/add-hotel"
-          className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50  text-xl font-[Taxicab]">
+          className={({ isActive }) =>
+            (isActive ? 'bg-lime-400 text-slate-50' : '') +
+            ' py-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
+          }>
           ADD HOTEL
         </NavLink>
         <NavLink
           to="/delete-hotel"
-          className="py-2 font-bold hover:bg-lime-400 hover:text-slate-50  text-xl font-[Taxicab]">
+          className={({ isActive }) =>
+            (isActive ? 'bg-lime-400 text-slate-50' : '') +
+            ' py-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
+          }>
           DELETE HOTEL
         </NavLink>
       </React.Fragment>
