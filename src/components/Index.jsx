@@ -62,7 +62,7 @@ function Index() {
             </NavLink>
           )}
         </div>
-        <div className="grid grid-cols-3 grid-rows-1 gap-6 p-5">
+        <div className="grid grid-cols-3 grid-rows-1 gap-3 p-5">
           {currentHotels.map((hotel) => (
             <HotelItem key={hotel.id} hotel={hotel} />
           ))}
