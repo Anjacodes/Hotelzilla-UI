@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import registerSlice from '../register/registerSlice';
 
 const initialState = {
   getRoomStatus: '',
@@ -7,10 +6,10 @@ const initialState = {
 };
 
 export const getRoomTypes = createAsyncThunk('getRoomTypes', async (token) => {
-  const url = '';
+  const url = 'https://hotelzilla-api.herokuapp.com/api/room_types';
   const response = await fetch(url, {
     method: 'GET',
-    headers: { Authentication: token },
+    headers: { Authorization: token },
   });
   return response.json();
 });
