@@ -2,7 +2,6 @@ import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
 const LogedUsers = ({ logged }) => {
-  console.log(logged)
   if (!logged) return <Navigate to="login" />;
   return <Outlet />;
 };

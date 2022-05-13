@@ -15,16 +15,13 @@ import RemoveHotel from './components/removeHotel/RemoveHotel';
 import IsAdmin from './components/accessibility/isAdmin';
 
 const App = () => {
-  console.log('Start App code');
   const dispatch = useDispatch();
   const tokenKey = 'token';
   if (localStorage.getItem(tokenKey)) {
     dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
   }
 
-  const {isLoggedIn, role } = useSelector(state => state.login)
-
-  console.log('End App code');
+  const { isLoggedIn, role } = useSelector((state) => state.login);
 
   return (
     <>
