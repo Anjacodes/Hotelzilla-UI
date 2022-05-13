@@ -24,7 +24,6 @@ const SignUp = () => {
   };
 
   const registerStatus = useSelector((store) => store.register.userCreation);
-  console.log('registerStatus', registerStatus);
 
   useEffect(() => {
     if (registerStatus === 'fulfilled') {

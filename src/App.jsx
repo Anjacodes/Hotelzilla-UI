@@ -11,6 +11,7 @@ import AddHotel from './components/AddHotel';
 import { loginActions } from './redux/login/login';
 import LogedUsers from './components/accessibility/LogedUsers';
 import DetailsView from './components/Details/DetailsView';
+import RemoveHotel from './components/removeHotel/RemoveHotel';
 import IsAdmin from './components/accessibility/isAdmin';
 
 const App = () => {
@@ -35,7 +36,7 @@ const App = () => {
           <Route path=":roomId" element={<DetailsView />} />
           <Route element={<IsAdmin role={role} loggedIn={isLoggedIn} />}>
             <Route path="add-hotel" element={<AddHotel />} />
-            <Route path="delete-hotel" />
+            <Route path="delete-hotel" element={<RemoveHotel />} />
           </Route>
           {/* Conditional mounting should be fixed!! */}
           <Route element={<LogedUsers logged={isLoggedIn} />}>

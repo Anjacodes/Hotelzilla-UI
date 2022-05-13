@@ -1,10 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import getAllHotelsAsync from './hotel-helper';
+import getAllHotelsAsync, { deleteHotel } from './hotel-helper';
 
 const initialState = {
   all: [],
   loading: false,
+  deleteStatus: '',
   error: '',
 };
 
@@ -16,6 +17,9 @@ const hotelSlice = createSlice({
   reducers: {
     getAll: (state, action) => {
       state.all = action.payload;
+    },
+    resetDeleteStatus: (state) => {
+      state.deleteStatus = '';
     },
   },
   extraReducers: {
@@ -30,9 +34,22 @@ const hotelSlice = createSlice({
       state.loading = false;
       state.error = action.error;
     },
+    [deleteHotel.rejected]: (state) => {
+      state.deleteStatus = 'rejected';
+    },
+    [deleteHotel.pending]: (state) => {
+      state.deleteStatus = 'pending';
+    },
+    [deleteHotel.fulfilled]: (state, action) => ({
+      ...state,
+      deleteStatus: 'fulfilled',
+      all: state.all.filter((hotel) => hotel.id !== action.meta.arg.id),
+    }),
   },
 });
 
 export const hotelActions = hotelSlice.actions;
+
+export const { resetDeleteStatus } = hotelSlice.actions;
 
 export default hotelSlice.reducer;
