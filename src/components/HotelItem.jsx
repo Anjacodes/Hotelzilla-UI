@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 const hostURL = 'https://hotelzilla-api.herokuapp.com';
 
 function HotelItem({ hotel }) {
-  console.log(hotel.image)
   return (
     <Link to={`/${hotel.id}`}>
       {<div className="flex flex-col items-center gap-1 border-2 rounded-lg">

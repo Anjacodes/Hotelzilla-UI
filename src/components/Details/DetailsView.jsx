@@ -51,7 +51,7 @@ function DetailsView() {
             </tr>
             <tr className="bg-gray-200">
               <td className="text-left py-1 px-4">City:</td>
-              <td className="py-1 px-4">City</td>
+              <td className="py-1 px-4">{roomDetails.city.name}</td>
             </tr>
           </tbody>
         </table>
