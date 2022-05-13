@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ReservationModal = ({ visible, onOk, onCancel }) => {
+const ReservationModal = ({ visible, onOk, onCancel, hotelInfo }) => {
   const [reservationDate, setReservationDate] = useState(new Date());
   const handleVisible = () => {
     if (visible) return 'block ';
@@ -8,17 +8,17 @@ const ReservationModal = ({ visible, onOk, onCancel }) => {
   };
 
   // todo: Get data stored in redux store
-  const city = 'Los Angeles - Dummy';
-  const hotel = 'Luxury hotel - Dummy';
+  const city = hotelInfo.city.name;
+  const hotelName = hotelInfo.name;
   const hotelRoom = 'Honeymoon Special - Dummy';
 
   return (
     <div
       className={
-        handleVisible() + 'bg-black/20 absolute top-0 left-0 w-screen h-screen'
+        handleVisible() + 'absolute top-0 left-0 h-screen w-screen bg-black/20'
       }>
-      <section className="bg-slate-50 mt-[10%] mx-[10%] xl:mx-[25%] flex flex-col relative ">
-        <h3 className="font-Taxicab text-xl border-b-2 px-4 py-2">
+      <section className="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:mx-[25%] ">
+        <h3 className="border-b-2 px-4 py-2 font-Taxicab text-xl">
           Make your reservation
         </h3>
         <i
@@ -26,16 +26,16 @@ const ReservationModal = ({ visible, onOk, onCancel }) => {
           onClick={onCancel}></i>
 
         <table
-          className="table-auto mx-[5%] md:mx-auto md:w-[550px] mt-6"
+          className="mx-[5%] mt-6 table-auto md:mx-auto md:w-[550px]"
           cellPadding={2}>
           <tbody>
             <tr>
-              <td className="text-right w-fit">
-                <label htmlFor="city">City:</label>
+              <td className="w-fit text-right">
+                <label htmlFor="city">Location:</label>
               </td>
               <td>
                 <input
-                  className="rounded-md border px-2 py-1 w-full bg-neutral-400 text-neutral-700 "
+                  className="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
                   type="text"
                   id="city"
                   name="city"
@@ -45,27 +45,27 @@ const ReservationModal = ({ visible, onOk, onCancel }) => {
               </td>
             </tr>
             <tr>
-              <td className="text-right w-fit">
+              <td className="w-fit text-right">
                 <label htmlFor="hotel">Hotel:</label>
               </td>
               <td>
                 <input
-                  className="rounded-md border px-2 py-1 w-full bg-neutral-400 text-neutral-700 "
+                  className="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
                   type="text"
                   id="hotel"
                   name="hotel"
-                  value={hotel}
+                  value={hotelName}
                   disabled
                 />
               </td>
             </tr>
             <tr>
-              <td className="text-right w-fit">
+              <td className="w-fit text-right">
                 <label htmlFor="hotelRoom">Room:</label>
               </td>
               <td>
                 <input
-                  className="rounded-md border px-2 py-1 w-full bg-neutral-400 text-neutral-700 "
+                  className="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
                   type="text"
                   id="hotelRoom"
                   name="hotelRoom"
@@ -75,12 +75,12 @@ const ReservationModal = ({ visible, onOk, onCancel }) => {
               </td>
             </tr>
             <tr>
-              <td className="text-right w-fit">
+              <td className="w-fit text-right">
                 <label htmlFor="datePicker">Reservation date:</label>
               </td>
               <td>
                 <input
-                  className="rounded-md border px-2 py-1 w-full hover:ring-1"
+                  className="w-full rounded-md border px-2 py-1 hover:ring-1"
                   type="date"
                   id="datePicker"
                   name="datePicker"
@@ -92,15 +92,15 @@ const ReservationModal = ({ visible, onOk, onCancel }) => {
           </tbody>
         </table>
 
-        <div className="flex gap-4 py-4 justify-end mt-6 px-4 border-t-2">
+        <div className="mt-6 flex justify-end gap-4 border-t-2 py-4 px-4">
           <button
-            className="px-4 py-2 rounded-md text-white hover:bg-green-300 hover:text-green-800 font-semibold bg-green-600"
+            className="rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
             type="button"
             onClick={onOk}>
             Confirm
           </button>
           <button
-            className="px-4 py-2 rounded-md text-white hover:bg-red-300 hover:text-red-800 font-semibold bg-red-600"
+            className="rounded-md bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-300 hover:text-red-800"
             type="button"
             onClick={onCancel}>
             Cancel
