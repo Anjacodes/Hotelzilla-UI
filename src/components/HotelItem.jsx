@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const hostURL = 'https://hotelzilla-api.herokuapp.com';
 
 function HotelItem({ hotel }) {
   return (
-    <div className="flex flex-col items-center gap-1 border-2 rounded-lg">
+    <Link to={`/${hotel.id}`}>
+      {<div className="flex flex-col items-center gap-1">
       <img
         className="w-8/12 self-center"
         src={
@@ -19,7 +21,8 @@ function HotelItem({ hotel }) {
         <div>{hotel.name}</div>
         <div className="text-center">{hotel.description}</div>
       </div>
-    </div>
+    </div>}
+    </Link>
   );
 }
 

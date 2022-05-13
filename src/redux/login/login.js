@@ -24,6 +24,12 @@ const loginSlice = createSlice({
       state.isLoggedIn = isLoggedIn(action.payload);
       state.userId = getUserId(action.payload);
     },
+    resetState(state) {
+      state.token = initialState.token;
+      state.role = initialState.role;
+      state.isLoggedIn = initialState.isLoggedIn;
+      state.userId = initialState.userId;
+    },
   },
   extraReducers: {
     [login.pending]: (state) => {
