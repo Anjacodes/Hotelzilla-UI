@@ -29,7 +29,7 @@ const loginSlice = createSlice({
       state.role = initialState.role;
       state.isLoggedIn = initialState.isLoggedIn;
       state.userId = initialState.userId;
-    }
+    },
   },
   extraReducers: {
     [login.pending]: (state) => {
