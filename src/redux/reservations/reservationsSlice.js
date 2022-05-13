@@ -16,16 +16,35 @@ export const fetchUserReservations = createAsyncThunk(
   },
 );
 
+export const createReservation = createAsyncThunk(
+  'createReservation',
+  async ({ token, reservationData }) => {
+    const response = await fetch(URL, {
+      method: 'POST',
+      headers: {
+        Authorization: token,
+      },
+      body: JSON.stringify(reservationData),
+    });
+    return response.json();
+  },
+);
+
 const initialState = {
   reservations: [],
   loading: false,
   rejected: false,
+  createReservationStatus: '',
 };
 
 const reservationsSlice = createSlice({
   name: 'reservations',
   initialState,
-  reducers: {},
+  reducers: {
+    resetCreateReservationStatus(state) {
+      state.createReservationStatus = '';
+    },
+  },
   extraReducers: {
     [fetchUserReservations.pending]: (state) => {
       state.loading = true;
@@ -38,7 +57,18 @@ const reservationsSlice = createSlice({
       state.loading = false;
       state.rejected = true;
     },
+    [createReservation.pending]: (state) => {
+      state.createReservationStatus = 'pending';
+    },
+    [createReservation.fulfilled]: (state) => {
+      state.createReservationStatus = 'fulfilled';
+    },
+    [createReservation.rejected]: (state) => {
+      state.createReservationStatus = 'rejected';
+    },
   },
 });
 
 export const reservationsReducer = reservationsSlice.reducer;
+
+export const { resetCreateReservationStatus } = reservationsSlice.actions;
