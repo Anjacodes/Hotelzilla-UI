@@ -108,7 +108,6 @@ const AddHotel = () => {
             min="1"
             max="5"
             step="0.5"
-            onkeydown="return false"
             value={newHotel.rating}
             onChange={onChangeHandler}
             autoComplete="off"

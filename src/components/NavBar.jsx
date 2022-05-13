@@ -1,14 +1,32 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
 import {
   renderSignUpButton,
   renderAddDeleteHotel,
   renderReserve,
 } from '../modules/conditionalRendering';
+import {logout} from '../modules/auth-module';
+import {loginActions} from '../redux/login/login'
 
 function NavBar() {
   const { isLoggedIn: loggedIn, role } = useSelector((state) => state.login);
+  const [loggedOut, setLoggedOut] = useState(false)
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logoutHandler = () => {
+    logout();
+    dispatch(loginActions.resetState());
+    setLoggedOut(true);
+  }
+
+  useEffect(() => {
+    if(loggedOut) {
+      navigate('/login', { replace: true });
+    }
+  }, [loggedOut])
 
   return (
     <nav className="flex h-screen w-[20vw] flex-col items-center justify-evenly overflow-hidden border-r py-4">
@@ -33,6 +51,13 @@ function NavBar() {
             }>
             LOG IN
           </NavLink>
+        )}
+        {loggedIn && (
+          <a
+            onClick={logoutHandler}
+            className="mt-8 py-2 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-white">
+            LOG OUT
+          </a>
         )}
         {renderSignUpButton(loggedIn)}
       </div>
