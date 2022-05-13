@@ -4,7 +4,10 @@ import { useParams, useNavigate } from 'react-router-dom';
 import handleImage from '../../modules/handleImage';
 import printStars from '../../modules/printStars';
 import { fetchDetails } from '../../redux/details/detailsSlice';
-import { createReservation } from '../../redux/reservations/reservationsSlice';
+import {
+  createReservation,
+  resetCreateReservationStatus,
+} from '../../redux/reservations/reservationsSlice';
 import { getRoomTypes } from '../../redux/roomTypes/roomTypesSlice';
 import ReservationModal from './ReservationModal';
 
@@ -40,6 +43,22 @@ function DetailsView({ token }) {
     setModalVisible(false);
   };
   const { getRoomStatus, types } = useSelector((state) => state.roomTypes);
+
+  // handle alert after reservation creation
+  const { createReservationStatus } = useSelector(
+    (state) => state.reservations,
+  );
+  useEffect(() => {
+    if (
+      createReservationStatus === 'fulfilled' ||
+      createReservationStatus === 'rejected'
+    ) {
+      setTimeout(() => {
+        dispatch(resetCreateReservationStatus());
+      }, 3000);
+    }
+  }, [createReservationStatus]);
+
   if (loading && !getRoomStatus === 'fulfilled')
     return (
       <p className="mt-[15%] ml-[35%] font-Taxicab text-2xl text-gray-600">
@@ -50,6 +69,16 @@ function DetailsView({ token }) {
   if (roomDetails.length !== 0) {
     return (
       <section className="ml-[6vw] mr-[5vw] flex w-[80vw] justify-evenly overflow-y-hidden pt-[25vh] pb-[10vh]">
+        {createReservationStatus === 'fulfilled' && (
+          <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
+            Reservation succesfully created!
+          </div>
+        )}
+        {createReservationStatus === 'rejected' && (
+          <div className="absolute bottom-4 right-4 z-10 rounded bg-red-200 px-4 py-2 text-red-700">
+            Ups! Something went wrong
+          </div>
+        )}
         <img
           src={handleImage(roomDetails.image)}
           className="aspect-{1/1.8} ml-6 w-[40vw]"
