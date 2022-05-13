@@ -18,7 +18,6 @@ function Index() {
     dispatch(getAllHotels());
   }, []);
 
-  // Get current post
   const indexOfLastHotel = currentPage * hotelsPerPage;
   const indexOfFirstHotel = indexOfLastHotel - hotelsPerPage;
   const currentHotels = hotels.slice(indexOfFirstHotel, indexOfLastHotel);
