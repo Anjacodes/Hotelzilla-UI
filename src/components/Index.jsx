@@ -12,8 +12,6 @@ function Index() {
   let [currentPage, setCurrentPage] = useState(1);
   let [ hotelsPerPage ] = useState(3);
 
-  console.log(currentPage)
-
   useEffect(() => {
     dispatch(getAllHotels());
   }, []);
@@ -25,8 +23,10 @@ function Index() {
 
   // Change pages
   const handlePageUp = () => {
+    if (currentHotels.length < hotelsPerPage) {
+      return
+    }
     setCurrentPage((page) => page +1);
-    console.log(currentPage)
   }
 
   const handlePageDown = () => {
@@ -34,7 +34,6 @@ function Index() {
       return
     }
     setCurrentPage((page) => page -1)
-    console.log(currentPage)
   }
 
   return (
@@ -57,7 +56,7 @@ function Index() {
         </div>
       </div>
       <i className="fixed left-[20vw] top-[50vh] py-4 px-6 bg-gray-200 hover:bg-lime-500 rounded-r-full fa-solid fa-caret-left text-slate-50" onClick={handlePageDown}/>
-      <i className="fixed right-0 top-[50vh] py-4 px-6 bg-lime-400 hover:bg-lime-500 rounded-l-full fa-solid fa-caret-right text-slate-50" onClick={handlePageUp}/>
+      <i className="fixed right-0 top-[50vh] py-4 px-6 bg-lime-400 hover:bg-gray-200 rounded-l-full fa-solid fa-caret-right text-slate-50" onClick={handlePageUp}/>
     </>
   );
 }
