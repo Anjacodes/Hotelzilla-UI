@@ -32,6 +32,20 @@ export const deleteHotel = createAsyncThunk(
   },
 );
 
+export const getHotelsByCity = createAsyncThunk(
+  'getHotelsByCity',
+  async ({ token, id }) => {
+    const url = `https://hotelzilla-api.herokuapp.com/api/hotelbycity/${id}`;
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        Authorization: token,
+      },
+    });
+    return response.json();
+  },
+);
+
 export { postHotelAsync };
 
 export default getAllHotelsAsync;
