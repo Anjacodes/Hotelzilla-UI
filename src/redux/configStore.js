@@ -6,6 +6,7 @@ import registerReducer from './register/registerSlice';
 import { reservationsReducer } from './reservations/reservationsSlice';
 import hotelReducer from './hotel/hotel';
 import cityReducer from './city/city';
+import roomTypesReducer from './roomTypes/roomTypesSlice';
 
 // add here the reducers!!
 const reducer = {
@@ -15,6 +16,7 @@ const reducer = {
   hotel: hotelReducer,
   register: registerReducer,
   city: cityReducer,
+  roomTypes: roomTypesReducer,
 };
 
 const store = configureStore({
