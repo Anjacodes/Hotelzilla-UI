@@ -38,7 +38,7 @@ function DetailsView() {
       <img
         src={handleImage(roomDetails.image)}
         className="ml-6 aspect-{1/1.8} w-[40vw]"
-        alt="placeholder"
+        alt="hotel image"
       />
       <div className="flex flex-col items-end ml-auto">
         <h2 className="mb-3 font-bold text-3xl">{roomDetails.name.toUpperCase()}</h2>

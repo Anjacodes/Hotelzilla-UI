@@ -10,7 +10,7 @@ const printStars = (num) => {
   return (
     <Box>
       {[...new Array(totalStars)].map((arr, index) => {
-        return index < activeStars ? <StarIcon key={index} /> : <StarBorderIcon />;
+        return index < activeStars ? <StarIcon key={index} /> : <StarBorderIcon key={index}/>;
       })}
     </Box>
   );
