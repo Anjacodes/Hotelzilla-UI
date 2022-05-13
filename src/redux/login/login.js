@@ -31,12 +31,16 @@ const loginSlice = createSlice({
       state.error = '';
     },
     [login.fulfilled]: (state, { payload }) => {
-      state.token = payload.token;
-      state.role = getRole(payload.token);
-      state.isLoggedIn = isLoggedIn(payload.token);
-      state.userId = getUserId(payload.token);
-      state.loading = false;
-      localStorage.setItem('token', JSON.stringify(payload.token));
+      if (payload.token) {
+        state.token = payload.token;
+        state.role = getRole(payload.token);
+        state.isLoggedIn = isLoggedIn(payload.token);
+        state.userId = getUserId(payload.token);
+        state.loading = false;
+        localStorage.setItem('token', JSON.stringify(payload.token));
+      } else {
+        state.error = payload.error;
+      }
     },
     [login.rejected]: (state, action) => {
       state.loading = false;

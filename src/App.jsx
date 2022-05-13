@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
@@ -13,17 +13,17 @@ import LogedUsers from './components/accessibility/LogedUsers';
 import DetailsView from './components/Details/DetailsView';
 import IsAdmin from './components/accessibility/isAdmin';
 
-const tokenKey = 'token';
-
 const App = () => {
+  console.log('Start App code');
   const dispatch = useDispatch();
-  useEffect(() => {
-    if (localStorage.getItem(tokenKey)) {
-      dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
-    }
-  }, []);
+  const tokenKey = 'token';
+  if (localStorage.getItem(tokenKey)) {
+    dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
+  }
 
-  const { isLoggedIn, role } = useSelector((state) => state.login);
+  const {isLoggedIn, role } = useSelector(state => state.login)
+
+  console.log('End App code');
 
   return (
     <>
@@ -37,10 +37,10 @@ const App = () => {
             <Route path="add-hotel" element={<AddHotel />} />
             <Route path="delete-hotel" />
           </Route>
+          {/* Conditional mounting should be fixed!! */}
           <Route element={<LogedUsers logged={isLoggedIn} />}>
             <Route path="reserve" element={<Reserve />} />
             <Route path="reservations" element={<Reservations />} />
-          {/* Conditional mounting should be fixed!! */}
             {/* Add additional protected routes here! */}
           </Route>
         </Route>
