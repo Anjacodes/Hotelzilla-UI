@@ -19,11 +19,11 @@ export const fetchUserReservations = createAsyncThunk(
 export const createReservation = createAsyncThunk(
   'createReservation',
   async ({ token, reservationData }) => {
-    console.log('reservationData', JSON.stringify(reservationData));
     const response = await fetch(URL, {
       method: 'POST',
       headers: {
         Authorization: token,
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(reservationData),
     });
