@@ -11,6 +11,7 @@ function Index() {
 
   let [currentPage, setCurrentPage] = useState(1);
   let [ hotelsPerPage ] = useState(3);
+  const [inactive, setInactive] = useState(true);
 
   useEffect(() => {
     dispatch(getAllHotels());
@@ -24,15 +25,19 @@ function Index() {
   // Change pages
   const handlePageUp = () => {
     if (currentHotels.length < hotelsPerPage) {
+      setInactive(true);
       return
     }
+    setInactive(false);
     setCurrentPage((page) => page +1);
   }
 
   const handlePageDown = () => {
     if (currentPage === 1) {
+      setInactive(true)
       return
     }
+    setInactive(false)
     setCurrentPage((page) => page -1)
   }
 
@@ -55,8 +60,9 @@ function Index() {
           ))}
         </div>
       </div>
-      <i className="fixed left-[20vw] top-[50vh] py-4 px-6 bg-gray-200 hover:bg-lime-500 rounded-r-full fa-solid fa-caret-left text-slate-50" onClick={handlePageDown}/>
-      <i className="fixed right-0 top-[50vh] py-4 px-6 bg-lime-400 hover:bg-gray-200 rounded-l-full fa-solid fa-caret-right text-slate-50" onClick={handlePageUp}/>
+      <i className={inactive ? "not:hover fixed left-[20vw] top-[50vh] py-4 px-6 bg-gray-200 rounded-r-full fa-solid fa-caret-left text-slate-50" : "fixed left-[20vw] top-[50vh] py-4 px-6 bg-gray-200 hover:bg-lime-500 rounded-r-full fa-solid fa-caret-left text-slate-50"} onClick={handlePageDown}/>
+      <i className={inactive ? "not:hover fixed right-0 top-[50vh] py-4 px-6 bg-lime-400 rounded-l-full fa-solid fa-caret-right text-slate-50" : "fixed right-0 top-[50vh] py-4 px-6 bg-lime-400 hover:bg-gray-200 rounded-l-full fa-solid fa-caret-right text-slate-50"}
+       onClick={handlePageUp}/>
     </>
   );
 }
