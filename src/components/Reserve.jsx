@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import getToday from '../modules/getToday';
 import { getAllCities } from '../redux/city/city';
 import { getHotelsByCity } from '../redux/hotel/hotel-helper';
@@ -180,35 +181,28 @@ const Reserve = ({ token }) => {
               </tr>
             </tbody>
           </table>
-          <button type="button" onClick={handleConfirmation}>
+          <button
+            type="button"
+            className="mt-6 rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
+            onClick={handleConfirmation}>
             Confirm reservation
           </button>
         </article>
         <article>
-          <h4 className="font-Taxicab text-2xl">Room name</h4>
-          <p>
-            description: Lorem ipsum dolor sit amet consectetur adipisicing
-            elit. Quis saepe numquam, incidunt alias vitae quod dolore deserunt
-            animi libero tempora.
-          </p>
-          <table cellPadding={4}>
-            <tbody>
-              <tr>
-                <td>
-                  <strong>Capacity:</strong>
-                </td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <td>
+          {roomTypeId && (
+            <>
+              <h4 className="font-Taxicab text-2xl">
+                {rooms[roomTypeId - 1].name}
+              </h4>
+              <p>{rooms[roomTypeId - 1].description}</p>
+              <div className="flex gap-4">
+                <p>
                   <strong>Price:</strong>
-                </td>
-                <td>$5 USD</td>
-              </tr>
-            </tbody>
-          </table>
-          {/* Convert to a link with the endpoint */}
-          <button type="button">See room</button>
+                </p>
+                <p>${rooms[roomTypeId - 1].price} USD</p>
+              </div>
+            </>
+          )}
         </article>
       </div>
     </section>
