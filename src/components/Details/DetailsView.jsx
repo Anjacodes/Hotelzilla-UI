@@ -26,8 +26,11 @@ function DetailsView({ token }) {
   const openModal = () => {
     setModalVisible(true);
   };
-  const handleOk = () => {
+  const handleOk = (date, room) => {
     setModalVisible(false);
+    console.log(date);
+    console.log(roomDetails.id);
+    console.log(room);
   };
   const handleCancel = () => {
     setModalVisible(false);

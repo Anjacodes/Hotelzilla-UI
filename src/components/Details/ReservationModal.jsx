@@ -9,6 +9,7 @@ const ReservationModal = ({
   roomTypes,
 }) => {
   const [reservationDate, setReservationDate] = useState(getToday());
+  const [room, setRoom] = useState(null);
   const handleVisible = () => {
     if (visible) return 'block ';
     else return 'hidden ';
@@ -69,7 +70,15 @@ const ReservationModal = ({
                 <label htmlFor="roomType">Room:</label>
               </td>
               <td>
-                <select name="roomType" id="roomType">
+                <select
+                  name="roomType"
+                  id="roomType"
+                  value={room}
+                  onChange={(e) => setRoom(e.target.value)}
+                  defaultValue="defaultValue">
+                  <option value="defaultValue" disabled>
+                    Select a room:
+                  </option>
                   {roomTypes.map((room) => (
                     <option key={room.id} value={room.id}>
                       {room.name}
@@ -100,7 +109,7 @@ const ReservationModal = ({
           <button
             className="rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
             type="button"
-            onClick={onOk}>
+            onClick={() => onOk(reservationDate, room)}>
             Confirm
           </button>
           <button
