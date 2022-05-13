@@ -21,7 +21,7 @@ const App = () => {
     dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
   }
 
-  const { isLoggedIn, role } = useSelector((state) => state.login);
+  const { isLoggedIn, role, token } = useSelector((state) => state.login);
 
   return (
     <>
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
-          <Route path=":roomId" element={<DetailsView />} />
+          <Route path=":roomId" element={<DetailsView token={token} />} />
           <Route element={<IsAdmin role={role} loggedIn={isLoggedIn} />}>
             <Route path="add-hotel" element={<AddHotel />} />
             <Route path="delete-hotel" element={<RemoveHotel />} />

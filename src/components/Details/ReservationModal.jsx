@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import getToday from '../../modules/getToday';
 
-const ReservationModal = ({ visible, onOk, onCancel, hotelInfo }) => {
-  const [reservationDate, setReservationDate] = useState(new Date());
+const ReservationModal = ({
+  visible,
+  onOk,
+  onCancel,
+  hotelInfo,
+  roomTypes,
+}) => {
+  const [reservationDate, setReservationDate] = useState(getToday());
   const handleVisible = () => {
     if (visible) return 'block ';
     else return 'hidden ';
   };
 
-  // todo: Get data stored in redux store
   const city = hotelInfo.city.name;
   const hotelName = hotelInfo.name;
-  const hotelRoom = 'Honeymoon Special - Dummy';
 
   return (
     <div
@@ -61,17 +66,16 @@ const ReservationModal = ({ visible, onOk, onCancel, hotelInfo }) => {
             </tr>
             <tr>
               <td className="w-fit text-right">
-                <label htmlFor="hotelRoom">Room:</label>
+                <label htmlFor="roomType">Room:</label>
               </td>
               <td>
-                <input
-                  className="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
-                  type="text"
-                  id="hotelRoom"
-                  name="hotelRoom"
-                  value={hotelRoom}
-                  disabled
-                />
+                <select name="roomType" id="roomType">
+                  {roomTypes.map((room) => (
+                    <option key={room.id} value={room.id}>
+                      {room.name}
+                    </option>
+                  ))}
+                </select>
               </td>
             </tr>
             <tr>

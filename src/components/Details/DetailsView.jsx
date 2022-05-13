@@ -4,22 +4,25 @@ import { useParams, useNavigate } from 'react-router-dom';
 import handleImage from '../../modules/handleImage';
 import printStars from '../../modules/printStars';
 import { fetchDetails } from '../../redux/details/detailsSlice';
+import { getRoomTypes } from '../../redux/roomTypes/roomTypesSlice';
 import ReservationModal from './ReservationModal';
 
-function DetailsView() {
-  let navigateTo = useNavigate();
-  const [modalVisible, setModalVisible] = useState(false);
+function DetailsView({ token }) {
+  const dispatch = useDispatch();
   let params = useParams();
   const roomId = params.roomId;
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getRoomTypes(token));
+    dispatch(fetchDetails(roomId));
+  }, []);
+
+  let navigateTo = useNavigate();
+
   const { roomDetails, loading } = useSelector((state) => state.details);
 
-  useEffect(() => {
-    dispatch(fetchDetails(roomId));
-  }, [dispatch]);
-
   // Modal controllers
+  const [modalVisible, setModalVisible] = useState(false);
   const openModal = () => {
     setModalVisible(true);
   };
@@ -29,8 +32,8 @@ function DetailsView() {
   const handleCancel = () => {
     setModalVisible(false);
   };
-
-  if (loading)
+  const { getRoomStatus, types } = useSelector((state) => state.roomTypes);
+  if (loading && !getRoomStatus === 'fulfilled')
     return (
       <p className="mt-[15%] ml-[35%] font-Taxicab text-2xl text-gray-600">
         LOADING...
@@ -58,22 +61,27 @@ function DetailsView() {
               </tr>
               <tr className="bg-gray-200">
                 <td className="py-1 px-4 text-left">City:</td>
-                <td className="py-1 px-4">City</td>
+                <td className="py-1 px-4">{roomDetails.city.name}</td>
               </tr>
             </tbody>
           </table>
-          <button
-            className="mt-12 rounded-full bg-lime-400 py-3 px-4 text-slate-50 hover:bg-lime-500"
-            onClick={openModal}>
-            <i className="fa-solid fa-calendar-check mr-2"></i>Reserve
-            <i className="fa-solid fa-circle-chevron-right ml-4"></i>
-          </button>
-          <ReservationModal
-            visible={modalVisible}
-            onOk={handleOk}
-            onCancel={handleCancel}
-            hotelInfo={roomDetails}
-          />
+          {token && (
+            <>
+              <button
+                className="mt-12 rounded-full bg-lime-400 py-3 px-4 text-slate-50 hover:bg-lime-500"
+                onClick={openModal}>
+                <i className="fa-solid fa-calendar-check mr-2"></i>Reserve
+                <i className="fa-solid fa-circle-chevron-right ml-4"></i>
+              </button>
+              <ReservationModal
+                visible={modalVisible}
+                onOk={handleOk}
+                onCancel={handleCancel}
+                hotelInfo={roomDetails}
+                roomTypes={types}
+              />
+            </>
+          )}
         </div>
         <i
           className="fa-solid fa-caret-left fixed left-[18vw] top-[85vh] rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500"
