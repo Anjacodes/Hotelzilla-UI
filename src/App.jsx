@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import SignUp from './components/SignUp';
 import Home from './components/Home';
 import Index from './components/Index';
@@ -12,7 +12,6 @@ import { loginActions } from './redux/login/login';
 import LogedUsers from './components/accessibility/LogedUsers';
 import DetailsView from './components/Details/DetailsView';
 import IsAdmin from './components/accessibility/isAdmin';
-import store from './redux/configStore';
 
 const App = () => {
   console.log('Start App code');
@@ -22,7 +21,7 @@ const App = () => {
     dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
   }
 
-  const { isLoggedIn, role } = store.getState().login;
+  const {isLoggedIn, role } = useSelector(state => state.login)
 
   console.log('End App code');
 
