@@ -38,7 +38,7 @@ function DetailsView() {
       <img
         src={handleImage(roomDetails.image)}
         className="ml-6 aspect-{1/1.8} w-[40vw]"
-        alt="placeholder"
+        alt="hotel image"
       />
       <div className="flex flex-col items-end ml-auto">
         <h2 className="mb-3 font-bold text-3xl">{roomDetails.name.toUpperCase()}</h2>
@@ -51,7 +51,7 @@ function DetailsView() {
             </tr>
             <tr className="bg-gray-200">
               <td className="text-left py-1 px-4">City:</td>
-              <td className="py-1 px-4">City</td>
+              <td className="py-1 px-4">{roomDetails.city.name}</td>
             </tr>
           </tbody>
         </table>
