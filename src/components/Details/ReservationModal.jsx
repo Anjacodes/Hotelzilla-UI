@@ -9,7 +9,7 @@ const ReservationModal = ({
   roomTypes,
 }) => {
   const [reservationDate, setReservationDate] = useState(getToday());
-  const [room, setRoom] = useState(null);
+  const [room, setRoom] = useState(-1);
   const handleVisible = () => {
     if (visible) return 'block ';
     else return 'hidden ';

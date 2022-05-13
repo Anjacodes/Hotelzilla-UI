@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import handleImage from '../../modules/handleImage';
 import printStars from '../../modules/printStars';
 import { fetchDetails } from '../../redux/details/detailsSlice';
+import { createReservation } from '../../redux/reservations/reservationsSlice';
 import { getRoomTypes } from '../../redux/roomTypes/roomTypesSlice';
 import ReservationModal from './ReservationModal';
 
@@ -27,10 +28,13 @@ function DetailsView({ token }) {
     setModalVisible(true);
   };
   const handleOk = (date, room) => {
+    const reservationData = {
+      date,
+      hotel_id: roomDetails.id,
+      room_type_id: parseInt(room),
+    };
+    dispatch(createReservation({ token, reservationData }));
     setModalVisible(false);
-    console.log(date);
-    console.log(roomDetails.id);
-    console.log(room);
   };
   const handleCancel = () => {
     setModalVisible(false);
