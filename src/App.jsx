@@ -21,7 +21,7 @@ const App = () => {
     dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
   }
 
-  const { isLoggedIn, role } = useSelector((state) => state.login);
+  const { isLoggedIn, role, token } = useSelector((state) => state.login);
 
   return (
     <>
@@ -30,14 +30,14 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Home />}>
           <Route index element={<Index />} />
-          <Route path=":roomId" element={<DetailsView />} />
+          <Route path=":roomId" element={<DetailsView token={token} />} />
           <Route element={<IsAdmin role={role} loggedIn={isLoggedIn} />}>
             <Route path="add-hotel" element={<AddHotel />} />
             <Route path="delete-hotel" element={<RemoveHotel />} />
           </Route>
           {/* Conditional mounting should be fixed!! */}
           <Route element={<LogedUsers logged={isLoggedIn} />}>
-            <Route path="reserve" element={<Reserve />} />
+            <Route path="reserve" element={<Reserve token={token} />} />
             <Route path="reservations" element={<Reservations />} />
             {/* Add additional protected routes here! */}
           </Route>
