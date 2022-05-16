@@ -35,11 +35,9 @@ const App = () => {
             <Route path="add-hotel" element={<AddHotel />} />
             <Route path="delete-hotel" element={<RemoveHotel />} />
           </Route>
-          {/* Conditional mounting should be fixed!! */}
           <Route element={<LogedUsers logged={isLoggedIn} />}>
             <Route path="reserve" element={<Reserve token={token} />} />
             <Route path="reservations" element={<Reservations />} />
-            {/* Add additional protected routes here! */}
           </Route>
         </Route>
       </Routes>
