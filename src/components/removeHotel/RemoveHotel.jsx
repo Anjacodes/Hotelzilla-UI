@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllHotels, resetDeleteStatus } from '../../redux/hotel/hotel';
 import { deleteHotel } from '../../redux/hotel/hotel-helper';
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ConfirmDelete from './ConfirmDelete';
 
 const RemoveHotel = () => {
@@ -43,7 +44,7 @@ const RemoveHotel = () => {
   }, []);
 
   return (
-    <section className="flex w-full flex-col items-center">
+    <section className="flex w-full flex-col items-center bg-slate-100">
       {deleteStatus === 'fulfilled' && (
         <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
           Hotel successfully deleted!
@@ -55,26 +56,29 @@ const RemoveHotel = () => {
         </div>
       )}
       <header>
-        <h2 className="mt-[25vh] mb-10 font-Taxicab text-3xl text-gray-800">
+        <h2 className="mt-10 mb-10 font-Taxicab text-3xl text-gray-800 md:mt-[25vh]">
           Delete Hotel
         </h2>
       </header>
-      <table>
-        <thead>
+      <table className="mx-auto w-4/5 text-gray-500 md:table-auto">
+        <thead className="bg-gray-500 font-Taxicab text-lg uppercase text-slate-50 dark:bg-gray-700 dark:text-gray-400">
           <tr>
-            <th>Item</th>
-            <th>Hotel name</th>
-            <th>Action</th>
+            <th className="px-6 py-3 text-left">Item</th>
+            <th className="w-96 py-3 px-6 text-left">Hotel name</th>
+            <th className="py-3 px-6 ">Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="font-Metrophobic">
           {hotels.map((hotel, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
-              <td>{hotel.name}</td>
-              <td>
-                <button onClick={() => handleClick(hotel)}>
-                  Delete button
+            <tr key={index} className="even:bg-white">
+              <td className="px-6 py-4">{index + 1}</td>
+              <td className="px-6 py-4 text-neutral-900">{hotel.name}</td>
+              <td className="flex items-center justify-center py-4">
+                <button
+                  className="rounded-md bg-red-500 px-2 py-1 text-white hover:bg-red-200 hover:text-red-800"
+                  onClick={() => handleClick(hotel)}
+                >
+                  <DeleteForeverIcon />
                 </button>
               </td>
             </tr>
