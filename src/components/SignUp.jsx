@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerThunk, resetCreation } from '../redux/register/registerSlice';
+import LoginBackButton from './navigation/LoginBackButton';
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -43,8 +44,8 @@ const SignUp = () => {
 
   if (registerStatus === 'fulfilled') {
     return (
-      <div className="flex flex-col h-screen w-screen justify-center items-center">
-        <section className="border rounded-md py-2 px-4">
+      <div className="flex h-screen w-screen flex-col items-center justify-center bg-slate-100">
+        <section className="rounded-md border py-2 px-4">
           <h4 className="font-Taxicab text-3xl">Registration successfull!</h4>
           <p className="mt-4">You are going to be redirected to Login Screen</p>
         </section>
@@ -53,21 +54,22 @@ const SignUp = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen w-screen justify-center items-center">
+    <div className="flex h-screen w-screen flex-col items-center justify-center">
+      <LoginBackButton />
       <section className="-mt-10">
         <header>
           <img src="Hotelzilla-logo.png" alt="" width="200" />
-          <h3 className="text-center font-semibold text-2xl font-Taxicab uppercase">
+          <h3 className="text-center font-Taxicab text-2xl font-semibold uppercase">
             Register
           </h3>
         </header>
-        <form className="flex flex-col gap-2 mt-2" onSubmit={handleSubmit}>
+        <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
           <div className="flex flex-col">
-            <label className="text-sm mt-1" htmlFor="name">
+            <label className="mt-1 text-sm" htmlFor="name">
               Name:
             </label>
             <input
-              className="border rounded px-2 py-1 hover:ring-1"
+              className="rounded border px-2 py-1 hover:ring-1"
               name="name"
               id="name"
               type="text"
@@ -78,11 +80,11 @@ const SignUp = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm mt-1" htmlFor="username">
+            <label className="mt-1 text-sm" htmlFor="username">
               Username:
             </label>
             <input
-              className="border rounded px-2 py-1 hover:ring-1"
+              className="rounded border px-2 py-1 hover:ring-1"
               name="username"
               id="username"
               type="text"
@@ -93,11 +95,11 @@ const SignUp = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm mt-1" htmlFor="email">
+            <label className="mt-1 text-sm" htmlFor="email">
               Email:
             </label>
             <input
-              className="border rounded px-2 py-1 hover:ring-1"
+              className="rounded border px-2 py-1 hover:ring-1"
               name="email"
               id="email"
               type="email"
@@ -108,11 +110,11 @@ const SignUp = () => {
           </div>
 
           <div className="flex flex-col">
-            <label className="text-sm mt-1" htmlFor="password">
+            <label className="mt-1 text-sm" htmlFor="password">
               Password:
             </label>
             <input
-              className="border rounded px-2 py-1 hover:ring-1"
+              className="rounded border px-2 py-1 hover:ring-1"
               name="password"
               id="password"
               type={showPassword ? 'text' : 'password'}
@@ -122,7 +124,7 @@ const SignUp = () => {
             />
           </div>
 
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <label className="text-sm" htmlFor="show-password">
               Show password?
             </label>
@@ -136,32 +138,36 @@ const SignUp = () => {
             />
           </div>
           <button
-            className="bg-green-500 w-full rounded-md py-1 font-bold text-white hover:bg-green-300 hover:text-green-800 flex px-2 items-center"
-            type="submit">
-            <p className="grow ml-5">Sign Up</p>
+            className="flex w-full items-center rounded-md bg-green-500 py-1 px-2 font-bold text-white hover:bg-green-300 hover:text-green-800"
+            type="submit"
+          >
+            <p className="ml-5 grow">Sign Up</p>
             <svg
               class={`${
                 registerStatus === 'pending' ? 'text-white' : 'text-transparent'
-              } animate-spin h-5 w-5`}
+              } h-5 w-5 animate-spin`}
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
-              viewBox="0 0 24 24">
+              viewBox="0 0 24 24"
+            >
               <circle
                 class="opacity-25"
                 cx="12"
                 cy="12"
                 r="10"
                 stroke="currentColor"
-                stroke-width="4"></circle>
+                stroke-width="4"
+              ></circle>
               <path
                 class="opacity-75"
                 fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+              ></path>
             </svg>
           </button>
 
           {registerStatus === 'rejected' && (
-            <div className="bg-red-300 text-red-600 italic text-sm rounded-md px-2 py-1">
+            <div className="rounded-md bg-red-300 px-2 py-1 text-sm italic text-red-600">
               Username not available
               <br />
               Please try a different username

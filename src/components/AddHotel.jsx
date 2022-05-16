@@ -49,7 +49,7 @@ const AddHotel = () => {
   };
 
   return (
-    <div className="flex bg-gray-200 justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-screen">
       <form
         onSubmit={submitHandler}
         className="flex flex-col gap-3 items-end p-9 w-sm-3/4"

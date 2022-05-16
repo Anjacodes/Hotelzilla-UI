@@ -44,7 +44,7 @@ const RemoveHotel = () => {
   }, []);
 
   return (
-    <section className="flex w-full flex-col items-center bg-slate-100">
+    <section className="flex w-full flex-col items-center">
       {deleteStatus === 'fulfilled' && (
         <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
           Hotel successfully deleted!

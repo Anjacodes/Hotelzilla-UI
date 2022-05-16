@@ -59,7 +59,7 @@ const Reserve = ({ token }) => {
   };
 
   const { createReservationStatus } = useSelector(
-    (state) => state.reservations,
+    (state) => state.reservations
   );
   useEffect(() => {
     if (
@@ -85,9 +85,9 @@ const Reserve = ({ token }) => {
         </div>
       )}
       <header className="ml-6 mt-6">
-        <h2 className="font-Obscura-regular text-3xl">Add Reservation</h2>
+        <h2 className="font-Taxicab text-3xl capitalize">Add Reservation</h2>
       </header>
-      <div className="flex h-full flex-col place-items-center items-center justify-center gap-6 md:grid md:grid-cols-2">
+      <div className="flex h-full flex-col place-items-center items-center justify-center gap-6 ">
         <article>
           <table cellPadding={4}>
             <tbody>
@@ -102,7 +102,8 @@ const Reserve = ({ token }) => {
                     id="city"
                     value={cityId}
                     onChange={(e) => setCityId(e.target.value)}
-                    defaultValue={'defaultSelect'}>
+                    defaultValue={'defaultSelect'}
+                  >
                     <option value="defaultSelect" disabled>
                       Select a city:
                     </option>
@@ -126,7 +127,8 @@ const Reserve = ({ token }) => {
                       id="hotel"
                       value={hotelId}
                       onChange={(e) => setHotelId(e.target.value)}
-                      defaultValue={'defaultSelect'}>
+                      defaultValue={'defaultSelect'}
+                    >
                       <option value="defaultSelect" disabled>
                         Select a hotel:
                       </option>
@@ -151,7 +153,8 @@ const Reserve = ({ token }) => {
                       id="roomType"
                       value={roomTypeId}
                       onChange={(e) => setRoomTypeId(e.target.value)}
-                      defaultValue={'defaultSelect'}>
+                      defaultValue={'defaultSelect'}
+                    >
                       <option value="defaultSelect" disabled>
                         Select a room:
                       </option>
@@ -184,7 +187,8 @@ const Reserve = ({ token }) => {
           <button
             type="button"
             className="mt-6 rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
-            onClick={handleConfirmation}>
+            onClick={handleConfirmation}
+          >
             Confirm reservation
           </button>
         </article>

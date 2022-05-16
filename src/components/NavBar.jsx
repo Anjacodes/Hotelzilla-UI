@@ -6,12 +6,12 @@ import {
   renderAddDeleteHotel,
   renderReserve,
 } from '../modules/conditionalRendering';
-import {logout} from '../modules/auth-module';
-import {loginActions} from '../redux/login/login'
+import { logout } from '../modules/auth-module';
+import { loginActions } from '../redux/login/login';
 
 function NavBar() {
   const { isLoggedIn: loggedIn, role } = useSelector((state) => state.login);
-  const [loggedOut, setLoggedOut] = useState(false)
+  const [loggedOut, setLoggedOut] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,23 +20,20 @@ function NavBar() {
     logout();
     dispatch(loginActions.resetState());
     setLoggedOut(true);
-  }
+  };
 
   useEffect(() => {
-    if(loggedOut) {
-      navigate('/login', { replace: true });
+    if (loggedOut) {
+      navigate('/', { replace: true });
     }
-  }, [loggedOut])
+  }, [loggedOut]);
 
   return (
-    <nav className="flex h-screen flex-col items-center justify-evenly overflow-hidden border-r py-4">
+    <nav className="hidden h-screen w-1/5 flex-col items-center justify-evenly overflow-hidden border-r py-4 md:flex">
       <a className="px-4 md:px-6 lg:px-8" href="/">
-        <img
-          src="Hotelzilla-logo.png"
-          alt="Hotelzilla Logo"
-        />
+        <img src="Hotelzilla-logo.png" alt="Hotelzilla Logo" />
       </a>
-      <div className="pt-12 px-2 w-full flex flex-col text-gray-600">
+      <div className="flex w-full flex-col px-2 pt-12 text-gray-600">
         {renderAddDeleteHotel(role, loggedIn)}
         {renderReserve(loggedIn)}
         {!loggedIn && (
@@ -47,14 +44,16 @@ function NavBar() {
                 ? 'bg-lime-400'
                 : '' +
                   'mt-8 py-2 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-white'
-            }>
+            }
+          >
             LOG IN
           </NavLink>
         )}
         {loggedIn && (
           <a
             onClick={logoutHandler}
-            className="mt-8 py-2 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-white">
+            className="mt-8 py-2 font-Taxicab text-xl font-bold hover:cursor-pointer hover:bg-lime-400 hover:text-white"
+          >
             LOG OUT
           </a>
         )}
