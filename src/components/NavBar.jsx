@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import {
   renderSignUpButton,
   renderAddDeleteHotel,
@@ -30,9 +30,9 @@ function NavBar() {
 
   return (
     <nav className="hidden h-screen w-1/5 flex-col items-center justify-evenly overflow-hidden border-r py-4 md:flex">
-      <a className="px-4 md:px-6 lg:px-8" href="/">
+      <Link className="px-4 md:px-6 lg:px-8" to="/">
         <img src="Hotelzilla-logo.png" alt="Hotelzilla Logo" />
-      </a>
+      </Link>
       <div className="flex w-full flex-col px-2 pt-12 text-gray-600">
         {renderAddDeleteHotel(role, loggedIn)}
         {renderReserve(loggedIn)}
