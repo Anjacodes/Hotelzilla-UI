@@ -1,6 +1,7 @@
+import { FormatAlignCenter } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import getToday from '../modules/getToday';
 import { getAllCities } from '../redux/city/city';
 import { getHotelsByCity } from '../redux/hotel/hotel-helper';
@@ -22,6 +23,8 @@ const Reserve = ({ token }) => {
   const [reservationDate, setReservationDate] = useState(getToday());
   const [hotelId, setHotelId] = useState(null);
   const [roomTypeId, setRoomTypeId] = useState(null);
+
+  const navigate = useNavigate();
 
   // Get cities and room types from API on component mount => load them to form
   useEffect(() => {
@@ -73,10 +76,11 @@ const Reserve = ({ token }) => {
   }, [createReservationStatus]);
 
   return (
-    <section className="flex h-screen w-full flex-col px-6 py-4">
+    <section className="flex h-screen w-full flex-col px-6 py-4 justify-center items-center pt-[22vh]">
       {createReservationStatus === 'fulfilled' && (
         <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
           Reservation succesfully created!
+          {window.location.reload()}
         </div>
       )}
       {createReservationStatus === 'rejected' && (
@@ -84,10 +88,15 @@ const Reserve = ({ token }) => {
           Ups! Something went wrong
         </div>
       )}
-      <header className="ml-6 mt-6">
-        <h2 className="font-Taxicab text-3xl capitalize">Add Reservation</h2>
+      <img
+          className="md:hidden self-center w-4/12 w-sm-6/12"
+          src="Hotelzilla-logo.png"
+          alt=""
+        />
+      <header>
+        <h2 className="font-Taxicab text-3xl text-gray-800 capitalize">Add Reservation</h2>
       </header>
-      <div className="flex h-full flex-col place-items-center items-center justify-center gap-6 ">
+      <div className="flex h-full flex-col mt-10 gap-6 items-center w-min">
         <article>
           <table cellPadding={4}>
             <tbody>
@@ -184,13 +193,6 @@ const Reserve = ({ token }) => {
               </tr>
             </tbody>
           </table>
-          <button
-            type="button"
-            className="mt-6 rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
-            onClick={handleConfirmation}
-          >
-            Confirm reservation
-          </button>
         </article>
         <article>
           {roomTypeId && (
@@ -208,7 +210,18 @@ const Reserve = ({ token }) => {
             </>
           )}
         </article>
+          <button
+            type="button"
+            className="self-start mt-6 rounded-md bg-lime-400 hover:bg-gray-200 px-4 py-2 font-semibold text-white"
+            onClick={handleConfirmation}
+          >
+            Confirm reservation
+          </button>
       </div>
+      <i
+        className="fa-solid fa-caret-left absolute left-0 bottom-4 rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500 sm:hidden"
+        onClick={() => navigate(-1)}
+      />
     </section>
   );
 };
