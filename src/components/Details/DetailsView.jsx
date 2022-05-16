@@ -69,7 +69,7 @@ function DetailsView({ token }) {
   if (roomDetails.length !== 0) {
     return (
       <div className="h-screen w-full bg-slate-100">
-        <section className="flex justify-evenly items-center h-4/5">
+        <section className="flex md:flex-row flex-col justify-evenly items-center h-4/5">
           {createReservationStatus === 'fulfilled' && (
             <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
               Reservation succesfully created!
@@ -85,22 +85,17 @@ function DetailsView({ token }) {
             className="w-2/5"
             alt="placeholder"
           />
-          <div className="flex flex-col items-end">
+          <div className="flex flex-col md:items-end items-center">
             <h2 className="mb-3 text-3xl font-bold">
               {roomDetails.name.toUpperCase()}
             </h2>
-            <p className="mb-10 text-right">{roomDetails.description}</p>
+            <p className="mb-10 md:text-right">{roomDetails.description}</p>
             <table>
-              <tbody className="text-right">
+              <tbody className="md:text-right">
                 <tr>
                   <td className="py-1 px-4 text-left">Rating:</td>
                   <td className="py-1 px-4">                     
-                    <div className='hidden sm:block'>
-                      {printStars(roomDetails.rating)}
-                    </div>
-                    <div className='block sm:hidden text-center'>
-                      {roomDetails.rating}
-                    </div>
+                    {printStars(roomDetails.rating)}
                   </td>
                 </tr>
                 <tr className="bg-gray-200">
