@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import {
-  renderSignUpButton,
-  renderAddDeleteHotel,
-  renderReserve,
-} from '../modules/conditionalRendering';
 import { logout } from '../modules/auth-module';
 import { loginActions } from '../redux/login/login';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 function NavBar() {
   const { isLoggedIn: loggedIn, role } = useSelector((state) => state.login);
   const [loggedOut, setLoggedOut] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -19,6 +17,7 @@ function NavBar() {
   const logoutHandler = () => {
     logout();
     dispatch(loginActions.resetState());
+    setMenuVisible(!menuVisible);
     setLoggedOut(true);
   };
 
@@ -29,47 +28,126 @@ function NavBar() {
   }, [loggedOut]);
 
   return (
-    <nav className="hidden h-screen w-1/5 flex-col items-center justify-evenly overflow-hidden border-r py-4 md:flex">
-      <Link className="px-4 md:px-6 lg:px-8" to="/">
-        <img src="Hotelzilla-logo.png" alt="Hotelzilla Logo" />
-      </Link>
-      <div className="flex w-full flex-col px-2 pt-12 text-gray-600">
-        {renderAddDeleteHotel(role, loggedIn)}
-        {renderReserve(loggedIn)}
-        {!loggedIn && (
-          <NavLink
-            to="/login"
-            className={({ isActive }) =>
-              isActive
-                ? 'bg-lime-400'
-                : '' +
-                  'mt-8 py-2 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-white'
-            }
-          >
-            LOG IN
-          </NavLink>
+    <>
+      <button
+        type="button"
+        onClick={() => setMenuVisible(!menuVisible)}
+        className="absolute top-2 left-2 z-20 rounded-md border-2 p-1 md:hidden"
+      >
+        {menuVisible ? (
+          <MenuIcon className="h-4 w-4" />
+        ) : (
+          <CloseIcon className="h-4 w-4" />
         )}
-        {loggedIn && (
-          <a
-            onClick={logoutHandler}
-            className="mt-8 py-2 font-Taxicab text-xl font-bold hover:cursor-pointer hover:bg-lime-400 hover:text-white"
-          >
-            LOG OUT
-          </a>
-        )}
-        {renderSignUpButton(loggedIn)}
-      </div>
-      <footer className="mt-auto flex flex-col items-center">
-        <div className="mb-2 flex w-full justify-around">
-          <i className="fa-brands fa-twitter text-gray-600"></i>
-          <i className="fa-brands fa-facebook-f text-gray-600"></i>
-          <i className="fa-brands fa-google-plus-g text-gray-600"></i>
-          <i className="fa-brands fa-vimeo-v text-gray-600"></i>
-          <i className="fa-brands fa-pinterest-p text-gray-600"></i>
+      </button>
+      <nav
+        className={`${
+          menuVisible ? 'hidden' : 'flex'
+        } absolute top-0 left-0 z-10 h-screen w-3/5 flex-col items-center justify-evenly overflow-hidden border-r bg-white py-4 pl-2 md:static md:flex md:w-1/5`}
+      >
+        <Link
+          onClick={() => setMenuVisible(!menuVisible)}
+          className="px-4 md:px-6 lg:px-8"
+          to="/"
+        >
+          <img src="Hotelzilla-logo.png" alt="Hotelzilla Logo" />
+        </Link>
+        <div className="flex w-full flex-col pl-2 pt-12 text-gray-600">
+          {role === 'Admin' && loggedIn && (
+            <>
+              <NavLink
+                to="/add-hotel"
+                onClick={() => setMenuVisible(!menuVisible)}
+                className={({ isActive }) =>
+                  (isActive ? 'bg-lime-400 text-slate-50' : '') +
+                  ' py-2 pl-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
+                }
+              >
+                ADD HOTEL
+              </NavLink>
+              <NavLink
+                to="/delete-hotel"
+                onClick={() => setMenuVisible(!menuVisible)}
+                className={({ isActive }) =>
+                  (isActive ? 'bg-lime-400 text-slate-50' : '') +
+                  ' py-2 pl-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
+                }
+              >
+                DELETE HOTEL
+              </NavLink>
+            </>
+          )}
+          {!loggedIn && (
+            <>
+              <NavLink
+                to="/login"
+                onClick={() => setMenuVisible(!menuVisible)}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'bg-lime-400'
+                    : '' +
+                      'mt-8 py-2 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-white'
+                }
+              >
+                LOG IN
+              </NavLink>
+              <NavLink
+                to="/register"
+                onClick={() => setMenuVisible(!menuVisible)}
+                className={({ isActive }) =>
+                  isActive
+                    ? 'bg-lime-400 text-slate-50'
+                    : '' + 'py-2 font-Taxicab text-xl font-bold'
+                }
+              >
+                SIGN UP
+              </NavLink>
+            </>
+          )}
+          {loggedIn && (
+            <>
+              <NavLink
+                to="/reserve"
+                onClick={() => setMenuVisible(!menuVisible)}
+                className={({ isActive }) =>
+                  (isActive ? 'bg-lime-400 text-slate-50' : '') +
+                  ' py-2 pl-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
+                }
+              >
+                RESERVE
+              </NavLink>
+              <NavLink
+                to="/reservations"
+                onClick={() => setMenuVisible(!menuVisible)}
+                className={({ isActive }) =>
+                  (isActive ? 'bg-lime-400 text-slate-50' : '') +
+                  ' py-2 pl-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
+                }
+              >
+                MY RESERVATIONS
+              </NavLink>
+              <button
+                type="button"
+                onClick={logoutHandler}
+                className="mt-6 py-2 pl-2 text-left font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50"
+              >
+                LOG OUT
+              </button>
+            </>
+          )}
         </div>
-        <p className="text-xs text-gray-600">©2022 Hotelzilla</p>
-      </footer>
-    </nav>
+        <footer className="mt-auto flex flex-col items-center">
+          <div className="mb-2 flex w-full justify-around">
+            <i className="fa-brands fa-twitter text-gray-600"></i>
+            <i className="fa-brands fa-facebook-f text-gray-600"></i>
+            <i className="fa-brands fa-google-plus-g text-gray-600"></i>
+            <i className="fa-brands fa-vimeo-v text-gray-600"></i>
+            <i className="fa-brands fa-pinterest-p text-gray-600"></i>
+          </div>
+          <p className="text-xs text-gray-600">©2022 Hotelzilla</p>
+        </footer>
+      </nav>
+    </>
   );
 }
 
