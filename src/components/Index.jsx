@@ -51,7 +51,7 @@ function Index() {
     <div className="h-screen flex items-center">
       <div className="flex justify-center items-center">
         <i className={`h-[50px] py-4 px-6 bg-gray-200 rounded-r-full fa-solid fa-caret-left text-slate-50 ${inactiveDown ? "hover:not" : "hover:bg-lime-400"}`} onClick={handlePageDown}/>
-        <div className="grid grid-cols-3 grid-rows-1 gap-3 p-5">
+        <div className="grid md:grid-cols-3 md:grid-rows-1 grid-cols-1 gap-3 p-5">
           {currentHotels.map((hotel) => (
             <HotelItem key={hotel.id} hotel={hotel} />
           ))}
