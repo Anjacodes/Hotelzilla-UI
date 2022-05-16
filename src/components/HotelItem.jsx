@@ -9,7 +9,6 @@ function HotelItem({ hotel }) {
     <Link to={`/${hotel.id}`}>
       {<div className="flex flex-col items-center gap-1">
       <img
-        className="w-8/12 self-center"
         src={
           hotel.image
             ? `${hostURL}${hotel.image.url}`

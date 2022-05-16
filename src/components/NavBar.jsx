@@ -29,15 +29,14 @@ function NavBar() {
   }, [loggedOut])
 
   return (
-    <nav className="flex h-screen w-[20vw] flex-col items-center justify-evenly overflow-hidden border-r py-4">
-      <a href="/">
+    <nav className="flex h-screen flex-col items-center justify-evenly overflow-hidden border-r py-4">
+      <a className="px-4 md:px-6 lg:px-8" href="/">
         <img
           src="Hotelzilla-logo.png"
           alt="Hotelzilla Logo"
-          className="h-[25vh]"
         />
       </a>
-      <div className="mt-12 ml-[50%] flex w-full flex-col text-gray-600">
+      <div className="pt-12 px-2 w-full flex flex-col text-gray-600">
         {renderAddDeleteHotel(role, loggedIn)}
         {renderReserve(loggedIn)}
         {!loggedIn && (

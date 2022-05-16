@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { postHotelAsync } from '../redux/hotel/hotel-helper';
+import { addHotel } from '../redux/hotel/hotel';
 import { getAllCities } from '../redux/city/city';
 
 const AddHotel = () => {
@@ -42,16 +42,14 @@ const AddHotel = () => {
       formData.append('image', newHotel.image);
       formData.append('city_id', newHotel.city);
 
-      await postHotelAsync(token, formData);
-
-      navigate('/', { replace: true });
+      dispatch(addHotel({hotel: formData, token, goToHome: () => navigate('/', { replace: true })}))
     } else {
       document.querySelector('#city-error').classList.remove('hidden');
     }
   };
 
   return (
-    <div className="flex w-screen h-screen bg-gray-200 justify-center items-center">
+    <div className="flex bg-gray-200 justify-center items-center h-screen">
       <form
         onSubmit={submitHandler}
         className="flex flex-col gap-3 items-end p-9 w-sm-3/4"
