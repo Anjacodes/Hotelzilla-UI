@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../redux/login/login';
@@ -30,9 +30,11 @@ const Login = () => {
 
   const { isLoggedIn, error } = useSelector((state) => state.login);
 
-  if (isLoggedIn) {
-    navigate('/', { replace: true });
-  }
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/', { replace: true });
+    }
+  }, [isLoggedIn])
 
   if (error) {
     document.querySelector('#login-error').classList.remove('hidden');

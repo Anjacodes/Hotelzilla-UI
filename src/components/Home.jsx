@@ -4,9 +4,13 @@ import NavBar from './NavBar';
 
 const Home = () => {
   return (
-    <div className='flex'>
-      <NavBar />
-      <Outlet />
+    <div className='flex w-screen'>
+      <div className="w-1/5 sm:block hidden">
+        <NavBar />
+      </div>
+      <div className="md:w-4/5 w-full">
+        <Outlet />
+      </div>
     </div>
   )
 };
