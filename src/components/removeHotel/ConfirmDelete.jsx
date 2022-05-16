@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Cancel, CheckCircle } from '@mui/icons-material';
 
 const ConfirmDelete = ({ visible, onOk, onCancel, hotel }) => {
   const handleVisible = () => {
@@ -10,32 +11,39 @@ const ConfirmDelete = ({ visible, onOk, onCancel, hotel }) => {
   return (
     <div
       className={
-        handleVisible() + 'bg-black/20 absolute top-0 left-0 w-screen h-screen'
-      }>
-      <section className="bg-slate-50 mt-[10%] mx-[10%] xl:mx-[25%] flex flex-col relative ">
-        <h3 className="font-Taxicab text-xl border-b-2 px-4 py-2">
+        handleVisible() + 'absolute top-0 left-0 h-screen w-screen bg-black/20'
+      }
+    >
+      <section className="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:mx-[25%] ">
+        <h3 className="border-b-2 px-4 py-2 font-Taxicab text-xl">
           Please confirm:
         </h3>
         <i
           class="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
-          onClick={onCancel}></i>
+          onClick={onCancel}
+        ></i>
 
-        <p className="px-6 py-4 text-black text-lg">
-          Are you sure you want to delete {hotel.name}?
+        <p className="px-6 py-4 text-lg text-black">
+          Are you sure you want to delete <strong>{hotel.name}</strong> and all
+          its related information?
         </p>
 
-        <div className="flex gap-4 py-4 justify-end mt-6 px-4 border-t-2">
+        <div className="mt-6 flex flex-col justify-end gap-4 border-t-2 py-4 px-4 sm:flex-row">
           <button
-            className="px-4 py-2 rounded-md text-white hover:bg-green-300 hover:text-green-800 font-semibold bg-green-600"
+            className="flex items-center justify-center gap-2 rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800 dark:text-white"
             type="button"
-            onClick={onOk}>
-            Sure
+            onClick={onOk}
+          >
+            <>Confirm</>
+            <CheckCircle />
           </button>
           <button
-            className="px-4 py-2 rounded-md text-white hover:bg-red-300 hover:text-red-800 font-semibold bg-red-600"
+            className="flex items-center justify-center gap-2 rounded-md bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-300 hover:text-red-800"
             type="button"
-            onClick={onCancel}>
-            Cancel
+            onClick={onCancel}
+          >
+            <>Cancel</>
+            <Cancel />
           </button>
         </div>
       </section>
