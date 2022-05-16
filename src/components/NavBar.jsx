@@ -22,6 +22,10 @@ function NavBar() {
   };
 
   useEffect(() => {
+    setMenuVisible(false);
+  }, []);
+
+  useEffect(() => {
     if (loggedOut) {
       navigate('/', { replace: true });
     }
@@ -35,18 +39,18 @@ function NavBar() {
         className="absolute top-2 left-2 z-20 rounded-md border-2 p-1 md:hidden"
       >
         {menuVisible ? (
-          <MenuIcon className="h-4 w-4" />
-        ) : (
           <CloseIcon className="h-4 w-4" />
+        ) : (
+          <MenuIcon className="h-4 w-4" />
         )}
       </button>
       <nav
         className={`${
-          menuVisible ? 'hidden' : 'flex'
+          menuVisible ? 'flex' : 'hidden'
         } absolute top-0 left-0 z-10 h-screen w-3/5 flex-col items-center justify-evenly overflow-hidden border-r bg-white py-4 pl-2 md:static md:flex md:w-1/5`}
       >
         <Link
-          onClick={() => setMenuVisible(!menuVisible)}
+          onClick={() => setMenuVisible(false)}
           className="px-4 md:px-6 lg:px-8"
           to="/"
         >
@@ -57,7 +61,7 @@ function NavBar() {
             <>
               <NavLink
                 to="/add-hotel"
-                onClick={() => setMenuVisible(!menuVisible)}
+                onClick={() => setMenuVisible(false)}
                 className={({ isActive }) =>
                   (isActive ? 'bg-lime-400 text-slate-50' : '') +
                   ' py-2 pl-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
@@ -67,7 +71,7 @@ function NavBar() {
               </NavLink>
               <NavLink
                 to="/delete-hotel"
-                onClick={() => setMenuVisible(!menuVisible)}
+                onClick={() => setMenuVisible(false)}
                 className={({ isActive }) =>
                   (isActive ? 'bg-lime-400 text-slate-50' : '') +
                   ' py-2 pl-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
@@ -81,7 +85,7 @@ function NavBar() {
             <>
               <NavLink
                 to="/login"
-                onClick={() => setMenuVisible(!menuVisible)}
+                onClick={() => setMenuVisible(false)}
                 className={({ isActive }) =>
                   isActive
                     ? 'bg-lime-400'
@@ -93,7 +97,7 @@ function NavBar() {
               </NavLink>
               <NavLink
                 to="/register"
-                onClick={() => setMenuVisible(!menuVisible)}
+                onClick={() => setMenuVisible(false)}
                 className={({ isActive }) =>
                   isActive
                     ? 'bg-lime-400 text-slate-50'
@@ -108,7 +112,7 @@ function NavBar() {
             <>
               <NavLink
                 to="/reserve"
-                onClick={() => setMenuVisible(!menuVisible)}
+                onClick={() => setMenuVisible(false)}
                 className={({ isActive }) =>
                   (isActive ? 'bg-lime-400 text-slate-50' : '') +
                   ' py-2 pl-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
@@ -118,7 +122,7 @@ function NavBar() {
               </NavLink>
               <NavLink
                 to="/reservations"
-                onClick={() => setMenuVisible(!menuVisible)}
+                onClick={() => setMenuVisible(false)}
                 className={({ isActive }) =>
                   (isActive ? 'bg-lime-400 text-slate-50' : '') +
                   ' py-2 pl-2 font-[Taxicab] text-xl font-bold  hover:bg-lime-400 hover:text-slate-50'
