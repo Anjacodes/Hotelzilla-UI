@@ -8,14 +8,16 @@ function HotelItem({ hotel }) {
   return (
     <Link to={`/${hotel.id}`}>
       {<div className="flex flex-col items-center gap-1">
-      <img
-        src={
-          hotel.image
-            ? `${hostURL}${hotel.image.url}`
-            : `http://via.placeholder.com/640x360`
-        }
-        alt={hotel.name}
-      />
+      <div className="w-3/6 md:w-auto">
+        <img
+          src={
+            hotel.image
+              ? `${hostURL}${hotel.image.url}`
+              : `http://via.placeholder.com/640x360`
+          }
+          alt={hotel.name}
+        />
+      </div>
       <div className="flex flex-col gap-3 items-center">
         <div>{hotel.name}</div>
         <div className="text-center">{hotel.description}</div>

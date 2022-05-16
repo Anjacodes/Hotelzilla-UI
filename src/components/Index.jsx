@@ -48,15 +48,15 @@ function Index() {
   }
 
   return (
-    <div className="h-screen flex items-center">
-      <div className="flex justify-center items-center">
-        <i className={`h-[50px] py-4 px-6 bg-gray-200 rounded-r-full fa-solid fa-caret-left text-slate-50 ${inactiveDown ? "hover:not" : "hover:bg-lime-400"}`} onClick={handlePageDown}/>
-        <div className="grid grid-cols-3 grid-rows-1 gap-3 p-5">
+    <div className="flex items-center">
+      <div className="flex justify-center items-center md:h-screen">
+        <i className={`h-[50px] absolute md:left-[20%] left-0 py-4 px-6 bg-gray-200 rounded-r-full fa-solid fa-caret-left text-slate-50 ${inactiveDown ? "hover:not" : "hover:bg-lime-400"}`} onClick={handlePageDown}/>
+        <div className="grid md:grid-cols-3 md:grid-rows-1 grid-cols-1 gap-3 p-5 w-10/12">
           {currentHotels.map((hotel) => (
             <HotelItem key={hotel.id} hotel={hotel} />
           ))}
         </div>
-        <i className={`h-[50px] py-4 px-6 bg-lime-400 rounded-l-full fa-solid fa-caret-right text-slate-50 ${inactiveUp ? "hover:not" : "hover:bg-gray-200"}`} onClick={handlePageUp}/>
+        <i className={`h-[50px] absolute right-0 py-4 px-6 bg-lime-400 rounded-l-full fa-solid fa-caret-right text-slate-50 ${inactiveUp ? "hover:not" : "hover:bg-gray-200"}`} onClick={handlePageUp}/>
       </div>
     </div>
   );

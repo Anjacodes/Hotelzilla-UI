@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../redux/login/login';
 import LoginBackButton from './navigation/LoginBackButton';
+import { NavLink } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -46,14 +47,18 @@ const Login = () => {
       <LoginBackButton />
       <form
         onSubmit={submitHandler}
-        className="w-sm-3/4 flex flex-col items-end gap-2 p-9"
+        className="w-sm-3/4 flex flex-col gap-2 p-9"
       >
-        <img
-          className="w-sm-6/12 w-4/12 self-center"
-          src="Hotelzilla-logo.png"
-          alt=""
-        />
-        <h2 className="w-full text-center text-3xl">Login</h2>
+        <div className="w-full flex justify-center">
+          <div className="w-7/12 sm:w-6/12 md:w-5/12 self-center px-5">
+            <img
+              className="self-center"
+              src="Hotelzilla-logo.png"
+              alt=""
+            />
+          </div>
+        </div>
+        <h2 className="w-full text-center font-Taxicab text-3xl capitalize text-gray-800">Login</h2>
         <div className="w-full">
           <label htmlFor="email">Email</label>
           <input
@@ -85,10 +90,16 @@ const Login = () => {
         </p>
         <button
           type="submit"
-          className="focus:shadow-outline appearance-none rounded border bg-blue-500 py-2 px-3 leading-tight text-white focus:outline-none"
+          className="focus:shadow-outline appearance-none rounded border py-2 px-3 leading-tight bg-lime-400 text-slate-50 hover:bg-lime-500 focus:outline-none self-end"
         >
           Login
         </button>
+        <p className="text-center text-gray-800 pt-6">
+          Don't have an account?&nbsp;
+          <NavLink to="/register" className="focus:shadow-outline appearance-none rounded border py-2 px-3 leading-tight bg-blue-400 text-slate-50 hover:bg-blue-500 focus:outline-none self-end">
+            Sign up 
+          </NavLink>
+        </p>
       </form>
     </div>
   );

@@ -69,7 +69,7 @@ function DetailsView({ token }) {
   if (roomDetails.length !== 0) {
     return (
       <div className="h-screen w-full bg-slate-100">
-        <section className="flex justify-evenly items-center h-4/5">
+        <section className="flex md:flex-row flex-col justify-evenly items-center h-4/5">
           {createReservationStatus === 'fulfilled' && (
             <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
               Reservation succesfully created!
@@ -80,31 +80,27 @@ function DetailsView({ token }) {
               Ups! Something went wrong
             </div>
           )}
-          <img
-            src={handleImage(roomDetails.image)}
-            className="w-2/5"
-            alt="placeholder"
-          />
-          <div className="flex flex-col items-end">
-            <h2 className="mb-3 text-3xl font-bold">
+          <div className="sm:w-2/5 w-3/5">
+            <img
+              src={handleImage(roomDetails.image)}
+              alt="placeholder"
+            />
+          </div>
+          <div className="flex flex-col md:items-end items-center">
+            <h2 className="mb-3 font-bold font-Taxicab text-3xl capitalize text-gray-800">
               {roomDetails.name.toUpperCase()}
             </h2>
-            <p className="mb-10 text-right">{roomDetails.description}</p>
+            <p className="mb-10 md:text-right">{roomDetails.description}</p>
             <table>
-              <tbody className="text-right">
+              <tbody className="md:text-right">
                 <tr>
                   <td className="py-1 px-4 text-left">Rating:</td>
                   <td className="py-1 px-4">                     
-                    <div className='hidden sm:block'>
-                      {printStars(roomDetails.rating)}
-                    </div>
-                    <div className='block sm:hidden text-center'>
-                      {roomDetails.rating}
-                    </div>
+                    {printStars(roomDetails.rating)}
                   </td>
                 </tr>
                 <tr className="bg-gray-200">
-                  <td className="py-1 px-4 text-left">City:</td>
+                  <td className="py-1 px-4 text-left">Country:</td>
                   <td className="py-1 px-4">{roomDetails.city.name}</td>
                 </tr>
               </tbody>
@@ -129,8 +125,8 @@ function DetailsView({ token }) {
           </div>
         </section>
         <i
-          className="fa-solid fa-caret-left fixed rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500"
-          onClick={() => navigateTo('/')}
+          className="absolute left-0 bottom-4 md:hidden fa-solid fa-caret-left rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500"
+          onClick={() => navigateTo(-1)}
         />
       </div>
     );
