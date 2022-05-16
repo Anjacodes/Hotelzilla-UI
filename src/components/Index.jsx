@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import HotelItem from './HotelItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink } from 'react-router-dom';
 import { getAllHotels } from '../redux/hotel/hotel';
 
 function Index() {
@@ -37,7 +36,7 @@ function Index() {
 
   // Change pages
   const handlePageUp = () => {
-    if (indexOfLastHotel < hotels.length-1) {
+    if (indexOfLastHotel < hotels.length) {
       setCurrentPage((page) => page +1);
     }
   }
@@ -49,27 +48,17 @@ function Index() {
   }
 
   return (
-    <>
-      <div className="flex flex-col w-[80vw] justify-center">
-        <div className="flex justify-end p-5 pb-12">
-          {role === 'Admin' && (
-            <NavLink
-              to="/add-hotel"
-              className="bg-lime-400 px-3 py-2 text-white"
-            >
-              Add Hotel
-            </NavLink>
-          )}
-        </div>
+    <div className="h-screen flex items-center">
+      <div className="flex justify-center items-center">
+        <i className={`h-[50px] py-4 px-6 bg-gray-200 rounded-r-full fa-solid fa-caret-left text-slate-50 ${inactiveDown ? "hover:not" : "hover:bg-lime-400"}`} onClick={handlePageDown}/>
         <div className="grid grid-cols-3 grid-rows-1 gap-3 p-5">
           {currentHotels.map((hotel) => (
             <HotelItem key={hotel.id} hotel={hotel} />
           ))}
         </div>
+        <i className={`h-[50px] py-4 px-6 bg-lime-400 rounded-l-full fa-solid fa-caret-right text-slate-50 ${inactiveUp ? "hover:not" : "hover:bg-gray-200"}`} onClick={handlePageUp}/>
       </div>
-      <i className={`fixed left-[20vw] top-[50vh] py-4 px-6 bg-gray-200 rounded-r-full fa-solid fa-caret-left text-slate-50 ${inactiveDown ? "hover:not" : "hover:bg-lime-400"}`} onClick={handlePageDown}/>
-      <i className={`fixed right-0 top-[50vh] py-4 px-6 bg-lime-400 rounded-l-full fa-solid fa-caret-right text-slate-50 ${inactiveUp ? "hover:not" : "hover:bg-gray-200"}`} onClick={handlePageUp}/>
-    </>
+    </div>
   );
 }
 
