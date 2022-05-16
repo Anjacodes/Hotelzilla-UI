@@ -3,17 +3,23 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import getAllHotelsAsync, {
   deleteHotel,
   getHotelsByCity,
+  postHotelAsync,
 } from './hotel-helper';
 
 const initialState = {
   all: [],
   loading: false,
   deleteStatus: '',
+  addStatus: '',
   error: '',
   hotelsByCity: [],
 };
 
 export const getAllHotels = createAsyncThunk('hotels', async () => getAllHotelsAsync());
+export const addHotel = createAsyncThunk('add-hotel', async ({ token, hotel, goToHome }) => {
+  await postHotelAsync(token, hotel);
+  goToHome();
+});
 
 const hotelSlice = createSlice({
   name: 'hotel',
@@ -37,6 +43,16 @@ const hotelSlice = createSlice({
     [getAllHotels.rejected]: (state, action) => {
       state.loading = false;
       state.error = action.error;
+    },
+    [addHotel.pending]: (state) => {
+      state.addStatus = 'pending';
+    },
+    [addHotel.fulfilled]: (state, { payload }) => {
+      state.addStatus = 'fulfilled';
+      state.all.push(payload);
+    },
+    [addHotel.rejected]: (state) => {
+      state.addStatus = 'rejected';
     },
     [deleteHotel.rejected]: (state) => {
       state.deleteStatus = 'rejected';
