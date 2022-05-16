@@ -80,13 +80,14 @@ function DetailsView({ token }) {
               Ups! Something went wrong
             </div>
           )}
-          <img
-            src={handleImage(roomDetails.image)}
-            className="w-2/5"
-            alt="placeholder"
-          />
+          <div className="sm:w-2/5 w-3/5">
+            <img
+              src={handleImage(roomDetails.image)}
+              alt="placeholder"
+            />
+          </div>
           <div className="flex flex-col md:items-end items-center">
-            <h2 className="mb-3 text-3xl font-bold">
+            <h2 className="mb-3 font-bold font-Taxicab text-3xl capitalize text-gray-800">
               {roomDetails.name.toUpperCase()}
             </h2>
             <p className="mb-10 md:text-right">{roomDetails.description}</p>
@@ -99,7 +100,7 @@ function DetailsView({ token }) {
                   </td>
                 </tr>
                 <tr className="bg-gray-200">
-                  <td className="py-1 px-4 text-left">City:</td>
+                  <td className="py-1 px-4 text-left">Country:</td>
                   <td className="py-1 px-4">{roomDetails.city.name}</td>
                 </tr>
               </tbody>
@@ -124,8 +125,8 @@ function DetailsView({ token }) {
           </div>
         </section>
         <i
-          className="fa-solid fa-caret-left fixed rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500"
-          onClick={() => navigateTo('/')}
+          className="absolute left-0 bottom-4 md:hidden fa-solid fa-caret-left rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500"
+          onClick={() => navigateTo(-1)}
         />
       </div>
     );

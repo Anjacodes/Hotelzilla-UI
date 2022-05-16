@@ -58,7 +58,7 @@ const Login = () => {
             />
           </div>
         </div>
-        <h2 className="w-full text-center text-3xl text-gray-800">Login</h2>
+        <h2 className="w-full text-center font-Taxicab text-3xl capitalize text-gray-800">Login</h2>
         <div className="w-full">
           <label htmlFor="email">Email</label>
           <input
@@ -94,7 +94,7 @@ const Login = () => {
         >
           Login
         </button>
-        <p className="text-center text-gray-800">
+        <p className="text-center text-gray-800 pt-6">
           Don't have an account?&nbsp;
           <NavLink to="/register" className="focus:shadow-outline appearance-none rounded border py-2 px-3 leading-tight bg-blue-400 text-slate-50 hover:bg-blue-500 focus:outline-none self-end">
             Sign up 
