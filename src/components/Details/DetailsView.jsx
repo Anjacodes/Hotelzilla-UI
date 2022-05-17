@@ -92,7 +92,7 @@ function DetailsView({ token }) {
                 <tr>
                   <td className="py-1 px-4 text-left">Rating:</td>
                   <td className="py-1 px-4">
-                    {roomDetails.rating} of 5
+                    {printStars(roomDetails.rating)}
                   </td>
                 </tr>
                 <tr className="bg-gray-200">
