@@ -114,7 +114,7 @@ const Reserve = ({ token }) => {
                     defaultValue={'defaultSelect'}
                   >
                     <option value="defaultSelect" disabled>
-                      Select country:
+                      Select a country:
                     </option>
                     {cities.map((city) => (
                       <option key={city.key} value={city.id}>

@@ -9,6 +9,7 @@ import {
   resetCreateReservationStatus,
 } from '../../redux/reservations/reservationsSlice';
 import { getRoomTypes } from '../../redux/roomTypes/roomTypesSlice';
+import BackButton from '../navigation/BackButton';
 import ReservationModal from './ReservationModal';
 
 function DetailsView({ token }) {
@@ -46,7 +47,7 @@ function DetailsView({ token }) {
 
   // handle alert after reservation creation
   const { createReservationStatus } = useSelector(
-    (state) => state.reservations,
+    (state) => state.reservations
   );
   useEffect(() => {
     if (
@@ -68,8 +69,8 @@ function DetailsView({ token }) {
 
   if (roomDetails.length !== 0) {
     return (
-      <div className="h-screen w-full bg-slate-100 px-8">
-        <section className="flex md:flex-row flex-col justify-evenly items-center h-4/5">
+      <div className="h-screen w-full bg-slate-100">
+        <section className="flex h-4/5 flex-col items-center justify-evenly md:flex-row">
           {createReservationStatus === 'fulfilled' && (
             <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
               Reservation succesfully created!
@@ -80,14 +81,11 @@ function DetailsView({ token }) {
               Ups! Something went wrong
             </div>
           )}
-          <div className="sm:w-2/5 w-3/5">
-            <img
-              src={handleImage(roomDetails.image)}
-              alt="placeholder"
-            />
+          <div className="w-3/5 sm:w-2/5">
+            <img src={handleImage(roomDetails.image)} alt="placeholder" />
           </div>
-          <div className="flex flex-col md:items-end items-center">
-            <h2 className="mb-3 font-bold font-Taxicab text-3xl capitalize text-gray-800">
+          <div className="flex flex-col items-center md:items-end">
+            <h2 className="mb-3 font-Taxicab text-3xl font-bold capitalize text-gray-800">
               {roomDetails.name.toUpperCase()}
             </h2>
             <p className="mb-10 md:text-right">{roomDetails.description}</p>
@@ -95,7 +93,7 @@ function DetailsView({ token }) {
               <tbody className="md:text-right">
                 <tr>
                   <td className="py-1 px-4 text-left">Rating:</td>
-                  <td className="py-1 px-4">                     
+                  <td className="py-1 px-4">
                     {printStars(roomDetails.rating)}
                   </td>
                 </tr>
@@ -109,7 +107,8 @@ function DetailsView({ token }) {
               <>
                 <button
                   className="mt-12 rounded-full bg-lime-400 py-3 px-4 text-slate-50 hover:bg-lime-500"
-                  onClick={openModal}>
+                  onClick={openModal}
+                >
                   <i className="fa-solid fa-calendar-check mr-2"></i>Reserve
                   <i className="fa-solid fa-circle-chevron-right ml-4"></i>
                 </button>
@@ -124,10 +123,7 @@ function DetailsView({ token }) {
             )}
           </div>
         </section>
-        <i
-          className="absolute left-0 bottom-4 md:hidden fa-solid fa-caret-left rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500"
-          onClick={() => navigateTo(-1)}
-        />
+        <BackButton />
       </div>
     );
   }

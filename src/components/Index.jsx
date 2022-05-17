@@ -9,7 +9,7 @@ function Index() {
   const dispatch = useDispatch();
 
   let [currentPage, setCurrentPage] = useState(1);
-  let [ hotelsPerPage ] = useState(3);
+  let [hotelsPerPage] = useState(3);
   const [inactiveUp, setInactiveUp] = useState(true);
   const [inactiveDown, setInactiveDown] = useState(false);
 
@@ -23,40 +23,50 @@ function Index() {
 
   useEffect(() => {
     if (currentPage === 1) {
-      setInactiveDown(true)
+      setInactiveDown(true);
     } else {
-      setInactiveDown(false)
+      setInactiveDown(false);
     }
-    if (indexOfLastHotel < hotels.length-1) {
-      setInactiveUp(false)
+    if (indexOfLastHotel < hotels.length - 1) {
+      setInactiveUp(false);
     } else {
-      setInactiveUp(true)
+      setInactiveUp(true);
     }
-  }, [currentHotels])
+  }, [currentHotels]);
 
   // Change pages
   const handlePageUp = () => {
     if (indexOfLastHotel < hotels.length) {
-      setCurrentPage((page) => page +1);
+      setCurrentPage((page) => page + 1);
     }
-  }
+  };
 
   const handlePageDown = () => {
     if (currentPage > 1) {
-      setCurrentPage((page) => page -1)
+      setCurrentPage((page) => page - 1);
     }
-  }
+  };
 
   return (
     <div className="flex items-center">
-      <div className="flex justify-center items-center md:h-screen">
-        <i className={`h-[50px] absolute md:left-[20%] left-0 py-4 px-6 bg-gray-200 rounded-r-full fa-solid fa-caret-left text-slate-50 ${inactiveDown ? "hover:not" : "hover:bg-lime-400"}`} onClick={handlePageDown}/>
-        <div className="grid md:grid-cols-3 md:grid-rows-1 grid-cols-1 gap-3 p-5 w-10/12">
+      <div className="flex h-screen items-center justify-center">
+        <i
+          className={`fa-solid fa-caret-left absolute left-0 h-[50px] rounded-r-full bg-gray-200 py-4 px-6 text-slate-50 md:left-[20%] ${
+            inactiveDown ? 'hover:not' : 'hover:bg-lime-400'
+          }`}
+          onClick={handlePageDown}
+        />
+        <div className="grid w-10/12 grid-cols-1 gap-3 p-5 md:grid-cols-3 md:grid-rows-1">
           {currentHotels.map((hotel) => (
             <HotelItem key={hotel.id} hotel={hotel} />
           ))}
         </div>
-        <i className={`h-[50px] absolute right-0 py-4 px-6 bg-lime-400 rounded-l-full fa-solid fa-caret-right text-slate-50 ${inactiveUp ? "hover:not" : "hover:bg-gray-200"}`} onClick={handlePageUp}/>
+        <i
+          className={`fa-solid fa-caret-right absolute right-0 h-[50px] rounded-l-full bg-lime-400 py-4 px-6 text-slate-50 ${
+            inactiveUp ? 'hover:not' : 'hover:bg-gray-200'
+          }`}
+          onClick={handlePageUp}
+        />
       </div>
     </div>
   );
