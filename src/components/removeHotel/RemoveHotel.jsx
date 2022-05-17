@@ -56,32 +56,38 @@ const RemoveHotel = () => {
           Ups! Something went wrong
         </div>
       )}
-      <section className="flex h-screen">
-        <div className="flex flex-col items-center gap-3 p-9">
-          <img className="w-4/12" src="Hotelzilla-logo.png" alt="" />
-          <h2 className="text-2xl capitalize">Delete hotel</h2>
-          <table className="h-[40vh] overflow-y-auto overscroll-contain">
-            <thead className="font-Taxicab uppercase">
-              <tr>
-                <th className="">Item</th>
-                <th className="">Hotel name</th>
-                <th className="">Action</th>
-              </tr>
-            </thead>
-            <tbody className="h-[40vh] ">
+      <section className="flex h-screen w-full">
+        <div className="flex w-full flex-col items-center gap-3 p-9 md:mt-[22vh] md:p-0">
+          <img className="w-4/12 md:hidden" src="Hotelzilla-logo.png" alt="" />
+          <h2 className="mb-10 text-3xl capitalize text-gray-800">
+            Delete hotel
+          </h2>
+          <div className="flex w-full flex-col md:w-3/5">
+            <div className="flex bg-gray-500 font-Taxicab text-lg uppercase text-slate-50 dark:bg-gray-700 dark:text-gray-400">
+              <div className="w-16 py-3 pl-6">Item</div>
+              <div className="grow py-3 pl-6">Hotel name</div>
+              <div className="w-20 py-3 pl-3">Action</div>
+            </div>
+
+            <div className="flex max-h-[40vh] flex-col overflow-y-auto overflow-x-hidden md:max-h-[60vh]">
               {hotels.map((hotel, index) => (
-                <tr key={index} className="even:bg-white">
-                  <td className="py-3 px-6">{index + 1}</td>
-                  <td className="py-3 px-6">{hotel.name}</td>
-                  <td className="py-3 px-6">
-                    <button className="" onClick={() => handleClick(hotel)}>
+                <div className="flex even:bg-white">
+                  <div className="w-16 shrink-0 py-3 pl-6">{index + 1}</div>
+                  <div className="grow overflow-x-auto py-3 pl-6">
+                    {hotel.name}
+                  </div>
+                  <div className="w-20 shrink-0 py-3 pl-6">
+                    <button
+                      className="rounded-md bg-red-500 text-slate-50"
+                      onClick={() => handleClick(hotel)}
+                    >
                       <DeleteForeverIcon />
                     </button>
-                  </td>
-                </tr>
+                  </div>
+                </div>
               ))}
-            </tbody>
-          </table>
+            </div>
+          </div>
           <ConfirmDelete
             visible={modalVisible}
             onOk={handleOk}
