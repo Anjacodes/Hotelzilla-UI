@@ -68,7 +68,7 @@ function DetailsView({ token }) {
 
   if (roomDetails.length !== 0) {
     return (
-      <div className="h-screen w-full bg-slate-100">
+      <div className="h-screen w-full bg-slate-100 px-8">
         <section className="flex md:flex-row flex-col justify-evenly items-center h-4/5">
           {createReservationStatus === 'fulfilled' && (
             <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">

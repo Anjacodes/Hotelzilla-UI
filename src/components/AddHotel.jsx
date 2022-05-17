@@ -88,7 +88,7 @@ const AddHotel = () => {
           />
         </div>
         <div className="w-full">
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">Country</label>
           <select
             name="city"
             onChange={onChangeHandler}
@@ -98,7 +98,7 @@ const AddHotel = () => {
             required
           >
             <option value="defaultSelect" disabled>
-              Select a city:
+              Select a country:
             </option>
             {cities.map((city) => {
               return (

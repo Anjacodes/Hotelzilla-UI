@@ -12,7 +12,7 @@ This web application is a hotel reservation app which allows users to:
 <br>
 
 
-<h2>🧩 Built With</h2>
+## 🧩 Built With
 
 ### Frontend
 - Vite
@@ -21,21 +21,51 @@ This web application is a hotel reservation app which allows users to:
 - Tailwind CSS
 
 ### Backend
-Ruby on Rails
+- Ruby on Rails
+- PostgreSQL
 
 <br>
 
+## Link to API
 
-<h2>📚 Getting Started</h2>
+The API for this project was built with Ruby on Rails. For more information and the documentation, check out the [repository on Github](https://github.com/keroloussamy/Hotelzilla-api)
+
+<br>
+
+## 📸 Impressions
+<br>
+
+### Desktop Views:
+
+<img src="./public/screenshots/Index_desktop.png">
+<img src="./public/screenshots/DetailView_desktop.png">
+<img src="./public/screenshots/addHotel_desktop.png">
+<img src="./public/screenshots/reserve_desktop.png">
+<img src="./public/screenshots/reservations_desktop.png">
+
+### Mobile Views:
+
+
+<br>
+
+## 🚀 Live Demo Link
+
+This project has been deployed with [Netlify](https://www.netlify.com/) and can be viewed [live here](https://hotelzilla.netlify.app/).
+
+<br>
+
+## 📚 Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-<h2>Prerequisites</h2>
+<br>
+
+## Prerequisites
 
 For this project you don't need any aditional tools to run it.
 Be sure to have git set up on your local machine. If you are unfamiliar with the necessary steps, please find a step-by-step guide <a href="https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup" rel="noopener noreferrer">here</a>
 
-<h2>Setup</h2>
+## Setup
 
 Fork a copy to your repository and clone it locally:
 <br>
@@ -99,22 +129,28 @@ LinkedIn: [William Morales](https://www.linkedin.com/in/william-rolando-morales/
 
 <br>
 
-<h2>🤝 Contributing</h2>
+## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
 
 Feel free to check the <a href="https://github.com/microverseinc/readme-template/issues" rel="noopener noreferrer">issues page</a>.
 
-<h2>Show your support</h2>
+<br>
+
+## Show your support
 
 Give a ⭐️ if you like this project!
 
-<!-- <h2>Acknowledgments</h2>
+<br>
 
-Thank you Microverse for your guidance in making a great portfolio for myself! -->
+## Acknowledgments
+
+Original design [Vespa](https://www.behance.net/gallery/26425031/Vespa-Responsive-Redesign/modules/173005583) by [Murat Korkmaz](https://www.behance.net/muratk) on [Behance](https://www.behance.net/)
+
+<br>
 
 <h2>📝 License</h2>
 
 This project is <a href="https://github.com/microverseinc/readme-template/blob/master/MIT.md" rel="noopener noreferrer">MIT</a> licensed.
 
-Copyright (c) 2022 Anja Schmidt
+Copyright (c) 2022 William Rolando Morales, George Magdy, Anja Schmidt
