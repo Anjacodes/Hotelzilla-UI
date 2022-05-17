@@ -5,8 +5,10 @@ import { deleteHotel } from '../../redux/hotel/hotel-helper';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ConfirmDelete from './ConfirmDelete';
 import BackButton from '../navigation/BackButton';
+import { useNavigate } from 'react-router-dom';
 
 const RemoveHotel = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [modalVisible, setmodalVisible] = useState(false);
   const [modalInfo, setModalInfo] = useState({});
@@ -58,7 +60,7 @@ const RemoveHotel = () => {
       )}
       <section className="flex h-screen w-full">
         <div className="flex w-full flex-col items-center gap-3 p-9 md:mt-[22vh] md:p-0">
-          <img className="w-4/12 md:hidden" src="Hotelzilla-logo.png" alt="" />
+          <img className="w-4/12 md:hidden" src="Hotelzilla-logo.png" alt="" onClick={() => navigate("/")} />
           <h2 className="mb-10 text-3xl capitalize text-gray-800">
             Delete hotel
           </h2>

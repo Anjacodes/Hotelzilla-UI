@@ -55,6 +55,7 @@ const Login = () => {
               className="self-center"
               src="Hotelzilla-logo.png"
               alt=""
+              onClick={() => navigate("/")}
             />
           </div>
         </div>

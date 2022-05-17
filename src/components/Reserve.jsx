@@ -10,6 +10,7 @@ import {
   resetCreateReservationStatus,
 } from '../redux/reservations/reservationsSlice';
 import { getRoomTypes } from '../redux/roomTypes/roomTypesSlice';
+import BackButton from './navigation/BackButton';
 
 const Reserve = ({ token }) => {
   const dispatch = useDispatch();
@@ -92,6 +93,7 @@ const Reserve = ({ token }) => {
           className="md:hidden self-center w-4/12 w-sm-6/12"
           src="Hotelzilla-logo.png"
           alt=""
+          onClick={() => navigate("/")}
         />
       <header>
         <h2 className="font-Taxicab text-3xl text-gray-800 capitalize">Add Reservation</h2>
@@ -218,10 +220,7 @@ const Reserve = ({ token }) => {
             Confirm reservation
           </button>
       </div>
-      <i
-        className="fa-solid fa-caret-left absolute left-0 bottom-4 rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500 sm:hidden"
-        onClick={() => navigate(-1)}
-      />
+      <BackButton />
     </section>
   );
 };

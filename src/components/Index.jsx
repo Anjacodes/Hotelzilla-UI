@@ -56,7 +56,7 @@ function Index() {
           }`}
           onClick={handlePageDown}
         />
-        <div className="grid w-10/12 grid-cols-1 gap-3 p-5 md:grid-cols-3 md:grid-rows-1">
+        <div className="grid w-10/12 grid-cols-1 gap-3 p-5 md:grid-cols-3 md:grid-rows-1 sm:">
           {currentHotels.map((hotel) => (
             <HotelItem key={hotel.id} hotel={hotel} />
           ))}

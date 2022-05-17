@@ -70,7 +70,7 @@ function DetailsView({ token }) {
   if (roomDetails.length !== 0) {
     return (
       <div className="h-screen w-full bg-slate-100">
-        <section className="flex h-4/5 flex-col items-center justify-evenly md:flex-row">
+        <section className="flex h-3/5 flex-col items-center justify-evenly md:flex-row px-20 mt-[10rem]">
           {createReservationStatus === 'fulfilled' && (
             <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
               Reservation succesfully created!
@@ -81,9 +81,7 @@ function DetailsView({ token }) {
               Ups! Something went wrong
             </div>
           )}
-          <div className="w-3/5 sm:w-2/5">
-            <img src={handleImage(roomDetails.image)} alt="placeholder" />
-          </div>
+          <img src={handleImage(roomDetails.image)} alt="placeholder" className="w-3/5 sm:w-2/5" />
           <div className="flex flex-col items-center md:items-end">
             <h2 className="mb-3 font-Taxicab text-3xl font-bold capitalize text-gray-800">
               {roomDetails.name.toUpperCase()}
@@ -94,7 +92,7 @@ function DetailsView({ token }) {
                 <tr>
                   <td className="py-1 px-4 text-left">Rating:</td>
                   <td className="py-1 px-4">
-                    {printStars(roomDetails.rating)}
+                    {roomDetails.rating} of 5
                   </td>
                 </tr>
                 <tr className="bg-gray-200">
@@ -122,8 +120,8 @@ function DetailsView({ token }) {
               </>
             )}
           </div>
+          <BackButton />
         </section>
-        <BackButton />
       </div>
     );
   }

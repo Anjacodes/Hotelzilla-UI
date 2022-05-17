@@ -91,7 +91,7 @@ function NavBar() {
                   isActive
                     ? 'bg-lime-400'
                     : '' +
-                      'mt-8 py-2 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-white'
+                      'mt-8 py-2 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-slate-50'
                 }
               >
                 LOG IN
@@ -102,7 +102,7 @@ function NavBar() {
                 className={({ isActive }) =>
                   isActive
                     ? 'bg-lime-400 text-slate-50'
-                    : '' + 'py-2 font-Taxicab text-xl font-bold'
+                    : '' + 'py-2 font-Taxicab text-xl font-bold hover:bg-lime-400 hover:text-slate-50'
                 }
               >
                 SIGN UP

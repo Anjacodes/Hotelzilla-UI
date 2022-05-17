@@ -62,7 +62,7 @@ const SignUp = () => {
       >
         <header className="flex w-full justify-center">
           <div className="w-7/12 self-center px-5 sm:w-6/12 md:w-5/12">
-            <img className="self-center" src="Hotelzilla-logo.png" alt="" />
+            <img className="self-center" src="Hotelzilla-logo.png" alt="" onClick={() => navigate("/")}/>
           </div>
         </header>
 
