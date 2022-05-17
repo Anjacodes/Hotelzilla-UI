@@ -32,6 +32,12 @@ The API for this project was built with Ruby on Rails. For more information and 
 
 <br>
 
+## 🚀 Live Demo Link
+
+This project has been deployed with [Netlify](https://www.netlify.com/) and can be viewed [live here](https://hotelzilla.netlify.app/).
+
+<br>
+
 ## 📸 Impressions
 <br>
 
@@ -43,14 +49,17 @@ The API for this project was built with Ruby on Rails. For more information and 
 <img src="./public/screenshots/reserve_desktop.png">
 <img src="./public/screenshots/reservations_desktop.png">
 
-### Mobile Views:
-
-
 <br>
 
-## 🚀 Live Demo Link
+### Mobile Views:
 
-This project has been deployed with [Netlify](https://www.netlify.com/) and can be viewed [live here](https://hotelzilla.netlify.app/).
+<img src="./public/screenshots/index_mobile.png">
+<img src="./public/screenshots/details_mobile.png">
+<img src="./public/screenshots/navBar_mobile.png">
+<img src="./public/screenshots/add_mobile.png">
+<img src="./public/screenshots/delete_mobile.png">
+
+
 
 <br>
 
