@@ -14,7 +14,7 @@ const ConfirmDelete = ({ visible, onOk, onCancel, hotel }) => {
         handleVisible() + 'absolute top-0 left-0 h-screen w-screen bg-black/20'
       }
     >
-      <section className="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:mx-[25%] ">
+      <section className="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:ml-[30%] ">
         <h3 className="border-b-2 px-4 py-2 font-Taxicab text-xl">
           Please confirm:
         </h3>
