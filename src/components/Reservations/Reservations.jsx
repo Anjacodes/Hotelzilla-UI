@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import printStars from '../../modules/printStars';
 import { fetchUserReservations } from '../../redux/reservations/reservationsSlice';
+import BackButton from '../navigation/BackButton';
 
 function Reservations() {
-  let navigateTo = useNavigate();
-
+  const navigate = useNavigate();
   const { reservations, loading, rejected } = useSelector(
     (state) => state.reservations
   );
@@ -36,6 +36,7 @@ function Reservations() {
           className="w-sm-6/12 w-4/12 self-center md:hidden"
           src="Hotelzilla-logo.png"
           alt=""
+          onClick={() => navigate("/")}
         />
         <h2 className="mb-10 font-Taxicab text-3xl capitalize text-gray-800">
           my reservations
@@ -78,12 +79,9 @@ function Reservations() {
                   );
                 })}
           </div>
-      
+
       </section>
-      <i
-        className="fa-solid fa-caret-left absolute left-0 bottom-4 rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500 sm:hidden"
-        onClick={() => navigateTo(-1)}
-      />
+      <BackButton />
     </div>
   );
 }

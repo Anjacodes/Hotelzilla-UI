@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { addHotel } from '../redux/hotel/hotel';
 import { getAllCities } from '../redux/city/city';
+import BackButton from './navigation/BackButton';
 
 const AddHotel = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,7 @@ const AddHotel = () => {
           className="w-sm-6/12 w-4/12 self-center md:hidden"
           src="Hotelzilla-logo.png"
           alt=""
+          onClick={() => navigate("/")}
         />
         <h2 className="w-full text-center text-3xl text-gray-800">
           Add a New Hotel
@@ -152,10 +154,7 @@ const AddHotel = () => {
           Add
         </button>
       </form>
-      <i
-        className="fa-solid fa-caret-left absolute left-0 bottom-4 rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500 sm:hidden"
-        onClick={() => navigate(-1)}
-      />
+      <BackButton />
     </div>
   );
 };
