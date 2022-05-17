@@ -42,24 +42,32 @@ const AddHotel = () => {
       formData.append('image', newHotel.image);
       formData.append('city_id', newHotel.city);
 
-      dispatch(addHotel({hotel: formData, token, goToHome: () => navigate('/', { replace: true })}))
+      dispatch(
+        addHotel({
+          hotel: formData,
+          token,
+          goToHome: () => navigate('/', { replace: true }),
+        })
+      );
     } else {
       document.querySelector('#city-error').classList.remove('hidden');
     }
   };
 
   return (
-    <div className="pt-[10vh] flex justify-center items-center h-screen">
+    <div className="flex h-screen items-center justify-center pt-[10vh]">
       <form
         onSubmit={submitHandler}
-        className="flex flex-col gap-3 items-end p-9 w-sm-3/4"
+        className="w-sm-3/4 flex flex-col items-end gap-3 p-9"
       >
         <img
-          className="md:hidden self-center w-4/12 w-sm-6/12"
+          className="w-sm-6/12 w-4/12 self-center md:hidden"
           src="Hotelzilla-logo.png"
           alt=""
         />
-        <h2 className="w-full text-center text-3xl text-gray-800">Add a New Hotel</h2>
+        <h2 className="w-full text-center text-3xl text-gray-800">
+          Add a New Hotel
+        </h2>
         <div className="w-full">
           <label htmlFor="name">Name</label>
           <input
@@ -69,7 +77,7 @@ const AddHotel = () => {
             value={newHotel.name}
             onChange={onChangeHandler}
             autoComplete="off"
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
             required
           />
         </div>
@@ -84,21 +92,21 @@ const AddHotel = () => {
             value={newHotel.rating}
             onChange={onChangeHandler}
             autoComplete="off"
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
           />
         </div>
         <div className="w-full">
-          <label htmlFor="city">City</label>
+          <label htmlFor="city">Country</label>
           <select
             name="city"
             onChange={onChangeHandler}
             autoComplete="off"
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
             defaultValue={'defaultSelect'}
             required
           >
             <option value="defaultSelect" disabled>
-              Select a city:
+              Select a country:
             </option>
             {cities.map((city) => {
               return (
@@ -108,7 +116,7 @@ const AddHotel = () => {
               );
             })}
           </select>
-          <p id="city-error" className="w-full text-red-600 hidden">
+          <p id="city-error" className="hidden w-full text-red-600">
             Please enter a valid city name
           </p>
         </div>
@@ -121,7 +129,7 @@ const AddHotel = () => {
             value={newHotel.description}
             onChange={onChangeHandler}
             autoComplete="off"
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
             required
           ></textarea>
         </div>
@@ -133,13 +141,13 @@ const AddHotel = () => {
             accept="image/*"
             multiple={false}
             onChange={onChangeHandler}
-            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
             required
           />
         </div>
         <button
           type="submit"
-          className="bg-lime-400 hover:bg-gray-200 text-white py-2 appearance-none border rounded px-3 leading-tight focus:outline-none focus:shadow-outline"
+          className="focus:shadow-outline appearance-none rounded border bg-lime-400 py-2 px-3 leading-tight text-white hover:bg-gray-200 focus:outline-none"
         >
           Add
         </button>

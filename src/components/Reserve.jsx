@@ -102,7 +102,7 @@ const Reserve = ({ token }) => {
             <tbody>
               <tr>
                 <td>
-                  <label htmlFor="city">City:</label>
+                  <label htmlFor="city">Country:</label>
                 </td>
                 <td>
                   <select
@@ -114,7 +114,7 @@ const Reserve = ({ token }) => {
                     defaultValue={'defaultSelect'}
                   >
                     <option value="defaultSelect" disabled>
-                      Select a city:
+                      Select a country:
                     </option>
                     {cities.map((city) => (
                       <option key={city.key} value={city.id}>
