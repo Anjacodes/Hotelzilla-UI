@@ -9,6 +9,7 @@ import {
   resetCreateReservationStatus,
 } from '../../redux/reservations/reservationsSlice';
 import { getRoomTypes } from '../../redux/roomTypes/roomTypesSlice';
+import BackButton from '../navigation/BackButton';
 import ReservationModal from './ReservationModal';
 
 function DetailsView({ token }) {
@@ -69,7 +70,7 @@ function DetailsView({ token }) {
   if (roomDetails.length !== 0) {
     return (
       <div className="h-screen w-full bg-slate-100">
-        <section className="flex h-4/5 flex-col items-center justify-evenly md:flex-row px-20">
+        <section className="flex h-3/5 flex-col items-center justify-evenly md:flex-row px-20 mt-[10rem]">
           {createReservationStatus === 'fulfilled' && (
             <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
               Reservation succesfully created!
@@ -91,7 +92,7 @@ function DetailsView({ token }) {
                 <tr>
                   <td className="py-1 px-4 text-left">Rating:</td>
                   <td className="py-1 px-4">
-                    {printStars(roomDetails.rating)}
+                    {roomDetails.rating} of 5
                   </td>
                 </tr>
                 <tr className="bg-gray-200">
@@ -119,7 +120,7 @@ function DetailsView({ token }) {
               </>
             )}
           </div>
-          <i className='fa-solid fa-caret-left absolute left-[20vw] bottom-4 rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500' onClick={() => navigateTo(-1)}/>
+          <BackButton />
         </section>
       </div>
     );
