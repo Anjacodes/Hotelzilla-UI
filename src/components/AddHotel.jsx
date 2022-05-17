@@ -55,17 +55,19 @@ const AddHotel = () => {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center">
+    <div className="flex h-screen items-center justify-center pt-[10vh]">
       <form
         onSubmit={submitHandler}
         className="w-sm-3/4 flex flex-col items-end gap-3 p-9"
       >
         <img
-          className="w-sm-6/12 w-4/12 self-center"
+          className="w-sm-6/12 w-4/12 self-center md:hidden"
           src="Hotelzilla-logo.png"
           alt=""
         />
-        <h2 className="w-full text-center text-2xl">Add a New Hotel</h2>
+        <h2 className="w-full text-center text-3xl text-gray-800">
+          Add a New Hotel
+        </h2>
         <div className="w-full">
           <label htmlFor="name">Name</label>
           <input
@@ -75,31 +77,6 @@ const AddHotel = () => {
             value={newHotel.name}
             onChange={onChangeHandler}
             autoComplete="off"
-            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-            required
-          />
-        </div>
-        <div className="w-full">
-          <label htmlFor="description">Description</label>
-          <textarea
-            type="text"
-            name="description"
-            placeholder="Enter hotel description"
-            value={newHotel.description}
-            onChange={onChangeHandler}
-            autoComplete="off"
-            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
-            required
-          ></textarea>
-        </div>
-        <div className="w-full">
-          <label htmlFor="image">Image</label>
-          <input
-            type="file"
-            name="image"
-            accept="image/*"
-            multiple={false}
-            onChange={onChangeHandler}
             className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
             required
           />
@@ -143,13 +120,42 @@ const AddHotel = () => {
             Please enter a valid city name
           </p>
         </div>
+        <div className="w-full">
+          <label htmlFor="description">Description</label>
+          <textarea
+            type="text"
+            name="description"
+            placeholder="Enter hotel description"
+            value={newHotel.description}
+            onChange={onChangeHandler}
+            autoComplete="off"
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
+            required
+          ></textarea>
+        </div>
+        <div className="w-full">
+          <label htmlFor="image">Image</label>
+          <input
+            type="file"
+            name="image"
+            accept="image/*"
+            multiple={false}
+            onChange={onChangeHandler}
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
+            required
+          />
+        </div>
         <button
           type="submit"
-          className="focus:shadow-outline appearance-none rounded border bg-lime-400 py-2 px-3 leading-tight text-white focus:outline-none"
+          className="focus:shadow-outline appearance-none rounded border bg-lime-400 py-2 px-3 leading-tight text-white hover:bg-gray-200 focus:outline-none"
         >
           Add
         </button>
       </form>
+      <i
+        className="fa-solid fa-caret-left absolute left-0 bottom-4 rounded-r-full bg-lime-400 py-4 px-6 text-slate-50 hover:bg-lime-500 sm:hidden"
+        onClick={() => navigate(-1)}
+      />
     </div>
   );
 };
