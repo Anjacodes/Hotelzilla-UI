@@ -116,9 +116,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 👤 *Anja*
 
-GitHub: [@Anjacodes]("https://github.com/Anjacodes")<br>
-Twitter: [@Anja_Schmidt7]("https://twitter.com/Anja_Schmidt7")<br>
-LinkedIn: [Anja Schmidt]("https://www.linkedin.com/in/anja-schmidt7/")<br>
+GitHub: [@Anjacodes](https://github.com/Anjacodes)<br>
+Twitter: [@Anja_Schmidt7](https://twitter.com/Anja_Schmidt7)<br>
+LinkedIn: [Anja Schmidt](https://www.linkedin.com/in/anja-schmidt7/)<br>
 
 <br>
 
