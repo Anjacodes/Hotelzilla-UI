@@ -54,127 +54,129 @@ const SignUp = () => {
   }
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-center">
+    <div className="flex h-screen w-screen items-center justify-center bg-slate-100">
       <LoginBackButton />
-      <section className="-mt-10">
-        <header>
-          <img src="Hotelzilla-logo.png" alt="" width="200" />
-          <h3 className="text-center font-Taxicab text-2xl font-semibold uppercase">
-            Register
-          </h3>
+      <form
+        onSubmit={handleSubmit}
+        className="w-sm-3/4 flex flex-col gap-2 p-9"
+      >
+        <header className="flex w-full justify-center">
+          <div className="w-7/12 self-center px-5 sm:w-6/12 md:w-5/12">
+            <img className="self-center" src="Hotelzilla-logo.png" alt="" />
+          </div>
         </header>
-        <form className="mt-2 flex flex-col gap-2" onSubmit={handleSubmit}>
-          <div className="flex flex-col">
-            <label className="mt-1 text-sm" htmlFor="name">
-              Name:
-            </label>
-            <input
-              className="rounded border px-2 py-1 hover:ring-1"
-              name="name"
-              id="name"
-              type="text"
-              value={form.name}
-              onChange={handleChange}
-              required
-            />
-          </div>
 
-          <div className="flex flex-col">
-            <label className="mt-1 text-sm" htmlFor="username">
-              Username:
-            </label>
-            <input
-              className="rounded border px-2 py-1 hover:ring-1"
-              name="username"
-              id="username"
-              type="text"
-              value={form.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        <h2 className="w-full text-center font-Taxicab text-3xl capitalize text-gray-800">
+          Sign up
+        </h2>
 
-          <div className="flex flex-col">
-            <label className="mt-1 text-sm" htmlFor="email">
-              Email:
-            </label>
-            <input
-              className="rounded border px-2 py-1 hover:ring-1"
-              name="email"
-              id="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        <div className="w-full">
+          <label htmlFor="name">Full Name</label>
+          <input
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
+            name="name"
+            id="name"
+            type="text"
+            value={form.name}
+            onChange={handleChange}
+            placeholder="Enter your full name"
+            required
+          />
+        </div>
 
-          <div className="flex flex-col">
-            <label className="mt-1 text-sm" htmlFor="password">
-              Password:
-            </label>
-            <input
-              className="rounded border px-2 py-1 hover:ring-1"
-              name="password"
-              id="password"
-              type={showPassword ? 'text' : 'password'}
-              value={form.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        <div className="w-full">
+          <label htmlFor="username">Username</label>
+          <input
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
+            name="username"
+            id="username"
+            type="text"
+            value={form.username}
+            onChange={handleChange}
+            placeholder="Enter a username"
+            required
+          />
+        </div>
 
-          <div className="flex items-center justify-between">
-            <label className="text-sm" htmlFor="show-password">
-              Show password?
-            </label>
-            <input
-              className="hover:ring-1"
-              type="checkbox"
-              name="show-password"
-              id="show-password"
-              checked={showPassword}
-              onChange={() => setShowPassword(!showPassword)}
-            />
-          </div>
-          <button
-            className="flex w-full items-center rounded-md bg-green-500 py-1 px-2 font-bold text-white hover:bg-green-300 hover:text-green-800"
-            type="submit"
+        <div className="w-full">
+          <label htmlFor="email">Email</label>
+          <input
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
+            name="email"
+            id="email"
+            type="email"
+            value={form.email}
+            onChange={handleChange}
+            placeholder="Enter your email"
+            required
+          />
+        </div>
+
+        <div className="w-full">
+          <label htmlFor="name">Password</label>
+          <input
+            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 focus:outline-none"
+            name="password"
+            id="password"
+            type={showPassword ? 'text' : 'password'}
+            value={form.password}
+            onChange={handleChange}
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+
+        <div className="flex items-center justify-between">
+          <label className="text-sm" htmlFor="show-password">
+            Show password?
+          </label>
+          <input
+            className="hover:ring-1"
+            type="checkbox"
+            name="show-password"
+            id="show-password"
+            checked={showPassword}
+            onChange={() => setShowPassword(!showPassword)}
+          />
+        </div>
+
+        <button
+          className="flex items-center self-end rounded-md bg-lime-400 py-1 px-2 font-bold text-slate-50 hover:bg-lime-500 "
+          type="submit"
+        >
+          <div className="ml-5 grow">Sign Up</div>
+          <svg
+            class={`${
+              registerStatus === 'pending' ? 'text-white' : 'text-transparent'
+            } h-5 w-5 animate-spin`}
+            xmlns="http:www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
           >
-            <p className="ml-5 grow">Sign Up</p>
-            <svg
-              class={`${
-                registerStatus === 'pending' ? 'text-white' : 'text-transparent'
-              } h-5 w-5 animate-spin`}
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <circle
-                class="opacity-25"
-                cx="12"
-                cy="12"
-                r="10"
-                stroke="currentColor"
-                stroke-width="4"
-              ></circle>
-              <path
-                class="opacity-75"
-                fill="currentColor"
-                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-              ></path>
-            </svg>
-          </button>
+            <circle
+              class="opacity-25"
+              cx="12"
+              cy="12"
+              r="10"
+              stroke="currentColor"
+              stroke-width="4"
+            ></circle>
+            <path
+              class="opacity-75"
+              fill="currentColor"
+              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+            ></path>
+          </svg>
+        </button>
 
-          {registerStatus === 'rejected' && (
-            <div className="rounded-md bg-red-300 px-2 py-1 text-sm italic text-red-600">
-              Username not available
-              <br />
-              Please try a different username
-            </div>
-          )}
-        </form>
-      </section>
+        {registerStatus === 'rejected' && (
+          <div className="rounded-md bg-red-300 px-2 py-1 text-sm italic text-red-600">
+            Username not available
+            <br />
+            Please try a different username
+          </div>
+        )}
+      </form>
     </div>
   );
 };

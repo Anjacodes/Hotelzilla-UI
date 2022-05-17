@@ -32,34 +32,36 @@ function Reservations() {
   return (
     <div className="h-screen w-full">
       <section className="flex flex-col items-center pt-[10vh] md:pt-[22vh]">
-      <img
-          className="md:hidden self-center w-4/12 w-sm-6/12"
+        <img
+          className="w-sm-6/12 w-4/12 self-center md:hidden"
           src="Hotelzilla-logo.png"
           alt=""
         />
         <h2 className="mb-10 font-Taxicab text-3xl capitalize text-gray-800">
           my reservations
         </h2>
+    
         <table className="table-fixed w-[80%] text-left text-gray-500 md:table-auto">
           <thead className="bg-gray-500 w-full table table-fixed font-Taxicab text-lg uppercase text-slate-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="py-3 md:pl-6">
+              <th scope="col" className="py-3 md:px-6">
                 ROOM
               </th>
-              <th scope="col" className="md:px-6 py-3">
+              <th scope="col" className="py-3 md:px-6">
                 HOTEL
               </th>
-              <th scope="col" className="md:px-6 py-3">
+              <th scope="col" className="py-3 md:px-6">
                 RATING
               </th>
               <th scope="col" className="hidden px-6 py-3 sm:block">
                 DATE
               </th>
-              <th scope="col" className="md:px-6 py-3">
+              <th scope="col" className="py-3 md:px-6">
                 PRICE
               </th>
             </tr>
           </thead>
+    
           <div className='table-fixed h-[calc(100vh-400px)] overflow-y-auto w-full'>
             <tbody className="font-Metrophobic w-full table">
               {reservationsArr &&
