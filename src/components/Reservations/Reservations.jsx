@@ -32,8 +32,8 @@ function Reservations() {
   return (
     <div className="h-screen w-full">
       <section className="flex flex-col items-center pt-[10vh] md:pt-[22vh]">
-      <img
-          className="md:hidden self-center w-4/12 w-sm-6/12"
+        <img
+          className="w-sm-6/12 w-4/12 self-center md:hidden"
           src="Hotelzilla-logo.png"
           alt=""
         />
@@ -41,50 +41,48 @@ function Reservations() {
           my reservations
         </h2>
         <table className="table-fixed text-left text-gray-500 md:table-auto">
-          <thead className="bg-gray-500 w-full table font-Taxicab text-lg uppercase text-slate-50 dark:bg-gray-700 dark:text-gray-400">
+          <thead className="table w-full bg-gray-500 font-Taxicab text-lg uppercase text-slate-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>
-              <th scope="col" className="py-3 md:pl-6">
+              <th scope="col" className="py-3 md:px-6">
                 ROOM
               </th>
-              <th scope="col" className="md:px-6 py-3">
+              <th scope="col" className="py-3 md:px-6">
                 HOTEL
               </th>
-              <th scope="col" className="md:px-6 py-3">
+              <th scope="col" className="py-3 md:px-6">
                 RATING
               </th>
               <th scope="col" className="hidden px-6 py-3 sm:block">
                 DATE
               </th>
-              <th scope="col" className="md:px-6 py-3">
+              <th scope="col" className="py-3 md:px-6">
                 PRICE
               </th>
             </tr>
           </thead>
-          <tbody className="font-Metrophobic block table-fixed h-[calc(100vh-400px)] overflow-y-auto w-full">
+          <tbody className="block h-[calc(100vh-400px)] w-full table-fixed overflow-y-auto font-Metrophobic">
             {reservationsArr &&
               reservationsArr.map((reservation) => {
                 return (
-                  <tr key={reservation.id} className="even:bg-white w-[100%]">
-                    <td className="w-[10%] md:pl-6 font-bold text-gray-400">
+                  <tr key={reservation.id} className="w-[100%] even:bg-white">
+                    <td className="w-[10%] font-bold text-gray-400 md:px-6">
                       {reservation.room_type.name}
                     </td>
-                    <td className="pl-0 py-4">
-                      {reservation.hotel.name}
-                    </td>
+                    <td className="py-4 pl-0">{reservation.hotel.name}</td>
                     <td className="py-4">
                       <>
                         <div className="hidden md:block">
                           {printStars(reservation.hotel.rating)}
                         </div>
-                        <div className="pr-8 block text-center md:hidden">
+                        <div className="block pr-8 text-center md:hidden">
                           {reservation.hotel.rating}
                         </div>
                       </>
                     </td>
-                    <td className="hidden py-4 sm:block">
-                      {reservation.date}
+                    <td className="hidden py-4 sm:block">{reservation.date}</td>
+                    <td className="py-4 sm:pl-8">
+                      ${reservation.room_type.price}
                     </td>
-                    <td className="py-4 sm:pl-8">${reservation.room_type.price}</td>
                   </tr>
                 );
               })}

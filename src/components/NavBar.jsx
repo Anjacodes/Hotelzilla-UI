@@ -19,6 +19,7 @@ function NavBar() {
     dispatch(loginActions.resetState());
     setMenuVisible(!menuVisible);
     setLoggedOut(true);
+    navigate('/', { replace: true });
   };
 
   useEffect(() => {
