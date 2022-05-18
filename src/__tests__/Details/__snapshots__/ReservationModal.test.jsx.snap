@@ -1,0 +1,663 @@
+// Vitest Snapshot v1
+
+exports[`Details View > renders correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="hidden absolute top-0 left-0 h-screen w-screen bg-black/20"
+      >
+        <section
+          class="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:mx-[25%] "
+        >
+          <h3
+            class="border-b-2 px-4 py-2 font-Taxicab text-xl"
+          >
+            Make your reservation
+          </h3>
+          <i
+            class="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
+          />
+          <table
+            cellpadding="2"
+            class="mx-[5%] mt-6 table-auto md:mx-auto md:w-[550px]"
+          >
+            <tbody>
+              <tr>
+                <td
+                  class="w-fit text-right"
+                >
+                  <label
+                    for="city"
+                  >
+                    Location:
+                  </label>
+                </td>
+                <td>
+                  <input
+                    class="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
+                    disabled=""
+                    id="city"
+                    name="city"
+                    type="text"
+                    value="Argentina"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="w-fit text-right"
+                >
+                  <label
+                    for="hotel"
+                  >
+                    Hotel:
+                  </label>
+                </td>
+                <td>
+                  <input
+                    class="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
+                    disabled=""
+                    id="hotel"
+                    name="hotel"
+                    type="text"
+                    value=""
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="w-fit text-right"
+                >
+                  <label
+                    for="roomType"
+                  >
+                    Room:
+                  </label>
+                </td>
+                <td>
+                  <select
+                    id="roomType"
+                    name="roomType"
+                  >
+                    <option
+                      disabled=""
+                      selected=""
+                      value="defaultValue"
+                    >
+                      Select a room:
+                    </option>
+                    <option
+                      value="1"
+                    >
+                      Single
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="w-fit text-right"
+                >
+                  <label
+                    for="datePicker"
+                  >
+                    Reservation date:
+                  </label>
+                </td>
+                <td>
+                  <input
+                    class="w-full rounded-md border px-2 py-1 hover:ring-1"
+                    id="datePicker"
+                    name="datePicker"
+                    type="date"
+                    value="2022-05-17"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div
+            class="mt-6 flex flex-col items-center px-6 text-center"
+          />
+          <div
+            class="mt-6 flex justify-end gap-4 border-t-2 py-4 px-4"
+          >
+            <button
+              class="rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
+              type="button"
+            >
+              Confirm
+            </button>
+            <button
+              class="rounded-md bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-300 hover:text-red-800"
+              type="button"
+            >
+              Cancel
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="hidden absolute top-0 left-0 h-screen w-screen bg-black/20"
+    >
+      <section
+        class="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:mx-[25%] "
+      >
+        <h3
+          class="border-b-2 px-4 py-2 font-Taxicab text-xl"
+        >
+          Make your reservation
+        </h3>
+        <i
+          class="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
+        />
+        <table
+          cellpadding="2"
+          class="mx-[5%] mt-6 table-auto md:mx-auto md:w-[550px]"
+        >
+          <tbody>
+            <tr>
+              <td
+                class="w-fit text-right"
+              >
+                <label
+                  for="city"
+                >
+                  Location:
+                </label>
+              </td>
+              <td>
+                <input
+                  class="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
+                  disabled=""
+                  id="city"
+                  name="city"
+                  type="text"
+                  value="Argentina"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="w-fit text-right"
+              >
+                <label
+                  for="hotel"
+                >
+                  Hotel:
+                </label>
+              </td>
+              <td>
+                <input
+                  class="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
+                  disabled=""
+                  id="hotel"
+                  name="hotel"
+                  type="text"
+                  value=""
+                />
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="w-fit text-right"
+              >
+                <label
+                  for="roomType"
+                >
+                  Room:
+                </label>
+              </td>
+              <td>
+                <select
+                  id="roomType"
+                  name="roomType"
+                >
+                  <option
+                    disabled=""
+                    selected=""
+                    value="defaultValue"
+                  >
+                    Select a room:
+                  </option>
+                  <option
+                    value="1"
+                  >
+                    Single
+                  </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="w-fit text-right"
+              >
+                <label
+                  for="datePicker"
+                >
+                  Reservation date:
+                </label>
+              </td>
+              <td>
+                <input
+                  class="w-full rounded-md border px-2 py-1 hover:ring-1"
+                  id="datePicker"
+                  name="datePicker"
+                  type="date"
+                  value="2022-05-17"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          class="mt-6 flex flex-col items-center px-6 text-center"
+        />
+        <div
+          class="mt-6 flex justify-end gap-4 border-t-2 py-4 px-4"
+        >
+          <button
+            class="rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
+            type="button"
+          >
+            Confirm
+          </button>
+          <button
+            class="rounded-md bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-300 hover:text-red-800"
+            type="button"
+          >
+            Cancel
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
+
+exports[`Reservation Modal > renders correctly 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="hidden absolute top-0 left-0 h-screen w-screen bg-black/20"
+      >
+        <section
+          class="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:mx-[25%] "
+        >
+          <h3
+            class="border-b-2 px-4 py-2 font-Taxicab text-xl"
+          >
+            Make your reservation
+          </h3>
+          <i
+            class="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
+          />
+          <table
+            cellpadding="2"
+            class="mx-[5%] mt-6 table-auto md:mx-auto md:w-[550px]"
+          >
+            <tbody>
+              <tr>
+                <td
+                  class="w-fit text-right"
+                >
+                  <label
+                    for="city"
+                  >
+                    Location:
+                  </label>
+                </td>
+                <td>
+                  <input
+                    class="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
+                    disabled=""
+                    id="city"
+                    name="city"
+                    type="text"
+                    value="Argentina"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="w-fit text-right"
+                >
+                  <label
+                    for="hotel"
+                  >
+                    Hotel:
+                  </label>
+                </td>
+                <td>
+                  <input
+                    class="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
+                    disabled=""
+                    id="hotel"
+                    name="hotel"
+                    type="text"
+                    value=""
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="w-fit text-right"
+                >
+                  <label
+                    for="roomType"
+                  >
+                    Room:
+                  </label>
+                </td>
+                <td>
+                  <select
+                    id="roomType"
+                    name="roomType"
+                  >
+                    <option
+                      disabled=""
+                      selected=""
+                      value="defaultValue"
+                    >
+                      Select a room:
+                    </option>
+                    <option
+                      value="1"
+                    >
+                      Single
+                    </option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td
+                  class="w-fit text-right"
+                >
+                  <label
+                    for="datePicker"
+                  >
+                    Reservation date:
+                  </label>
+                </td>
+                <td>
+                  <input
+                    class="w-full rounded-md border px-2 py-1 hover:ring-1"
+                    id="datePicker"
+                    name="datePicker"
+                    type="date"
+                    value="2022-05-17"
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div
+            class="mt-6 flex flex-col items-center px-6 text-center"
+          />
+          <div
+            class="mt-6 flex justify-end gap-4 border-t-2 py-4 px-4"
+          >
+            <button
+              class="rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
+              type="button"
+            >
+              Confirm
+            </button>
+            <button
+              class="rounded-md bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-300 hover:text-red-800"
+              type="button"
+            >
+              Cancel
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="hidden absolute top-0 left-0 h-screen w-screen bg-black/20"
+    >
+      <section
+        class="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:mx-[25%] "
+      >
+        <h3
+          class="border-b-2 px-4 py-2 font-Taxicab text-xl"
+        >
+          Make your reservation
+        </h3>
+        <i
+          class="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
+        />
+        <table
+          cellpadding="2"
+          class="mx-[5%] mt-6 table-auto md:mx-auto md:w-[550px]"
+        >
+          <tbody>
+            <tr>
+              <td
+                class="w-fit text-right"
+              >
+                <label
+                  for="city"
+                >
+                  Location:
+                </label>
+              </td>
+              <td>
+                <input
+                  class="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
+                  disabled=""
+                  id="city"
+                  name="city"
+                  type="text"
+                  value="Argentina"
+                />
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="w-fit text-right"
+              >
+                <label
+                  for="hotel"
+                >
+                  Hotel:
+                </label>
+              </td>
+              <td>
+                <input
+                  class="w-full rounded-md border bg-neutral-400 px-2 py-1 text-neutral-700 "
+                  disabled=""
+                  id="hotel"
+                  name="hotel"
+                  type="text"
+                  value=""
+                />
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="w-fit text-right"
+              >
+                <label
+                  for="roomType"
+                >
+                  Room:
+                </label>
+              </td>
+              <td>
+                <select
+                  id="roomType"
+                  name="roomType"
+                >
+                  <option
+                    disabled=""
+                    selected=""
+                    value="defaultValue"
+                  >
+                    Select a room:
+                  </option>
+                  <option
+                    value="1"
+                  >
+                    Single
+                  </option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td
+                class="w-fit text-right"
+              >
+                <label
+                  for="datePicker"
+                >
+                  Reservation date:
+                </label>
+              </td>
+              <td>
+                <input
+                  class="w-full rounded-md border px-2 py-1 hover:ring-1"
+                  id="datePicker"
+                  name="datePicker"
+                  type="date"
+                  value="2022-05-17"
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div
+          class="mt-6 flex flex-col items-center px-6 text-center"
+        />
+        <div
+          class="mt-6 flex justify-end gap-4 border-t-2 py-4 px-4"
+        >
+          <button
+            class="rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
+            type="button"
+          >
+            Confirm
+          </button>
+          <button
+            class="rounded-md bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-300 hover:text-red-800"
+            type="button"
+          >
+            Cancel
+          </button>
+        </div>
+      </section>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
