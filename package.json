@@ -29,7 +29,6 @@
     "vite": "^2.9.7"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6",
     "@babel/core": "^7.17.10",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-syntax-jsx": "^7.16.7",
