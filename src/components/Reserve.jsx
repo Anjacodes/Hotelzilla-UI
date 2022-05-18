@@ -57,7 +57,6 @@ const Reserve = ({ token }) => {
         hotel_id: hotelId,
         room_type_id: roomTypeId,
       };
-      console.log(reservationData);
       dispatch(createReservation({ token, reservationData }));
     }
   };
@@ -77,7 +76,7 @@ const Reserve = ({ token }) => {
   }, [createReservationStatus]);
 
   return (
-    <section className="flex h-screen w-full flex-col px-6 py-4 justify-center items-center pt-[22vh]">
+    <section className="flex h-screen w-full flex-col items-center justify-center px-6 py-4 pt-[22vh]">
       {createReservationStatus === 'fulfilled' && (
         <div className="absolute bottom-4 right-4 z-10 rounded  bg-green-200 px-4 py-2 text-green-700">
           Reservation succesfully created!
@@ -90,15 +89,17 @@ const Reserve = ({ token }) => {
         </div>
       )}
       <img
-          className="md:hidden self-center w-4/12 w-sm-6/12"
-          src="Hotelzilla-logo.png"
-          alt=""
-          onClick={() => navigate("/")}
-        />
+        className="w-sm-6/12 w-4/12 self-center md:hidden"
+        src="Hotelzilla-logo.png"
+        alt=""
+        onClick={() => navigate('/')}
+      />
       <header>
-        <h2 className="font-Taxicab text-3xl text-gray-800 capitalize">Add Reservation</h2>
+        <h2 className="font-Taxicab text-3xl capitalize text-gray-800">
+          Add Reservation
+        </h2>
       </header>
-      <div className="flex h-full flex-col mt-10 gap-6 items-center w-min">
+      <div className="mt-10 flex h-full w-min flex-col items-center gap-6">
         <article>
           <table cellPadding={4}>
             <tbody>
@@ -212,13 +213,13 @@ const Reserve = ({ token }) => {
             </>
           )}
         </article>
-          <button
-            type="button"
-            className="self-start mt-6 rounded-md bg-lime-400 hover:bg-gray-200 px-4 py-2 font-semibold text-white"
-            onClick={handleConfirmation}
-          >
-            Confirm reservation
-          </button>
+        <button
+          type="button"
+          className="mt-6 self-start rounded-md bg-lime-400 px-4 py-2 font-semibold text-white hover:bg-gray-200"
+          onClick={handleConfirmation}
+        >
+          Confirm reservation
+        </button>
       </div>
       <BackButton />
     </section>
