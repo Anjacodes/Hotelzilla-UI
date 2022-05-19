@@ -11,7 +11,8 @@ const ConfirmDelete = ({ visible, onOk, onCancel, hotel }) => {
   return (
     <div
       className={
-        handleVisible() + 'absolute top-0 left-0 h-screen w-screen bg-black/20'
+        handleVisible() +
+        'absolute top-0 left-0 z-30 h-screen w-screen bg-black/20'
       }
     >
       <section className="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:ml-[30%] ">
@@ -19,7 +20,7 @@ const ConfirmDelete = ({ visible, onOk, onCancel, hotel }) => {
           Please confirm:
         </h3>
         <i
-          class="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
+          className="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
           onClick={onCancel}
         ></i>
 

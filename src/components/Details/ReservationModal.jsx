@@ -22,18 +22,21 @@ const ReservationModal = ({
     <div
       className={
         handleVisible() + 'absolute top-0 left-0 h-screen w-screen bg-black/20'
-      }>
+      }
+    >
       <section className="relative mx-[10%] mt-[10%] flex flex-col bg-slate-50 xl:mx-[25%] ">
         <h3 className="border-b-2 px-4 py-2 font-Taxicab text-xl">
           Make your reservation
         </h3>
         <i
-          class="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
-          onClick={onCancel}></i>
+          className="fa-solid fa-xmark absolute top-2 right-4 text-xl hover:text-red-600"
+          onClick={onCancel}
+        ></i>
 
         <table
           className="mx-[5%] mt-6 table-auto md:mx-auto md:w-[550px]"
-          cellPadding={2}>
+          cellPadding={2}
+        >
           <tbody>
             <tr>
               <td className="w-fit text-right">
@@ -73,9 +76,9 @@ const ReservationModal = ({
                 <select
                   name="roomType"
                   id="roomType"
-                  value={room}
+                  value={room ? room : 'defaultValue'}
                   onChange={(e) => setRoom(e.target.value)}
-                  defaultValue="defaultValue">
+                >
                   <option value="defaultValue" disabled>
                     Select a room:
                   </option>
@@ -128,13 +131,15 @@ const ReservationModal = ({
           <button
             className="rounded-md bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-300 hover:text-green-800"
             type="button"
-            onClick={() => onOk(reservationDate, room)}>
+            onClick={() => onOk(reservationDate, room)}
+          >
             Confirm
           </button>
           <button
             className="rounded-md bg-red-600 px-4 py-2 font-semibold text-white hover:bg-red-300 hover:text-red-800"
             type="button"
-            onClick={onCancel}>
+            onClick={onCancel}
+          >
             Cancel
           </button>
         </div>

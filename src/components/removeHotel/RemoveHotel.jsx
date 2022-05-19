@@ -60,7 +60,12 @@ const RemoveHotel = () => {
       )}
       <section className="flex h-screen w-full">
         <div className="flex w-full flex-col items-center gap-3 p-9 md:mt-[22vh] md:p-0">
-          <img className="w-4/12 md:hidden" src="Hotelzilla-logo.png" alt="" onClick={() => navigate("/")} />
+          <img
+            className="w-4/12 md:hidden"
+            src="Hotelzilla-logo.png"
+            alt=""
+            onClick={() => navigate('/')}
+          />
           <h2 className="mb-10 text-3xl capitalize text-gray-800">
             Delete hotel
           </h2>
@@ -73,7 +78,7 @@ const RemoveHotel = () => {
 
             <div className="flex max-h-[40vh] flex-col overflow-y-auto overflow-x-hidden md:max-h-[60vh]">
               {hotels.map((hotel, index) => (
-                <div className="flex even:bg-white">
+                <div key={index} className="flex even:bg-white">
                   <div className="w-16 shrink-0 py-3 pl-6">{index + 1}</div>
                   <div className="grow overflow-x-auto py-3 pl-6">
                     {hotel.name}

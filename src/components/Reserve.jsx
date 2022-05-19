@@ -43,7 +43,9 @@ const Reserve = ({ token }) => {
 
   // Get hotels from API after choosing a city => load them to form
   useEffect(() => {
-    dispatch(getHotelsByCity({ token, id: cityId }));
+    if (cityId) {
+      dispatch(getHotelsByCity({ token, id: cityId }));
+    }
   }, [cityId]);
   const { hotelsByCity } = useSelector((state) => state.hotel);
   useEffect(() => {
@@ -112,15 +114,14 @@ const Reserve = ({ token }) => {
                     className="w-48"
                     name="city"
                     id="city"
-                    value={cityId}
+                    value={cityId ? cityId : 'defaultSelect'}
                     onChange={(e) => setCityId(e.target.value)}
-                    defaultValue={'defaultSelect'}
                   >
                     <option value="defaultSelect" disabled>
                       Select a country:
                     </option>
                     {cities.map((city) => (
-                      <option key={city.key} value={city.id}>
+                      <option key={city.id} value={city.id}>
                         {city.name}
                       </option>
                     ))}
@@ -137,15 +138,14 @@ const Reserve = ({ token }) => {
                       className="w-48"
                       name="hotel"
                       id="hotel"
-                      value={hotelId}
+                      value={hotelId ? hotelId : 'defaultSelect'}
                       onChange={(e) => setHotelId(e.target.value)}
-                      defaultValue={'defaultSelect'}
                     >
                       <option value="defaultSelect" disabled>
                         Select a hotel:
                       </option>
                       {hotels.map((hotel) => (
-                        <option key={hotel.key} value={hotel.id}>
+                        <option key={hotel.id} value={hotel.id}>
                           {hotel.name}
                         </option>
                       ))}
@@ -163,15 +163,14 @@ const Reserve = ({ token }) => {
                       className="w-48"
                       name="roomType"
                       id="roomType"
-                      value={roomTypeId}
+                      value={roomTypeId ? roomTypeId : 'defaultSelect'}
                       onChange={(e) => setRoomTypeId(e.target.value)}
-                      defaultValue={'defaultSelect'}
                     >
                       <option value="defaultSelect" disabled>
                         Select a room:
                       </option>
                       {rooms.map((room) => (
-                        <option key={room.key} value={room.id}>
+                        <option key={room.id} value={room.id}>
                           {room.name}
                         </option>
                       ))}
