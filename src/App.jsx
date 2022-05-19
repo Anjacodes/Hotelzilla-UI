@@ -1,45 +1,48 @@
-import { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import SignUp from './components/SignUp';
+import Home from './components/Home';
+import Index from './components/Index';
+import Reservations from './components/Reservations/Reservations';
+import Reserve from './components/Reserve';
+import Login from './components/Login';
+import AddHotel from './components/AddHotel';
+import { loginActions } from './redux/login/login';
+import LogedUsers from './components/accessibility/LogedUsers';
+import DetailsView from './components/Details/DetailsView';
+import RemoveHotel from './components/removeHotel/RemoveHotel';
+import IsAdmin from './components/accessibility/isAdmin';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const dispatch = useDispatch();
+  const tokenKey = 'token';
+  if (localStorage.getItem(tokenKey)) {
+    dispatch(loginActions.login(JSON.parse(localStorage.getItem(tokenKey))));
+  }
+
+  const { isLoggedIn, role, token } = useSelector((state) => state.login);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.jsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
-}
+    <>
+      <Routes>
+        <Route path="/register" element={<SignUp />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Home />}>
+          <Route index element={<Index />} />
+          <Route path=":roomId" element={<DetailsView token={token} />} />
+          <Route element={<IsAdmin role={role} loggedIn={isLoggedIn} />}>
+            <Route path="add-hotel" element={<AddHotel />} />
+            <Route path="delete-hotel" element={<RemoveHotel />} />
+          </Route>
+          <Route element={<LogedUsers logged={isLoggedIn} />}>
+            <Route path="reserve" element={<Reserve token={token} />} />
+            <Route path="reservations" element={<Reservations />} />
+          </Route>
+        </Route>
+      </Routes>
+    </>
+  );
+};
 
-export default App
+export default App;

@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+yarn.lock
+
+# Local Netlify folder
+.netlify
